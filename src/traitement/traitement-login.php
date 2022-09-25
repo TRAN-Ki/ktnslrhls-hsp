@@ -8,4 +8,20 @@ $log = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur");
 $log->execute();
 
 //verifier
-//en attente
+
+if($result = $log->fetch()){
+
+    //en attente
+
+
+    header("Location: //adresse de espace membre ");
+
+}else{
+
+    header("Location: ../../traitement/register.php");
+
+}
+
+
+
+
