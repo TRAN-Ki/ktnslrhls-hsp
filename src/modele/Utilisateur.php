@@ -3,7 +3,7 @@
 class Utilisateur
 {
     private $id_utilisateur;
-    private $nom;
+    protected $nom;
     private $prenom;
     private $email;
     private $mdp;

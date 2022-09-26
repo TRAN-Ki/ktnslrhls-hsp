@@ -1,7 +1,4 @@
 <?php
-
-require_once '../bdd/Database.php';
-
 class Hopital
 {
 
@@ -9,12 +6,12 @@ class Hopital
     private $nom;
     private $rue;
     private $cp;
-    private $bdd;
+
 
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
+
     }
 
     public function hydrate(array $donnees){
@@ -94,9 +91,9 @@ class Hopital
         return $this->cp;
     }
 
-    public function selectHopital(){
+    public function selectHopital($bdd){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM hopital");
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM hopital");
         $sel->execute();
         $result = $sel->fetchAll();
         echo "Affichage de la table hopital";
@@ -104,9 +101,9 @@ class Hopital
 
     }
 
-    public function addHopital(){
+    public function addHopital($bdd){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO hopital (nom, rue, cp) VALUES :nom, :rue, :cp");
+        $add = $bdd->getBdd()->prepare("INSERT INTO hopital (nom, rue, cp) VALUES :nom, :rue, :cp");
         $add->execute(array(
             'nom'=>$this->getNom(),
             'rue'=>$this->getRue(),
@@ -116,9 +113,9 @@ class Hopital
 
     }
 
-    public function editHopital(){
+    public function editHopital($bdd){
 
-        $edit = $this->bdd->getBdd()->prepare("UPDATE hopital SET nom = :nom, rue = :rue, cp = :cp WHERE id_hopital = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE hopital SET nom = :nom, rue = :rue, cp = :cp WHERE id_hopital = :id");
         $edit->execute(array(
             'nom'=>$this->getNom(),
             'rue'=>$this->getRue(),
@@ -129,9 +126,9 @@ class Hopital
 
     }
 
-    public function deleteHopital(){
+    public function deleteHopital($bdd){
 
-        $del = $this->bdd->getBdd()->prepare("DELETE FROM hopital WHERE id_hopital = :id");
+        $del = $bdd->getBdd()->prepare("DELETE FROM hopital WHERE id_hopital = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));

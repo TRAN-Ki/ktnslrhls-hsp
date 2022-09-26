@@ -1,6 +1,6 @@
 <?php
 
-require_once '../bdd/Database.php';
+
 
 class Amphitheatre
 {
@@ -8,11 +8,11 @@ class Amphitheatre
     private $id;
     private $libelle;
     private $nb_places;
-    private $bdd;
+
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
+
     }
 
     public function hydrate(array $donnees){
@@ -75,9 +75,9 @@ class Amphitheatre
         return $this->nb_places;
     }
 
-    public function selectAmphitheatre(){
+    public function selectAmphitheatre($bdd){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM amphitheatre");
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM amphitheatre");
         $sel->execute();
         $result = $sel->fetchAll();
         echo "Affichage de la table amphiteatre";
@@ -85,9 +85,9 @@ class Amphitheatre
 
     }
 
-    public function addAmphitheatre(){
+    public function addAmphitheatre($bdd){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO amphitheatre (libelle, nb_places) VALUES :libelle,:nbplaces");
+        $add = $bdd->getBdd()->prepare("INSERT INTO amphitheatre (libelle, nb_places) VALUES :libelle,:nbplaces");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
             'nbplaces'=>$this->getNbPlaces()
@@ -96,9 +96,9 @@ class Amphitheatre
 
     }
 
-    public function editAmphitheatre(){
+    public function editAmphitheatre($bdd){
 
-        $edit = $this->bdd->getBdd()->prepare("UPDATE amphitheatre SET libelle = :libelle, nb_places = :nbplaces WHERE id_amphitheatre = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE amphitheatre SET libelle = :libelle, nb_places = :nbplaces WHERE id_amphitheatre = :id");
         $edit->execute(array(
             'libelle'=>$this->getLibelle(),
             'nbplaces'=>$this->getNbPlaces(),
@@ -108,9 +108,9 @@ class Amphitheatre
 
     }
 
-    public function deleteAmphitheatre(){
+    public function deleteAmphitheatre($bdd){
 
-        $del = $this->bdd->getBdd()->prepare("DELETE FROM ampitheatre WHERE id_amphitheatre = :id");
+        $del = $bdd->getBdd()->prepare("DELETE FROM ampitheatre WHERE id_amphitheatre = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));
