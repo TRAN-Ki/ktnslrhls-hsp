@@ -1,7 +1,5 @@
 <?php
 
-require_once '../bdd/Database.php';
-
 class Rdv
 {
 
@@ -15,7 +13,6 @@ class Rdv
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
     }
 
     public function hydrate(array $donnees){
@@ -142,9 +139,9 @@ class Rdv
         return $this->refoffre;
     }
 
-    public function selectRdv(){
+    public function selectRdv($bdd){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM rdv");
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM rdv");
         $sel->execute();
         $result = $sel->fetchAll();
         echo "Affichage de la table amphiteatre";
@@ -152,9 +149,9 @@ class Rdv
 
     }
 
-    public function addRdv(){
+    public function addRdv($bdd){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES :daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre");
+        $add = $bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES :daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre");
         $add->execute(array(
             'daterdv'=>$this->getDate(),
             'heure'=>$this->getHeure(),
@@ -167,9 +164,9 @@ class Rdv
 
     }
 
-    public function editRdv(){
+    public function editRdv($bdd){
 
-        $edit = $this->bdd->getBdd()->prepare("UPDATE rdv SET date_rdv = :daterdv, heure = :heure, etat = :etat, ref_etudiant = :refetudiant, ref_representant = :refrepresentant, ref_offre = :refoffre WHERE id_offre = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE rdv SET date_rdv = :daterdv, heure = :heure, etat = :etat, ref_etudiant = :refetudiant, ref_representant = :refrepresentant, ref_offre = :refoffre WHERE id_offre = :id");
         $edit->execute(array(
             'daterdv'=>$this->getDate(),
             'heure'=>$this->getHeure(),
@@ -183,9 +180,9 @@ class Rdv
 
     }
 
-    public function deleteRdv(){
+    public function deleteRdv($bdd){
 
-        $del = $this->bdd->getBdd()->prepare("DELETE FROM rdv WHERE id_rdv = :id");
+        $del = $bdd->getBdd()->prepare("DELETE FROM rdv WHERE id_rdv = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));

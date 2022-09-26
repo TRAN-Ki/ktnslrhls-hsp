@@ -1,5 +1,5 @@
 <?php
-require_once '../bdd/Database.php';
+
 class Utilisateur
 {
     private $id_utilisateur;
@@ -9,11 +9,9 @@ class Utilisateur
     private $mdp;
     private $admin;
     private $actif;
-    private $bdd;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
     }
 
     public function hydrate(array $donnees){
@@ -29,16 +27,16 @@ class Utilisateur
     }
 
 
-    public function selectUtilisateur(){
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM utilisateur");
+    public function selectUtilisateur($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur");
         $sel->execute();
         $result= $sel->fetchAll();
         return $result;
     }
 
 
-    public function addUtilisateur(){
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO utilisateur (nom, prenom, email, mdp, admin, actif) VALUES (:nom , :prenom, :email, :mdp, :admin, :actif)");
+    public function addUtilisateur($bdd){
+        $add = $bdd->getBdd()->prepare("INSERT INTO utilisateur (nom, prenom, email, mdp, admin, actif) VALUES (:nom , :prenom, :email, :mdp, :admin, :actif)");
         $add->execute(array(
             'nom'=>$this->getNom(),
             'prenom'=>$this->getPrenom(),
@@ -49,8 +47,8 @@ class Utilisateur
         ));
     }
 
-    public function updateUtilisateur(){
-        $mod = $this->bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, mdp = :mdp, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
+    public function updateUtilisateur($bdd){
+        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, mdp = :mdp, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
         $mod->execute(array(
             'nom'=>$this->getNom(),
             'prenom'=>$this->getPrenom(),
@@ -61,14 +59,12 @@ class Utilisateur
         ));
     }
 
-    public function deleteUtilisateur(){
-        $del = $this->bdd->getBdd()->prepare('DELETE Type FROM id_utilisateur = :id');
+    public function deleteUtilisateur($bdd){
+        $del = $bdd->getBdd()->prepare('DELETE Type FROM id_utilisateur = :id');
         $del->execute(array(
             'id'=>$this->getIdUtilisateur()
         ));
     }
-
-
 
     /**
      * @return mixed
@@ -181,8 +177,4 @@ class Utilisateur
     {
         $this->actif = $actif;
     }
-
-
-
-
 }

@@ -1,18 +1,13 @@
 <?php
-require_once '../bdd/Database.php';
+
 class Representant extends Utilisateur
 {
     private $ref_utilisateur;
     private $role;
     private $ref_hopital;
-    private $bdd;
-
-
-
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
     }
 
     public function hydrate(array $donnees){
@@ -25,22 +20,6 @@ class Representant extends Utilisateur
                 $this->$method($value);
             }
         }
-    }
-
-    /**
-     * @return Database
-     */
-    public function getBdd(): Database
-    {
-        return $this->bdd;
-    }
-
-    /**
-     * @param Database $bdd
-     */
-    public function setBdd(Database $bdd)
-    {
-        $this->bdd = $bdd;
     }
 
     /**
