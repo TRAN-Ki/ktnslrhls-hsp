@@ -1,6 +1,6 @@
 <?php
-require_once '../bdd/Database.php';
-class Representant extends Utilisateur
+
+class Representant
 {
     private $ref_utilisateur;
     private $role;

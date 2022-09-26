@@ -1,5 +1,5 @@
 <?php
-require_once '../bdd/Database.php';
+
 class Type
 {
 

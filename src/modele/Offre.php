@@ -1,6 +1,6 @@
 <?php
 
-require_once '../bdd/Database.php';
+
 
 class Offre
 {
@@ -8,11 +8,11 @@ class Offre
     private $id;
     private $libelle;
     private $description;
-    private $bdd;
+
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
+
     }
 
     public function hydrate(array $donnees){
@@ -75,9 +75,9 @@ class Offre
         return $this->description;
     }
 
-    public function selectOffre(){
+    public function selectOffre($bdd){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM offre");
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM offre");
         $sel->execute();
         $result = $sel->fetchAll();
         echo "Affichage de la table offre";
@@ -85,9 +85,9 @@ class Offre
 
     }
 
-    public function addOffre(){
+    public function addOffre($bdd){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES :libelle,:description");
+        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES :libelle,:description");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
             'description'=>$this->getDescription()
@@ -96,9 +96,9 @@ class Offre
 
     }
 
-    public function editOffre(){
+    public function editOffre($bdd){
 
-        $edit = $this->bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description WHERE id_offre = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description WHERE id_offre = :id");
         $edit->execute(array(
             'libelle'=>$this->getLibelle(),
             'description'=>$this->getDescription(),
@@ -108,9 +108,9 @@ class Offre
 
     }
 
-    public function deleteOffre(){
+    public function deleteOffre($bdd){
 
-        $del = $this->bdd->getBdd()->prepare("DELETE FROM offre WHERE id_offre = :id");
+        $del = $bdd->getBdd()->prepare("DELETE FROM offre WHERE id_offre = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));
