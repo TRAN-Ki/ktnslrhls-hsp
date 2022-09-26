@@ -1,23 +1,38 @@
 <?php
 
 require_once '../bdd/Database.php';
+require_once '../modele/Utilisateur.php';
 
 $bdd = new Database();
+$user = new Utilisateur(); // parametre hydrate
+
+session_start();
 
 try {
-    $reg = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur");
-    $reg->execute();
 
-    if(!$res = $reg->fetch()){
-        $inscrit = $bdd->getBdd()->prepare("INSERT INTO Utilisateur (nom,prenom,email,mdp,admin,actif) VALUES (?,?,?,?,?,?)");
-        $inscrit->execute(array(
-            'nom'=>$_POST['nom'],
-            'prenom'=>$_POST['prenom'],
-            'email'=>$_POST['email'],
-            'mdp'=>$_POST['mdp'],
-            'admin'=>0,
-            'actif'=>0
-        ));
+    $res = "";
+    $user->selectUtilisateur($res);
+
+    if(!$res->fetch()){
+
+        $user->setNom($_POST['nom']);
+        $user->setPrenom($_POST['prenom']);
+        $user->setEmail($_POST['email']);
+        $user->setMdp($_POST['mdp']);
+        $user->setAdmin(0);
+        $user->setActif(0);
+        $user->addUtilisateur($bdd);
+
+        // choiceBox
+        if ($_POST['choix'] == "représentant"){
+
+            // faire un insert dans representant
+
+        }elseif ($_POST['choix'] == "etudiant"){
+
+            // faire un insert dans etudiant
+
+        }
 
         header('Location: ../../vue/login.php');
     }else{
