@@ -1,5 +1,7 @@
 <?php
 
+require_once '../bdd/Database.php';
+
 class Hopital
 {
 
@@ -7,10 +9,12 @@ class Hopital
     private $nom;
     private $rue;
     private $cp;
+    private $bdd;
 
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
+        $this->bdd = new Database();
     }
 
     public function hydrate(array $donnees){
@@ -90,7 +94,48 @@ class Hopital
         return $this->cp;
     }
 
+    public function selectHopital(){
 
+        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM hopital");
+        $sel->execute();
+        $result = $sel->fetchAll();
+        echo "Affichage de la table hopital";
+        return $result;
 
+    }
 
+    public function addHopital(){
+
+        $add = $this->bdd->getBdd()->prepare("INSERT INTO hopital (nom, rue, cp) VALUES :nom, :rue, :cp");
+        $add->execute(array(
+            'nom'=>$this->getNom(),
+            'rue'=>$this->getRue(),
+            'cp'=>$this->getCp()
+        ));
+        echo "Hopital ajouté";
+
+    }
+
+    public function editHopital(){
+
+        $edit = $this->bdd->getBdd()->prepare("UPDATE hopital SET nom = :nom, rue = :rue, cp = :cp WHERE id_hopital = :id");
+        $edit->execute(array(
+            'nom'=>$this->getNom(),
+            'rue'=>$this->getRue(),
+            'cp'=> $this->getCp(),
+            'id'=>$this->getId()
+        ));
+        echo "Hopital édité par le nom : ".$this->getNom().", la rue : ".$this->getRue()." et le cp par : ".$this->getCp();
+
+    }
+
+    public function deleteHopital(){
+
+        $del = $this->bdd->getBdd()->prepare("DELETE FROM hopital WHERE id_hopital = :id");
+        $del->execute(array(
+            'id'=>$this->getId()
+        ));
+        echo "Hopital supprimé";
+
+    }
 }

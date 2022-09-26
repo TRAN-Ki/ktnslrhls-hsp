@@ -2,12 +2,12 @@
 
 require_once '../bdd/Database.php';
 
-class Amphitheatre
+class Offre
 {
 
     private $id;
     private $libelle;
-    private $nb_places;
+    private $description;
     private $bdd;
 
     public function __construct(array $donnees){
@@ -44,11 +44,11 @@ class Amphitheatre
     }
 
     /**
-     * @param mixed $nb_places
+     * @param mixed $description
      */
-    public function setNbPlaces($nb_places)
+    public function setDescription($description)
     {
-        $this->nb_places = $nb_places;
+        $this->description = $description;
     }
 
     /**
@@ -70,51 +70,51 @@ class Amphitheatre
     /**
      * @return mixed
      */
-    public function getNbPlaces()
+    public function getDescription()
     {
-        return $this->nb_places;
+        return $this->description;
     }
 
-    public function selectAmphitheatre(){
+    public function selectOffre(){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM amphitheatre");
+        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM offre");
         $sel->execute();
         $result = $sel->fetchAll();
-        echo "Affichage de la table amphiteatre";
+        echo "Affichage de la table offre";
         return $result;
 
     }
 
-    public function addAmphitheatre(){
+    public function addOffre(){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO amphitheatre (libelle, nb_places) VALUES :libelle,:nbplaces");
+        $add = $this->bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES :libelle,:description");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
-            'nbplaces'=>$this->getNbPlaces()
+            'description'=>$this->getDescription()
         ));
-        echo "Amphiteatre ajouté";
+        echo "Offre ajouté";
 
     }
 
-    public function editAmphitheatre(){
+    public function editOffre(){
 
-        $edit = $this->bdd->getBdd()->prepare("UPDATE amphitheatre SET libelle = :libelle, nb_places = :nbplaces WHERE id_amphitheatre = :id");
+        $edit = $this->bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description WHERE id_offre = :id");
         $edit->execute(array(
             'libelle'=>$this->getLibelle(),
-            'nbplaces'=>$this->getNbPlaces(),
+            'description'=>$this->getDescription(),
             'id'=>$this->getId()
         ));
-        echo "Amphiteatre édité par le libelle : ".$this->getLibelle()." et le nombre de place par : ".$this->getNbPlaces();
+        echo "Offre édité par le libelle : ".$this->getLibelle()." et la description par : ".$this->getDescription();
 
     }
 
-    public function deleteAmphitheatre(){
+    public function deleteOffre(){
 
-        $del = $this->bdd->getBdd()->prepare("DELETE FROM ampitheatre WHERE id_amphitheatre = :id");
+        $del = $this->bdd->getBdd()->prepare("DELETE FROM offre WHERE id_offre = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));
-        echo "Amphiteatre supprimé";
+        echo "Offre supprimé";
 
     }
 }
