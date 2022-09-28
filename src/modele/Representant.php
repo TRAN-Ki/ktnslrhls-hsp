@@ -1,5 +1,5 @@
 <?php
-require_once '../bdd/Database.php';
+
 class Representant extends Utilisateur
 {
     private $ref_utilisateur;
@@ -7,12 +7,8 @@ class Representant extends Utilisateur
     private $ref_hopital;
     private $bdd;
 
-
-
-
     public function __construct(array $donnees){
         $this->hydrate($donnees);
-        $this->bdd = new Database();
     }
 
     public function hydrate(array $donnees){
@@ -27,20 +23,35 @@ class Representant extends Utilisateur
         }
     }
 
-    /**
-     * @return Database
-     */
-    public function getBdd(): Database
-    {
-        return $this->bdd;
+    public function selectRepresentant($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM representant");
+        $sel->execute();
+        $result = $sel->fetchAll();
+        return $result;
     }
 
-    /**
-     * @param Database $bdd
-     */
-    public function setBdd(Database $bdd)
-    {
-        $this->bdd = $bdd;
+    public function addRepresentant($bdd){
+        $add = $bdd->getBdd()->prepare("INSERT INTO representant (role, ref_hopital) VALUES (:role, :refhopital)");
+        $add->execute(array(
+            'role'=>$this->getRole(),
+            'refhopital'=>$this->getRefHopital()
+        ));
+    }
+
+    public function updateRepresentant($bdd){
+        $mod = $bdd->getBdd()->prepare("UPDATE representant SET role = :role, ref_hopital = :refhopital WHERE ref_utilisateur = :refutilisateur");
+        $mod->execute(array(
+            'role'=>$this->getRole(),
+            'refhopital'=>$this->getRefHopital(),
+            'refutilisateur'=>$this->getRefUtilisateur()
+        ));
+    }
+
+    public function deleteRepresentant($bdd){
+        $del = $bdd->getBdd()->prepare('DELETE representant FROM ref_utilisateur = :id');
+        $del->execute(array(
+            'id'=>$this->getIdUtilisateur()
+        ));
     }
 
     /**

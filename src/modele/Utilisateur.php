@@ -26,11 +26,10 @@ class Utilisateur
         }
     }
 
-
     public function selectUtilisateur($bdd){
         $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur");
         $sel->execute();
-        $result= $sel->fetchAll();
+        $result = $sel->fetchAll();
         return $result;
     }
 
@@ -60,7 +59,7 @@ class Utilisateur
     }
 
     public function deleteUtilisateur($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE Type FROM id_utilisateur = :id');
+        $del = $bdd->getBdd()->prepare('DELETE representant FROM id_utilisateur = :id');
         $del->execute(array(
             'id'=>$this->getIdUtilisateur()
         ));

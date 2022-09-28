@@ -24,6 +24,35 @@ class Etudiant
         }
     }
 
+    public function selectEtudiant($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM etudiant");
+        $sel->execute();
+        $result = $sel->fetchAll();
+        return $result;
+    }
+
+    public function addRepresentant($bdd){
+        $add = $bdd->getBdd()->prepare("INSERT INTO etudiant (domaine) VALUES (:domaine)");
+        $add->execute(array(
+            'domaine'=>$this->getDomaine(),
+        ));
+    }
+
+    public function updateRepresentant($bdd){
+        $mod = $bdd->getBdd()->prepare("UPDATE etudiant SET domaine = :domaine WHERE ref_utilisateur = :refutilisateur");
+        $mod->execute(array(
+            'domaine'=>$this->getDomaine(),
+            'refutilisateur'=>$this->getRefUtilisateur()
+        ));
+    }
+
+    public function deleteRepresentant($bdd){
+        $del = $bdd->getBdd()->prepare('DELETE etudiant FROM ref_utilisateur = :id');
+        $del->execute(array(
+            'id'=>$this->getRefUtilisateur()
+        ));
+    }
+
 
 
     /**
