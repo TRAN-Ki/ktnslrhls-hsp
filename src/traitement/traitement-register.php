@@ -39,9 +39,10 @@ try {
             $etu->addEtudiant($bdd);
 
         }
-        header('Location: ../../vue/attenteValidation.php');
+        header('Location: ../../vue/login.php');
     }else{
-        header('Location: ../../vue/register.php');
+        // ajouter en html + js -> l'user a deja un compte
+        header('Location: ../../vue/login.php');
     }
 
 }catch(PDOException $e){
