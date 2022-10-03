@@ -2,9 +2,9 @@
 
 require_once '../bdd/Database.php';
 require_once '../modele/Utilisateur.php';
-
+require_once '../modele/Etudiant.php';
 $bdd = new Database();
-
+$yr = new Etudiant();
 $user = new Utilisateur(); /** **/
 $rep = new Representant(); /** parametre hydrate **/
 $etu = new Etudiant(); /** **/
