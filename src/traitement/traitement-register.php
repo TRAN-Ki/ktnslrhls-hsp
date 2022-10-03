@@ -29,12 +29,12 @@ try {
         $user->setActif(0);
         $user->addUtilisateur($bdd);
         // choiceBox
-        if ($_POST['choix'] == "représentant") {
+        if ($_POST['choix'] == "Représentant") {
             $rep->setRole($_POST['role']);
             $rep->setRefHopital($_POST['hopital']);
             $rep->addRepresentant($bdd);
 
-        } elseif ($_POST['choix'] == "etudiant") {
+        } elseif ($_POST['choix'] == "Etudiant") {
             $etu->setDomaine($_POST['domain']);
             $etu->addEtudiant($bdd);
 

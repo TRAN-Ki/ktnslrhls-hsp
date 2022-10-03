@@ -16,7 +16,7 @@ if ($res = $log->fetch()){
     //en attente
     session_start();
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['mdp'] = $_POST['mdp'];
+    $_SESSION['isAdmin'] = $res['admin'];
 
     header("Location: ../../vue/attenteValidation ");
 
