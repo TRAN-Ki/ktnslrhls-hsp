@@ -54,6 +54,12 @@ session_destroy();
 
 </body>
 <script>
+    //TODO : à fix
+    $(document).ready(function() {
+        $(".etudiant").hide();
+        $(".representant").hide();
+    });
+
     $("#etud").click(function(){
         $(".etudiant").show();
         $(".representant").hide();

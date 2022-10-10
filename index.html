@@ -151,7 +151,7 @@
                 const login = Swal.getPopup().querySelector('#login').value
                 const password = Swal.getPopup().querySelector('#password').value
                 if (!login || !password) {
-                    Swal.showValidationMessage(`Please enter login and password`)
+                    Swal.showValidationMessage(`Entrer un mail et un mot de passe valide.`)
                 }
                 return {login: login, password: password}
             }
@@ -160,6 +160,7 @@
             Login: ${result.value.login}
             Password: ${result.value.password}
             `.trim());
+            //TODO: récuperer les valeurs login password puis envoyer ajax post à traitement
         })
     });
 

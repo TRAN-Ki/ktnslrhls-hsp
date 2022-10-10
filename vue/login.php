@@ -1,4 +1,5 @@
 <?php
+// TODO: à supprimer (car popup connexion sur accueil)
 ?>
 
 <!DOCTYPE html>
