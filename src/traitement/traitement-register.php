@@ -56,6 +56,7 @@ try {
             $etu->addEtudiant($bdd);
 
         }
+        echo "ok";
         header('Location: ../../vue/login.php');
     }else{
         // ajouter en html + js -> l'user a deja un compte

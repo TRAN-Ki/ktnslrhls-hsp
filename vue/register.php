@@ -9,6 +9,7 @@ session_destroy();
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -27,11 +28,11 @@ session_destroy();
     <input type="password" name="mdp" required>
     <br><br>
     <label>Choix du role</label>
-    <input type="radio" value="Représentant" name="choix" required>Représentant
-    <input type="radio" value="Etudiant" name="choix" required>Etudiant
+    <input class="repr" type="radio" value="Représentant" name="choix" required>Représentant
+    <input class="etud" type="radio" value="Etudiant" name="choix" required>Etudiant
     <br><br>
 
-    <select name="role">
+    <select name="role" class="representant">
         <?php
             require_once '../src/bdd/Database.php';
 
@@ -45,7 +46,7 @@ session_destroy();
         <?php } ?>
     </select>
     <br>
-    <select name="domaine">
+    <select name="domaine" class="etudiant">
         <?php
         $request = $bdd->getBdd()->prepare("SELECT domaine FROM etudiant");
         $request->execute();
@@ -59,4 +60,15 @@ session_destroy();
 </form>
 
 </body>
+<script>
+    $("#etud").click(function(){
+        $(".etudiant").show();
+        $(".representant").hide();
+    });
+
+    $("#repr").click(function(){
+        $(".representant").show();
+        $(".etudiant").hide();
+    });
+</script>
 </html>
