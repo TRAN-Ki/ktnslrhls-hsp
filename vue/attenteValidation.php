@@ -6,8 +6,6 @@ session_start();
 
 var_dump($_SESSION);
 
-// html + JS
-
-header("Location: ../index.html"); //acces
+header("Location: ../index.html");
 
 ?>

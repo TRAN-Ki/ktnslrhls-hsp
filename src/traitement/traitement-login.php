@@ -13,13 +13,16 @@ $log->execute(array(
 if ($res = $log->fetch()){
     //en attente
     session_start();
-    $_SESSION['email'] = $_POST['email'];
-    $_SESSION['isAdmin'] = $res['admin'];
-
-    header("Location: ../../vue/attenteValidation.php");
-
+    if ($res['admin']){
+        $_SESSION['isAdmin'] = $res['admin'];
+    }
+    if ($res['actif'] == 0) {
+        header("Location: ../../vue/attenteValidation.php");
+    }elseif($res['actif'] == 1){
+        $_SESSION['email'] = $_POST['email'];
+        header("Location: ../../vue/vue-utilisateur.php");
+    }
 }else{
 
     header("Location: ../../vue/login.php");
-    // erreur id/mdp -> à faire en html + js
 }
