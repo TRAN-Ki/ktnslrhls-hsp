@@ -33,26 +33,19 @@ session_destroy();
     <br><br>
 
     <select name="role" class="representant">
-        <?php
-            require_once '../src/bdd/Database.php';
-
-            $bdd = new Database();
-
-            $req = $bdd->getBdd()->prepare("SELECT role FROM representant");
-            $req->execute();
-            while ($res = $req->fetch()){
-        ?>
-        <option><?php echo $res['role'] ?></option>
-        <?php } ?>
+        <option value="Chirurgien">Chirurgien</option>
+        <option value="Medecin">Medecin</option>
+        <option value="Dentiste">Dentiste</option>
+        <option value="Infirmier">Infirmier</option>
+        <option value="Autre">Autre..</option>
     </select>
     <br>
     <select name="domaine" class="etudiant">
-        <?php
-        $request = $bdd->getBdd()->prepare("SELECT domaine FROM etudiant");
-        $request->execute();
-        while ($result = $request->fetch()){ ?>
-        <option><?php echo $result['domaine'] ?></option>
-        <?php } ?>
+        <option value="Chirurgien">Infirmier</option>
+        <option value="Medecin">Dentaire</option>
+        <option value="Dentiste">Chirurgie</option>
+        <option value="Infirmier">Dermatologie</option>
+        <option value="Autre">Autre..</option>
     </select>
 
     <button type="submit">Valider</button>
