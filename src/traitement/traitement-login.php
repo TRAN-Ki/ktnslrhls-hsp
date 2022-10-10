@@ -5,8 +5,6 @@ require_once '../modele/Utilisateur.php';
 
 $bdd = new Database();
 
-$usr = new Utilisateur(); //hydrate
-
 $log = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email AND mdp = :mdp");
 $log->execute(array(
     'email'=>$_POST['email'],
@@ -18,7 +16,7 @@ if ($res = $log->fetch()){
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['isAdmin'] = $res['admin'];
 
-    header("Location: ../../vue/attenteValidation ");
+    header("Location: ../../vue/attenteValidation.php");
 
 }else{
 

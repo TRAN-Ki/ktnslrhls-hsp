@@ -5,7 +5,6 @@ class Representant extends Utilisateur
     private $ref_utilisateur;
     private $role;
     private $ref_hopital;
-    private $bdd;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);

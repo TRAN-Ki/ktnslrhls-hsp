@@ -5,8 +5,6 @@ class Etudiant
     private $ref_utilisateur;
     private $domaine;
 
-
-
     public function __construct(array $donnees){
         $this->hydrate($donnees);
 
