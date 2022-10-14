@@ -28,10 +28,9 @@ session_destroy();
     <input type="password" name="mdp" required>
     <br><br>
     <label>Choix du role</label>
-    <input class="repr" type="radio" value="Représentant" name="choix" required>Représentant
-    <input class="etud" type="radio" value="Etudiant" name="choix" required>Etudiant
-    <br><br>
-
+    <input id="repr" type="radio" value="Représentant" name="choix" required>Représentant
+    <input id="etud" type="radio" value="Etudiant" name="choix" required>Etudiant
+    <br>
     <select name="role" class="representant">
         <option value="Chirurgien">Chirurgien</option>
         <option value="Medecin">Medecin</option>
@@ -47,7 +46,7 @@ session_destroy();
         <option value="Infirmier">Dermatologie</option>
         <option value="Autre">Autre..</option>
     </select>
-
+    <br><br>
     <button type="submit">Valider</button>
 
 </form>
