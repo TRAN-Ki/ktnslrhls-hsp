@@ -24,5 +24,5 @@ if ($res = $log->fetch()){
     }
 }else{
 
-    header("Location: ../../vue/login.php");
+    header("Location: ../../index.php");
 }
