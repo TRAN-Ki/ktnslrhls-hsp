@@ -6,6 +6,6 @@ session_start();
 
 var_dump($_SESSION);
 
-header("Location: ../index.html");
+header("Location: ../index.php");
 
 ?>
