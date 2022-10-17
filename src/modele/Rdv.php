@@ -154,7 +154,7 @@ class Rdv
 
     public function addRdv(){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES :daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre");
+        $add = $this->bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES (:daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre)");
         $add->execute(array(
             'daterdv'=>$this->getDate(),
             'heure'=>$this->getHeure(),

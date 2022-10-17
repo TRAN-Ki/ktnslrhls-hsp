@@ -87,7 +87,7 @@ class Amphitheatre
 
     public function addAmphitheatre($bdd){
 
-        $add = $bdd->getBdd()->prepare("INSERT INTO amphitheatre (libelle, nb_places) VALUES :libelle,:nbplaces");
+        $add = $bdd->getBdd()->prepare("INSERT INTO amphitheatre (libelle, nb_places) VALUES (:libelle,:nbplaces)");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
             'nbplaces'=>$this->getNbPlaces()

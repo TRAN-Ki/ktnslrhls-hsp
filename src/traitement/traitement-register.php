@@ -60,7 +60,7 @@ try {
         header('Location: ../../vue/login.php');
     }else{
         //TODO: ajouter en html + js -> l'user a deja un compte
-        header('Location: ../../vue/login.php');
+        header('Location: ../index.php');
     }
 
 }catch(PDOException $e){

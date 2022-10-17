@@ -100,6 +100,12 @@
                 <a href="vue/register.php">
                     <button class="btn btn-secondary btn-sm">Inscription</button>
                 </a>
+                <a href="vue/panelAdmin/hopital.php">
+                    <button class="btn btn-secondary btn-sm">Crud-Hopital</button>
+                </a>
+                <a href="vue/panelAdmin/amphitheatre.php">
+                    <button class="btn btn-secondary btn-sm">Crud-Amphitheatre</button>
+                </a>
             </div>
         </div>
     </div>

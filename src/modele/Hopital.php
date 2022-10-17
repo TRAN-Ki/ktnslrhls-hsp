@@ -103,7 +103,7 @@ class Hopital
 
     public function addHopital($bdd){
 
-        $add = $bdd->getBdd()->prepare("INSERT INTO hopital (nom, rue, cp) VALUES :nom, :rue, :cp");
+        $add = $bdd->getBdd()->prepare("INSERT INTO hopital (nom, rue, cp) VALUES (:nom, :rue, :cp)");
         $add->execute(array(
             'nom'=>$this->getNom(),
             'rue'=>$this->getRue(),
@@ -111,10 +111,11 @@ class Hopital
         ));
         echo "Hopital ajouté";
 
+
     }
 
-    public function editHopital($bdd){
-
+    public function editHopital(){
+        $bdd = new Database();
         $edit = $bdd->getBdd()->prepare("UPDATE hopital SET nom = :nom, rue = :rue, cp = :cp WHERE id_hopital = :id");
         $edit->execute(array(
             'nom'=>$this->getNom(),
@@ -126,8 +127,8 @@ class Hopital
 
     }
 
-    public function deleteHopital($bdd){
-
+    public function deleteHopital(){
+        $bdd = new Database();
         $del = $bdd->getBdd()->prepare("DELETE FROM hopital WHERE id_hopital = :id");
         $del->execute(array(
             'id'=>$this->getId()

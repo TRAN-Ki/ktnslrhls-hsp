@@ -87,7 +87,7 @@ class Offre
 
     public function addOffre($bdd){
 
-        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES :libelle,:description");
+        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES (:libelle,:description)");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
             'description'=>$this->getDescription()
