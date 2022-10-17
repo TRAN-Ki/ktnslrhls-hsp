@@ -1,4 +1,5 @@
 <?php
+
 class Hopital
 {
 
@@ -6,8 +7,6 @@ class Hopital
     private $nom;
     private $rue;
     private $cp;
-
-
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -25,7 +24,6 @@ class Hopital
             }
         }
     }
-
 
     /**
      * @param mixed $id

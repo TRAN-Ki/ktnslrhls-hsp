@@ -4,9 +4,9 @@ require_once '../modele/Hopital.php';
 
 $bdd = new Database();
 $user = new Hopital(array(
-    'Nom'=>$_POST['nom'],
-    'Rue'=>$_POST['rue'],
-    'Cp'=>$_POST['cp'],
+    'nom'=>$_POST['nom'],
+    'rue'=>$_POST['rue'],
+    'cp'=>$_POST['cp']
 ));
 
 $user->addHopital($bdd);
