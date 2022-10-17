@@ -9,3 +9,5 @@ $amphi = new Amphitheatre(array(
 ));
 
 $amphi->addAmphitheatre($bdd);
+
+header('Location: ../../vue/panelAdmin/amphitheatre.php');

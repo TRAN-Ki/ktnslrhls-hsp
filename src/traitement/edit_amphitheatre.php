@@ -10,3 +10,5 @@ $amphi = new Amphitheatre(array(
 ));
 
 $amphi->editAmphitheatre();
+
+header('Location: ../../vue/panelAdmin/amphitheatre.php');

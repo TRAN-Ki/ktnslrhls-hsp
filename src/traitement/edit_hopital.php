@@ -11,3 +11,5 @@ $hopital = new Hopital([
 ]);
 
 $hopital->editHopital();
+
+header('Location: ../../vue/panelAdmin/hopital.php');

@@ -60,7 +60,7 @@ require_once '../../src/modele/Type.php';
             <tbody>
             <?php foreach ($res as $value){ ?>
                 <tr>
-                    <td><?php echo $value['id_amphitheatre'];?></td>
+                    <td><?php echo $value['id_type'];?></td>
                     <td><?php echo $value['libelle'];?></td>
                 </tr>
             <?php } ?>
@@ -75,13 +75,13 @@ require_once '../../src/modele/Type.php';
         <br> <br>
         <form action="../../src/traitement/delete_type.php" method="post">
             <br>
-            <h3>Supprimer des amphitheatres : </h3>
-            <p>Grâce à l'identifiant de l'amphitheatre, supprimez le.</p>
+            <h3>Supprimer des types : </h3>
+            <p>Grâce à l'identifiant du type, supprimez le.</p>
             <select class="js2" name="id" id="id">
                 <?php
                 foreach ($res as $value){
                     ?>
-                    <option value="<?php echo $value['id_type'] ?>">Amphitheatre n°<?php echo $value['id_type'];?></option>
+                    <option value="<?php echo $value['id_type'] ?>">Type n°<?php echo $value['id_type'];?></option>
                     <?php
                 }
                 ?>
@@ -95,13 +95,13 @@ require_once '../../src/modele/Type.php';
     <div>
         <br>
         <h3>Modification d'un type : </h3>
-        <form action="../../src/traitement/edit_amphitheatre.php" method="post">
+        <form action="../../src/traitement/edit_type.php" method="post">
             <strong><p>Grâce à l'identifiant du type, selectionner le type à modifier</p></strong>
             <select class="js2" name="id" id="id">
                 <?php
                 foreach ($res as $value){
                     ?>
-                    <option value="<?php echo $value['id_type']  ?>">Amphiteatre n°<?php echo $value['id_type'];?></option>
+                    <option value="<?php echo $value['id_type']  ?>">Type n°<?php echo $value['id_type'];?></option>
                     <?php
                 }
                 ?>

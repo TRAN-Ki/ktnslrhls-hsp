@@ -106,6 +106,9 @@
                 <a href="vue/panelAdmin/amphitheatre.php">
                     <button class="btn btn-secondary btn-sm">Crud-Amphitheatre</button>
                 </a>
+                <a href="vue/panelAdmin/type.php">
+                    <button class="btn btn-secondary btn-sm">Crud-Type</button>
+                </a>
             </div>
         </div>
     </div>

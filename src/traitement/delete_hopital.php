@@ -6,6 +6,7 @@ $bdd = new Database();
 $hop = new Hopital([
     'id'=>$_POST['id']
 ]);
-var_dump($hop);
-var_dump($_POST);
+
 $hop->deleteHopital();
+
+header('Location: ../../vue/panelAdmin/hopital.php');

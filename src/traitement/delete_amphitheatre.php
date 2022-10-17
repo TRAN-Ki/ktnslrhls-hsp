@@ -6,6 +6,7 @@ $bdd = new Database();
 $amphi = new Amphitheatre(array(
         'id'=>$_POST['id']
 ));
-var_dump($amphi);
-var_dump($_POST);
+
 $amphi->deleteAmphitheatre();
+
+header('Location: ../../vue/panelAdmin/amphitheatre.php');

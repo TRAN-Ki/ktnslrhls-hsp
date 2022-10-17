@@ -11,3 +11,5 @@ $user = new Hopital(array(
 
 $user->addHopital($bdd);
 
+header('Location: ../../vue/panelAdmin/hopital.php');
+

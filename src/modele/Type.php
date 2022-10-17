@@ -30,26 +30,28 @@ class Type
 
     public function addType($bdd){
 
-
         $req = $bdd->getBdd()->prepare("INSERT INTO type (libelle) VALUES (:libelle)");
         $req->execute(array(
             'libelle'=>$this->getLibelle()
         ));
     }
 
-    public function updateType($bdd){
-        $req = $bdd->getBdd()->prepare('UPDATE Type SET libelle = :libelle WHERE id_type = :id');
+    public function updateType(){
+        $bdd = new Database();
+        $req = $bdd->getBdd()->prepare("UPDATE type SET libelle = :libelle WHERE id_type = :id");
         $req->execute(array(
             'libelle'=>$this->getLibelle(),
             'id'=>$this->getId()
         ));
     }
 
-    public function deleteType($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE Type FROM id_type = :id');
+    public function deleteType(){
+        $bdd = new Database();
+        $del = $bdd->getBdd()->prepare("DELETE FROM type WHERE id_type = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));
+
     }
 
     /**

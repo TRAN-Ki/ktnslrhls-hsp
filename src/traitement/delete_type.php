@@ -7,4 +7,6 @@ $type = new Type(array(
     'id'=>$_POST['id']
 ));
 
-$type->deleteType($bdd);
+$type->deleteType();
+
+header('Location: ../../vue/panelAdmin/type.php');

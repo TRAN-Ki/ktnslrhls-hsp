@@ -8,4 +8,6 @@ $type = new Type(array(
     'libelle'=>$_POST['libelle']
 ));
 
-$type->updateType($bdd);
+$type->updateType();
+
+header('Location: ../../vue/panelAdmin/type.php');

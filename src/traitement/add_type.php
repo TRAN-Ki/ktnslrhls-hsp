@@ -8,3 +8,5 @@ $type = new Type(array(
 ));
 
 $type->addType($bdd);
+
+header('Location: ../../vue/panelAdmin/type.php');
