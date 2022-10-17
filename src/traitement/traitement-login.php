@@ -19,7 +19,8 @@ if ($res = $log->fetch()){
     if ($res['actif'] == 0) {
         header("Location: ../../vue/attenteValidation.php");
     }elseif($res['actif'] == 1){
-        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['email'] = $res['email'];
+        $_SESSION['id'] = $res['id'];
         header("Location: ../../vue/vue-utilisateur.php");
     }
 }else{
