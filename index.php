@@ -156,19 +156,41 @@
                 return {login: login, password: password}
             }
         }).then((result) => {
-            Swal.fire(`
-            Login: ${result.value.login}
-            Password: ${result.value.password}
-            `.trim());
-            //TODO: récuperer les valeurs login password puis envoyer ajax post à traitement
+            var login = result.value.login;
+            var mdp = result.value.password;
+            console.log(login);
+            console.log(mdp);
+            $.ajax({
+                type: "POST",
+                url: "./src/traitement/traitement-login.php",
+                data: {email: login, mdp: mdp},
+                success: function (response){
+                    if (response === "actif") {
+                        console.log("compte actif")
+                        window.location.href = "vue/vue-utilisateur.php";
+                    }
+                    if (response === "non") {
+                        console.log("compte non actif")
+                        window.location.href = "vue/attenteValidation.php";
+                    }
+                    if (response === "admin") {
+                        console.log("compte administrateur")
+                        window.location.href = "vue/panelAdmin/menuAdmin.php";
+                    }
+                    else {
+                        Swal.fire(
+                            'Erreur',
+                            'Veuillez contacter un administrateur',
+                            'error'
+                        )
+                    }
+                }
+            });
         })
+
     });
 
-    $.ajax({
-        type: "POST",
-        url: "src/traitement/traitement-register.php",
-        data: {values: values}
-    });
+
 
 </script>
 </body>
