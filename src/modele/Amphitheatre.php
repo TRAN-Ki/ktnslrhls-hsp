@@ -1,14 +1,11 @@
 <?php
 
-
-
 class Amphitheatre
 {
 
     private $id;
     private $libelle;
     private $nb_places;
-
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -96,8 +93,8 @@ class Amphitheatre
 
     }
 
-    public function editAmphitheatre($bdd){
-
+    public function editAmphitheatre(){
+        $bdd = new Database();
         $edit = $bdd->getBdd()->prepare("UPDATE amphitheatre SET libelle = :libelle, nb_places = :nbplaces WHERE id_amphitheatre = :id");
         $edit->execute(array(
             'libelle'=>$this->getLibelle(),
@@ -108,9 +105,9 @@ class Amphitheatre
 
     }
 
-    public function deleteAmphitheatre($bdd){
-
-        $del = $bdd->getBdd()->prepare("DELETE FROM ampitheatre WHERE id_amphitheatre = :id");
+    public function deleteAmphitheatre(){
+        $bdd = new Database();
+        $del = $bdd->getBdd()->prepare("DELETE FROM amphitheatre WHERE id_amphitheatre = :id");
         $del->execute(array(
             'id'=>$this->getId()
         ));

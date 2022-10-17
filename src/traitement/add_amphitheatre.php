@@ -4,9 +4,8 @@ require_once '../modele/Amphitheatre.php';
 
 $bdd = new Database();
 $amphi = new Amphitheatre(array(
-    'id'=>$_POST['id'],
-    'libelle'=>$_POST['libelle'],
-    'nbplaces'=>$_POST['nbplaces']
+    'libelle' => $_POST['libelle'],
+    'nbplaces' => $_POST['nbrplaces']
 ));
 
-$amphi->editAmphitheatre();
+$amphi->addAmphitheatre($bdd);

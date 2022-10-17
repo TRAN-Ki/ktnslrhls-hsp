@@ -35,15 +35,13 @@ require_once '../../src/modele/Amphitheatre.php';
 
         <form action="../../src/traitement/add_amphitheatre.php" method="post">
             <h6>Nom : </h6>
-            <input type="text" name="nom" placeholder="nom de l'amphitheatre"> <br><br>
-            <h6>Rue :</h6>
-            <input type="text" name="rue" placeholder="rue de l'amphitheatre"> <br><br>
-            <h6>CP :</h6>
-            <input type="text" name="cp" placeholder="code postal de l'amphitheatre"> <br><br>
+            <input type="text" name="libelle" placeholder="Nom de l'amphitheatre"> <br><br>
+            <h6>Nombre de places :</h6>
+            <input type="text" name="nbrplaces" placeholder="Nombre de places de l'amphitheatre"> <br><br>
             <input type="submit" value="Ajouter">
         </form>
         <br><br>
-        <h3>Liste des amphitheatre :</h3>
+        <h3>Liste des amphitheatres :</h3>
         <?php
 
         $liste = new Amphitheatre(array());
@@ -60,17 +58,15 @@ require_once '../../src/modele/Amphitheatre.php';
             <tr>
                 <th>ID</th>
                 <th>Nom de l'amphitheatre</th>
-                <th>rue</th>
-                <th>cp</th>
+                <th>Nombre de places</th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($res as $value){ ?>
                 <tr>
                     <td><?php echo $value['id_amphitheatre'];?></td>
-                    <td><?php echo $value['nom'];?></td>
-                    <td><?php echo $value['rue'];?></td>
-                    <td><?php echo $value['cp'];?></td>
+                    <td><?php echo $value['libelle'];?></td>
+                    <td><?php echo $value['nb_places'];?></td>
                 </tr>
             <?php } ?>
             </tbody>
@@ -78,8 +74,7 @@ require_once '../../src/modele/Amphitheatre.php';
             <tr>
                 <th>ID</th>
                 <th>Nom de l'amphitheatre</th>
-                <th>rue</th>
-                <th>cp</th>
+                <th>Nombre de places</th>
             </tr>
             </tfoot>
         </table>
@@ -87,12 +82,12 @@ require_once '../../src/modele/Amphitheatre.php';
         <form action="../../src/traitement/delete_amphitheatre.php" method="post">
             <br>
             <h3>Supprimer des amphitheatres : </h3>
-            <p>Grâce à l'identifiant de l'amphitheatre, supprimer le.</p>
+            <p>Grâce à l'identifiant de l'amphitheatre, supprimez le.</p>
             <select class="js2" name="id" id="id">
                 <?php
                 foreach ($res as $value){
                     ?>
-                    <option value="<?php echo $value['id_amphitheatre']  ?>">hopital n°<?php echo $value['id_amphitheatre'];?></option>
+                    <option value="<?php echo $value['id_amphitheatre'] ?>">Amphitheatre n°<?php echo $value['id_amphitheatre'];?></option>
                     <?php
                 }
                 ?>
@@ -101,7 +96,6 @@ require_once '../../src/modele/Amphitheatre.php';
             <input type="submit">
         </form>
         <br><br>
-        <br>
     </div>
     <br>
     <div>
@@ -122,11 +116,9 @@ require_once '../../src/modele/Amphitheatre.php';
             <strong><p>Changer les valeurs à modifier : </p></strong>
 
             <h6>Nom : </h6>
-            <input type="text" name="nom" placeholder="nom de l'amphitheatre"> <br><br>
-            <h6>Rue :</h6>
-            <input type="text" name="rue" placeholder="rue"> <br><br>
-            <h6>CP :</h6>
-            <input type="text" name="cp" placeholder="cp"> <br><br>
+            <input type="text" name="libelle" placeholder="Nom de l'amphitheatre"> <br><br>
+            <h6>Nombre de places :</h6>
+            <input type="text" name="nbplaces" placeholder="Nombre de places"> <br><br>
             <input type="submit" value="Modifier">
         </form>
     </div>
