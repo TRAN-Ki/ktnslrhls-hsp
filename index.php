@@ -94,20 +94,9 @@
             </ul>
 
             <div class="text-end">
-                <a href="vue/login.php">
-                    <button class="btn btn-primary btn-sm">Connexion</button>
-                </a>
+                <button class="btn btn-primary btn-sm connexion">Connexion</button>
                 <a href="vue/register.php">
                     <button class="btn btn-secondary btn-sm">Inscription</button>
-                </a>
-                <a href="vue/panelAdmin/hopital.php">
-                    <button class="btn btn-secondary btn-sm">Crud-Hopital</button>
-                </a>
-                <a href="vue/panelAdmin/amphitheatre.php">
-                    <button class="btn btn-secondary btn-sm">Crud-Amphitheatre</button>
-                </a>
-                <a href="vue/panelAdmin/type.php">
-                    <button class="btn btn-secondary btn-sm">Crud-Type</button>
                 </a>
             </div>
         </div>
@@ -127,7 +116,7 @@
         </div>
         <div class="box-1 my-8 bg-slate-300 border-gray-400">
             Voulez-vous vous inscrire ?
-            <button class="btn btn-secondary btn-sm">Inscription</button>
+            <a href="vue/register.php"><button class="btn btn-secondary btn-sm">Inscription</button></a>
         </div>
     </div>
 </div>
@@ -138,8 +127,8 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">À propos</a></li>
             <div class="break"></div>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Connexion</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inscription</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-muted connexion">Connexion</a></li>
+            <li class="nav-item"><a href="vue/register.php" class="nav-link px-2 text-muted">Inscription</a></li>
         </ul>
         <p class="text-center text-muted">&copy;2002-2022 HSP</p>
     </footer>
