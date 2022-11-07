@@ -46,7 +46,8 @@ class Utilisateur
         ));
     }
 
-    public function updateUtilisateur($bdd){
+    public function updateUtilisateur(){
+        $bdd = new Database();
         $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, mdp = :mdp, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
         $mod->execute(array(
             'nom'=>$this->getNom(),
@@ -58,7 +59,8 @@ class Utilisateur
         ));
     }
 
-    public function deleteUtilisateur($bdd){
+    public function deleteUtilisateur(){
+        $bdd = new Database();
         $del = $bdd->getBdd()->prepare('DELETE representant FROM id_utilisateur = :id');
         $del->execute(array(
             'id'=>$this->getIdUtilisateur()

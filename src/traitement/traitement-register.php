@@ -4,6 +4,7 @@ require_once '../bdd/Database.php';
 require_once '../modele/Utilisateur.php';
 require_once '../modele/Etudiant.php';
 require_once '../modele/Representant.php';
+require_once '../modele/Mail.php';
 
 $bdd = new Database();
 $user = new Utilisateur(array(
@@ -34,7 +35,7 @@ try {
         $user->addUtilisateur($bdd);
         var_dump($user);
 
-        // choiceBox
+        // choiceBox // à revoir pour la sécurité
         if ($_POST['choix'] == "Représentant") {
 
             $rep = new Representant(array(
@@ -49,18 +50,26 @@ try {
         } elseif ($_POST['choix'] == "Etudiant") {
 
             $etu = new Etudiant(array(
-                'domaine' => $_POST['domain']
+                'domaine' => $_POST['domaine']
             ));
 
-            $etu->setDomaine($_POST['domain']);
+            $etu->setDomaine($_POST['domaine']);
             $etu->addEtudiant($bdd);
 
         }
+
+        $email = $user->getEmail();
+        $prenom = $user->getPrenom();
+
+        $mail = new Mail($prenom,$email);
+
+        $mail->sendMail();
+
         echo "ok";
-        header('Location: ../../vue/login.php');
+        header('Location: ../../index.php');
     }else{
         //TODO: ajouter en html + js -> l'user a deja un compte
-        header('Location: ../index.php');
+        header('Location: ../../index.php');
     }
 
 }catch(PDOException $e){
