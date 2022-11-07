@@ -174,7 +174,8 @@
                 url: "./src/traitement/traitement-login.php",
                 data: {email: login, mdp: mdp},
                 success: function (response){
-                    if (response === "actif") {
+                    console.log(response);
+                    if (response === "oui") {
                         console.log("compte actif")
                         window.location.href = "vue/vue-utilisateur.php";
                     }
