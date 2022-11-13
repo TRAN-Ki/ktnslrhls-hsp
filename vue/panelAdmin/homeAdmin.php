@@ -1,15 +1,17 @@
 <?php
-
+require_once '../../src/modele/Utilisateur.php';
 session_start();
-if($_SESSION['admin'] == 0){
-    header("Location: ../index.php");
+if(isset($_SESSION['admin'])){
+    if($_SESSION['admin'] == 0){
+        header("Location: ../index.php");
+    }
 }
 else{
 
     // Menu Actif
 
     // <select user>
-    $user = new Utilisateur(array(
+    /*$user = new Utilisateur(array(
             'admin' => $_POST['admin'],
             'actif' => $_POST['actif']
 
@@ -21,7 +23,7 @@ else{
     // Pour validé un utilisateur qui a créé un compte (validé inscriptions)
     if($_POST['actif'] = 'Vérifié') {
         $user->setActif(1);
-    }
+    }*/
   ?>
     <!DOCTYPE html>
     <html lang="FR">
@@ -99,13 +101,18 @@ else{
             }
 
             body {
-                background-color: #f5f7ff
+                background-color: #fcfcfc;
+                background-image:  linear-gradient(135deg, #f8f8ff 25%, transparent 25%), linear-gradient(225deg, #f8f8ff 25%, transparent 25%), linear-gradient(45deg, #f8f8ff 25%, transparent 25%), linear-gradient(315deg, #f8f8ff 25%, #fcfcfc 25%);
+                background-position:  40px 0, 40px 0, 0 0, 0 0;
+                background-size: 80px 80px;
+                background-repeat: repeat;
             }
         </style>
 
     </head>
 
     <body>
+    <!--TODO: Faire les liens + refaire header session-->
     <header class="p-3 bg-slate-200 border-gray-400 border-b-2">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -114,23 +121,19 @@ else{
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2">FAQ</a></li>
-                    <li><a href="#" class="nav-link px-2">À propos</a></li>
+                    <li><a href="#" class="nav-link px-2">FAQ Admin</a></li>
+                    <li><a href="#" class="nav-link px-2">Deconnexion</a></li>
                 </ul>
 
                 <div class="text-end">
-                    <button class="btn btn-primary btn-sm connexion">Connexion</button>
-                    <a href="../register.php">
-                        <button class="btn btn-secondary btn-sm">Inscription</button>
-                    </a>
                     <a href="hopital.php">
-                        <button class="btn btn-secondary btn-sm">Crud-Hopital</button>
+                        <button class="btn btn-secondary btn-sm">Gestion Hôpitaux</button>
                     </a>
                     <a href="amphitheatre.php">
-                        <button class="btn btn-secondary btn-sm">Crud-Amphitheatre</button>
+                        <button class="btn btn-secondary btn-sm">Gestion Amphithéâtres</button>
                     </a>
                     <a href="type.php">
-                        <button class="btn btn-secondary btn-sm">Crud-Type</button>
+                        <button class="btn btn-secondary btn-sm">Gestion Types</button>
                     </a>
                 </div>
             </div>
@@ -145,12 +148,12 @@ else{
             <img class="rounded-lg accueil-img" src="../../assets/images/bg.jpg" alt="">
             <div class="break"></div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
-                Voulez-vous vous connecter ?
-                <button class="btn btn-primary btn-sm connexion">Connexion</button>
+                Voulez-vous gérer des utilisateurs ?
+                <a href="../register.php"><button class="btn btn-secondary btn-sm">Gestion "Utilisateur"</button></a>
             </div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
-                Voulez-vous vous inscrire ?
-                <a href="../register.php"><button class="btn btn-secondary btn-sm">Inscription</button></a>
+                Autres fonctionnalités "Admin" ➜
+                <a href="../register.php"><button class="btn btn-secondary btn-sm">Panel Admin</button></a>
             </div>
         </div>
     </div>
@@ -160,9 +163,6 @@ else{
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Accueil</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">À propos</a></li>
-                <div class="break"></div>
-                <li class="nav-item"><a class="nav-link px-2 text-muted connexion">Connexion</a></li>
-                <li class="nav-item"><a href="../register.php" class="nav-link px-2 text-muted">Inscription</a></li>
             </ul>
             <p class="text-center text-muted">&copy;2002-2022 HSP</p>
         </footer>
