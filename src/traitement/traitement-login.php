@@ -12,11 +12,11 @@ $log->execute(array(
 $res = $log->fetch();
 if ($res != null){
     session_start();
-    if ($res['admin'] && $res['actif'] == 1){
+    if ($res['admin'] && $res['actif'] == 0){
         $_SESSION['isAdmin'] = $res['admin'];
         echo "admin";
     }
-    if ($res['actif'] == 0) {
+    if ($res['admin'] == 0 && $res['actif'] == 0) {
         echo "non";
         //header("Location: ../../vue/attenteValidation.php");
     }elseif($res['actif'] == 1){
@@ -24,7 +24,4 @@ if ($res != null){
         $_SESSION['email'] = $_POST['email'];
         //header("Location: ../../vue/vue-utilisateur.php");
     }
-}else{
-    echo "<script>console.log('erreur')</script>";
-    //header("Location: ../../index.php");
 }

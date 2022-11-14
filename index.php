@@ -178,12 +178,13 @@
                     }
                     if (response === "admin") {
                         console.log("compte administrateur")
-                        window.location.href = "vue/panelAdmin/menuAdmin.php";
+                        window.location.href = "vue/panelAdmin/homeAdmin.php";
                     }
                     else {
+                        console.log("error")
                         Swal.fire(
                             'Erreur',
-                            'Veuillez contacter un administrateur',
+                            'Veuillez contacter un administrateur ou réessayer',
                             'error'
                         )
                     }

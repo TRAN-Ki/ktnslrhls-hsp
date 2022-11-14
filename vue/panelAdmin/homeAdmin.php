@@ -1,76 +1,82 @@
 <?php
 require_once '../../src/modele/Utilisateur.php';
 session_start();
-if(isset($_SESSION['admin'])){
-    if($_SESSION['admin'] == 0){
-        header("Location: ../index.php");
-    }
+if(!isset($_SESSION['isAdmin'])){
+    header("Location: ../../index.php");
 }
-else{
+else if($_SESSION['isAdmin'] == 0){
+    header("Location: ../../index.php");
+}
 
-    // Menu Actif
+else if ($_SESSION['isAdmin'] == 1){
+    /*
+        // Menu Actif
 
-    // <select user>
-    /*$user = new Utilisateur(array(
-            'admin' => $_POST['admin'],
-            'actif' => $_POST['actif']
+            // <select user>
+            if (isset($_POST['admin'])){
+                echo "dsqds";
+                $user = new Utilisateur(array(
+                    'admin' => $_POST['admin'],
+                    'actif' => $_POST['actif']
 
-    ));
-    // Pour attribué à un utilisateur le role admin
-    if($_POST['admin'] = 'Administrateur') {
-        $user->setAdmin(1);
-    }
-    // Pour validé un utilisateur qui a créé un compte (validé inscriptions)
-    if($_POST['actif'] = 'Vérifié') {
-        $user->setActif(1);
-    }*/
-  ?>
-    <!DOCTYPE html>
-    <html lang="FR">
-
-    <head>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-                crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-              rel="stylesheet">
-
-        <link rel="stylesheet" href="../../assets/css/styles.css">
-
-        <title>HSP - Accueil</title>
-
-        <style>
-            .main-page {
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 500;
-                color: #0a53bd;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
+                ));
             }
 
-            .box-1 {
-                border: 2px solid;
-                padding: 8px 16px;
-                border-radius: 5px;
+            // Pour attribué à un utilisateur le role admin
+            if($_POST['admin'] = 'Administrateur') {
+                $user->setAdmin(1);
             }
+            // Pour validé un utilisateur qui a créé un compte (validé inscriptions)
+            if($_POST['actif'] = 'Vérifié') {
+                $user->setActif(1);
+            } */
+      ?>
+        <!DOCTYPE html>
+        <html lang="FR">
 
-            .break {
-                flex-basis: 100%;
-                height: 0;
-            }
-        </style>
+        <head>
 
-        <style>
-            /* Footer */
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+                  integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+                    crossorigin="anonymous"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+                  rel="stylesheet">
+
+            <link rel="stylesheet" href="../../assets/css/styles.css">
+
+            <title>HSP - Accueil</title>
+
+            <style>
+                .main-page {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    color: #0a53bd;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+                }
+
+                .box-1 {
+                    border: 2px solid;
+                    padding: 8px 16px;
+                    border-radius: 5px;
+                }
+
+                .break {
+                    flex-basis: 100%;
+                    height: 0;
+                }
+            </style>
+
+            <style>
+                /* Footer */
 
             .bi {
                 vertical-align: -.125em;
@@ -230,7 +236,11 @@ else{
 
 <?php
 }
-
+else{
+    echo "Erreur, retour à l'accueil dans quelques secondes..";
+    sleep(3);
+    header("Location: ../../index.php");
+}
 ?>
 
 
