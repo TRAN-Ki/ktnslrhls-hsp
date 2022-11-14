@@ -22,6 +22,7 @@ if ($res = $log->fetch()){
     }elseif($res['actif'] == 1){
         echo "actif";
         $_SESSION['email'] = $_POST['email'];
+        //TODO: SESSION ID UTILISATEUR
         header("Location: ../../vue/vue-utilisateur.php");
     }
 }else{
