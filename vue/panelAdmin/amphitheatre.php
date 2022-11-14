@@ -1,6 +1,9 @@
 <?php
 require_once '../../src/bdd/Database.php';
 require_once '../../src/modele/Amphitheatre.php';
+
+session_start();
+
 ?>
 
 
@@ -22,12 +25,23 @@ require_once '../../src/modele/Amphitheatre.php';
             crossorigin="anonymous"></script>
 
     <title>Gestion des amphitheatre</title>
+
+    <style>
+        body {
+            background-color: #fcfcfc;
+            background-image:  linear-gradient(135deg, #f8f8ff 25%, transparent 25%), linear-gradient(225deg, #f8f8ff 25%, transparent 25%), linear-gradient(45deg, #f8f8ff 25%, transparent 25%), linear-gradient(315deg, #f8f8ff 25%, #fcfcfc 25%);
+            background-position:  40px 0, 40px 0, 0 0, 0 0;
+            background-size: 80px 80px;
+            background-repeat: repeat;
+        }
+    </style>
+
 </head>
 
 <body>
 <div class="container">
     <div class="content">
-        <h1><strong><i>Gérer les amphitheatre</i></strong></h1>
+        <h1><strong><i>Gérer les amphitheatre</i></strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="homeAdmin.php"><button class="btn btn-secondary" type="button">Retour</button></a></h1>
         <hr>
         <hr>
         <h2><strong>Amphitheatre :</strong></h2>
@@ -123,6 +137,6 @@ require_once '../../src/modele/Amphitheatre.php';
         </form>
     </div>
 </div>
-
+<br><br>
 </body>
 

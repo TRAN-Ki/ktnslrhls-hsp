@@ -67,6 +67,22 @@ class Utilisateur
         ));
     }
 
+    public function updateUtilisateurByUser($bdd){
+
+        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET email = :email, mdp = :mdp WHERE id_utilisateur = :id");
+        $mod->execute(array(
+            'email'=>$this->getEmail(),
+            'mdp'=>$this->getMdp(),
+        ));
+    }
+    public function selectUtilisateurByEmail($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $sel->execute(array(
+            'email'=>$this->getEmail()
+        ));
+        $result = $sel->fetch();
+        return $result;
+    }
 
 
     /**

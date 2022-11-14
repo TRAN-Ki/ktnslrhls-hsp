@@ -122,7 +122,7 @@ else{
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link px-2">FAQ Admin</a></li>
-                    <li><a href="#" class="nav-link px-2">Deconnexion</a></li>
+                    <li><?php session_start(); session_destroy(); ?><a href="../../index.php" class="nav-link px-2">Déconnexion</a></li>
                 </ul>
 
                 <div class="text-end">
@@ -149,7 +149,7 @@ else{
             <div class="break"></div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
                 Voulez-vous gérer des utilisateurs ?
-                <a href="../register.php"><button class="btn btn-secondary btn-sm">Gestion "Utilisateur"</button></a>
+                <a href="utilisateur.php"><button class="btn btn-secondary btn-sm">Gestion "Utilisateur"</button></a>
             </div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
                 Autres fonctionnalités "Admin" ➜
@@ -227,8 +227,6 @@ else{
     </script>
     </body>
     </html>
-
-    //html
 
 <?php
 }

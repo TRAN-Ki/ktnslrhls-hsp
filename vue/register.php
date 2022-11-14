@@ -31,7 +31,7 @@ session_destroy();
     <label>Choix du role</label>
     <input id="repr" type="radio" value="Représentant" name="choix" required>Représentant
     <input id="etud" type="radio" value="Etudiant" name="choix" required>Etudiant
-    <br>
+    <br><br>
     <select name="role" class="representant">
         <option value="Chirurgien">Chirurgien</option>
         <option value="Medecin">Medecin</option>
@@ -39,7 +39,6 @@ session_destroy();
         <option value="Infirmier">Infirmier</option>
         <option value="Autre">Autre..</option>
     </select>
-    <br>
     <select name="domaine" class="etudiant">
         <option value="Chirurgien">Infirmier</option>
         <option value="Medecin">Dentaire</option>
