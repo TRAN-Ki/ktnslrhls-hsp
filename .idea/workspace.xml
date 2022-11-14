@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="11325f26-6539-48f6-8abd-3fd33f5b043e" name="Changes" comment="add: phpmailer">
+      <change beforePath="$PROJECT_DIR$/bdd/hsp-skh.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bdd/hsp-skh.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/traitement/mail.php" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EykgphvHWsmjYu0N3PL5M1xVUH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="11325f26-6539-48f6-8abd-3fd33f5b043e" name="Changes" comment="" />
+      <created>1663575328307</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663575328307</updated>
+      <workItem from="1663575331006" duration="7344000" />
+      <workItem from="1664174793186" duration="14115000" />
+      <workItem from="1664778874927" duration="11024000" />
+      <workItem from="1665479223922" duration="2324000" />
+      <workItem from="1665989330095" duration="6505000" />
+      <workItem from="1666007204883" duration="3813000" />
+      <workItem from="1667211995749" duration="2212000" />
+      <workItem from="1667220604586" duration="1612000" />
+      <workItem from="1667222403893" duration="5280000" />
+      <workItem from="1667812475695" duration="4669000" />
+      <workItem from="1668411330471" duration="386000" />
+    </task>
+    <task id="LOCAL-00001" summary="add bdd SQL">
+      <created>1663575686587</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663575686587</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add register">
+      <created>1663577871536</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663577871536</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add register">
+      <created>1663577929557</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663577929557</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update database">
+      <created>1663580368362</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663580368362</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update database">
+      <created>1663583012198</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663583012198</updated>
+    </task>
+    <task id="LOCAL-00006" summary="traitement login et register">
+      <created>1663583180515</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663583180515</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update: CRUD class : &#10;- Amphitheatre&#10;- Hopital&#10;- Logs&#10;- Offre&#10;- Rdv">
+      <created>1664180929573</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1664180929573</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: Correction class (suppression des méthodes bdd)">
+      <created>1664187601101</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1664187601101</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update: register">
+      <created>1664192278250</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1664192278250</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix: traitement register">
+      <created>1664192373287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1664192373287</updated>
+    </task>
+    <task id="LOCAL-00011" summary="new: home for panel admin">
+      <created>1664790606054</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664790606054</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix: login and register">
+      <created>1664792769341</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664792769341</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: radio register">
+      <created>1665479585345</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1665479585345</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: radio register">
+      <created>1665479642379</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1665479642379</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix: session for login id">
+      <created>1666001298672</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666001298672</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add: phpmailer">
+      <created>1667232107091</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667232107091</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="add bdd SQL" />
+    <MESSAGE value="add register" />
+    <MESSAGE value="update database" />
+    <MESSAGE value="traitement login et register" />
+    <MESSAGE value="Update: CRUD class : &#10;- Amphitheatre&#10;-" />
+    <MESSAGE value="Update: CRUD class : &#10;- Amphitheatre&#10;- Hopital&#10;- Logs&#10;- Offre&#10;- Rdv" />
+    <MESSAGE value="fix: Correction class (suppression des méthodes bdd)" />
+    <MESSAGE value="update: register" />
+    <MESSAGE value="fix: traitement register" />
+    <MESSAGE value="new: home for panel admin" />
+    <MESSAGE value="fix: login and register" />
+    <MESSAGE value="fix: radio register" />
+    <MESSAGE value="fix: session for login id" />
+    <MESSAGE value="add: phpmailer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: phpmailer" />
+  </component>
+</project>

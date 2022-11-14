@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `email`, `mdp`, `admin`, `actif`) VALUES
-(1, 'Lopes', 'Hugo', 'hugo.lop2304@gmail.com', 'a', 0, 0)
+(1, 'Lopes', 'Hugo', 'hugo.lop2304@gmail.com', 'a', 0, 0);
 
 --
 -- Contraintes pour les tables déchargées
