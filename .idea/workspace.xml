@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="11325f26-6539-48f6-8abd-3fd33f5b043e" name="Changes" comment="fix: mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -9,17 +10,34 @@
       <change beforePath="$PROJECT_DIR$/vue/panelAdmin/type.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/type.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/register.php" afterDir="false" />
+=======
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b51483b-54af-44b1-9d0a-a0a2ae64534b" name="Changes" comment="fix: ajouts crud utilisateur">
+      <change beforePath="$PROJECT_DIR$/src/modele/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/modele/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/traitement/edit_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traitement/edit_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/vue-utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/vue-utilisateur.php" afterDir="false" />
+>>>>>>> 2a25605 (.)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable path="composer" />
     </execution>
+=======
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer/composer.json</pharConfigPath>
+    <execution />
+>>>>>>> 2a25605 (.)
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,7 +45,17 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="2EykgphvHWsmjYu0N3PL5M1xVUH" />
+=======
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/composer/vendor/composer" />
+      <path value="$PROJECT_DIR$/composer/vendor/phpmailer/phpmailer" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2EyeVvqjb56CnOxl1xauAOZzC7e" />
+>>>>>>> 2a25605 (.)
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -35,6 +63,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -192,6 +221,107 @@
       <updated>1668412951850</updated>
     </task>
     <option name="localTasksCounter" value="19" />
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/wamp64/www/ktnslrhls-hsp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\ktnslrhls-hsp\src\traitement" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b51483b-54af-44b1-9d0a-a0a2ae64534b" name="Changes" comment="" />
+      <created>1663572278804</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663572278804</updated>
+      <workItem from="1663572280760" duration="4365000" />
+      <workItem from="1663580191926" duration="2854000" />
+      <workItem from="1663744758677" duration="25000" />
+      <workItem from="1664174941811" duration="11657000" />
+      <workItem from="1664349935574" duration="4000" />
+      <workItem from="1664779667237" duration="6240000" />
+      <workItem from="1664959167733" duration="18000" />
+      <workItem from="1665989247810" duration="19743000" />
+      <workItem from="1666166379663" duration="46000" />
+      <workItem from="1667212499521" duration="8923000" />
+      <workItem from="1667376685721" duration="9000" />
+      <workItem from="1667816340530" duration="6842000" />
+      <workItem from="1667981496904" duration="19000" />
+      <workItem from="1668412006474" duration="2046000" />
+    </task>
+    <task id="LOCAL-00001" summary="new: Ajout des classes sans données (attributs)">
+      <created>1663572598577</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663572598577</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new: Ajout des attributs, getters, setters, construteurs, hydrate">
+      <created>1663574988697</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663574988697</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add: Ajout de la navbar">
+      <created>1664176206104</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664176206104</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add: Ajout des CRUD Etudiant, Representant, type et utilisateur">
+      <created>1664182611860</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664182611860</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: Correction class (suppression des méthodes bdd)">
+      <created>1664187599678</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664187599678</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add: page traitement">
+      <created>1664792745470</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664792745470</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: ajouts des crud hopital et amphitheatre">
+      <created>1666013047119</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666013047119</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: ajouts crud utilisateur">
+      <created>1667232079383</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667232079383</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+>>>>>>> 2a25605 (.)
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +339,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add bdd SQL" />
     <MESSAGE value="add register" />
@@ -227,5 +358,16 @@
     <MESSAGE value="fix: test bdd" />
     <MESSAGE value="fix: mail" />
     <option name="LAST_COMMIT_MESSAGE" value="fix: mail" />
+=======
+    <MESSAGE value="new: Ajout des classes sans données (attributs)" />
+    <MESSAGE value="new: Ajout des attributs, getters, setters, construteurs, hydrate" />
+    <MESSAGE value="add: Ajout de la navbar" />
+    <MESSAGE value="add: Ajout des CRUD Etudiant, Representant, type et utilisateur" />
+    <MESSAGE value="fix: Correction class (suppression des méthodes bdd)" />
+    <MESSAGE value="add: page traitement" />
+    <MESSAGE value="fix: ajouts des crud hopital et amphitheatre" />
+    <MESSAGE value="fix: ajouts crud utilisateur" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: ajouts crud utilisateur" />
+>>>>>>> 2a25605 (.)
   </component>
 </project>
