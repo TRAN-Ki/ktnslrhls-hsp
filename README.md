@@ -9,7 +9,9 @@ Notre projet est un site créé pour les hopitaux de Paris codé en PHP, HTML, C
 
 Ci-dessous, le lien vers notre plan d'organisation du projet.
 
-**[Google Drive](https://docs.google.com/document/d/1jP0Z77PjtoMotO7DLDSRnwYtZGUDEqGU5EA1ZlC052Q/edit?usp=sharing)**
+**[GDocs](https://docs.google.com/document/d/1jP0Z77PjtoMotO7DLDSRnwYtZGUDEqGU5EA1ZlC052Q/edit?usp=sharing)** - Public
+
+**[Trello](https://trello.com/b/jkTEjNtY/projet-php)** - Membre du tableau seulement
 
 ## Support
 
