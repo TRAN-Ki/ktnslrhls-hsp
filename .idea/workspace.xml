@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11325f26-6539-48f6-8abd-3fd33f5b043e" name="Changes" comment="add: phpmailer">
-      <change beforePath="$PROJECT_DIR$/bdd/hsp-skh.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bdd/hsp-skh.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traitement/mail.php" beforeDir="false" />
+    <list default="true" id="11325f26-6539-48f6-8abd-3fd33f5b043e" name="Changes" comment="fix: mail">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/amphitheatre.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/amphitheatre.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/homeAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/homeAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/hopital.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/hopital.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/type.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/panelAdmin/utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/vue/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +63,7 @@
       <workItem from="1667220604586" duration="1612000" />
       <workItem from="1667222403893" duration="5280000" />
       <workItem from="1667812475695" duration="4669000" />
-      <workItem from="1668411330471" duration="386000" />
+      <workItem from="1668411330471" duration="3522000" />
     </task>
     <task id="LOCAL-00001" summary="add bdd SQL">
       <created>1663575686587</created>
@@ -172,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667232107091</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix: test bdd">
+      <created>1668411740513</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1668411740513</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fix: mail">
+      <created>1668412951850</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668412951850</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +224,8 @@
     <MESSAGE value="fix: radio register" />
     <MESSAGE value="fix: session for login id" />
     <MESSAGE value="add: phpmailer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: phpmailer" />
+    <MESSAGE value="fix: test bdd" />
+    <MESSAGE value="fix: mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: mail" />
   </component>
 </project>
