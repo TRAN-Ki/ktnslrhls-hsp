@@ -41,15 +41,15 @@ class Mail
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host = 'smtp-mail.outlook.com';                     //Set the SMTP server to send through
+            $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-            $mail->Username = 'h.lopes@lprs.fr';                     //SMTP username
-            $mail->Password = 'HU_LO_2003';                               //SMTP password
+            $mail->Username = 'hugo.lop2304@gmail.com';                     //SMTP username
+            $mail->Password = 'vbymzxqjwxyoggbe';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('h.lopes@lprs.fr', 'Support HSP');
+            $mail->setFrom('hugo.lop2304@gmail.com', 'Support HSP');
             $mail->addAddress($this->getMail(), '');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
