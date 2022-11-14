@@ -149,11 +149,15 @@ require_once '../../src/modele/Utilisateur.php';
             <h6>Nom : </h6>
             <input type="text" name="nom" placeholder="Nom de l'utilisateur"> <br><br>
             <h6>Prénom :</h6>
-            <input type="text" name="prénom" placeholder="prénom de l'utilisateur"> <br><br>
+            <input type="text" name="prenom" placeholder="prénom de l'utilisateur"> <br><br>
             <h6>email :</h6>
             <input type="text" name="email" placeholder="email de l'utilisateur"> <br><br>
             <h6>Mot de Passe :</h6>
             <input type="text" name="mdp" placeholder="mot de passe de l'utilisateur"> <br><br>
+            <h6>Admin :</h6>
+            <input type="text" name="admin" placeholder="0 ou 1"> <br><br>
+            <h6>Actif :</h6>
+            <input type="text" name="actif" placeholder="0 ou 1"> <br><br>
 
             <input type="submit" value="Modifier">
         </form>

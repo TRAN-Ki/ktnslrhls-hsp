@@ -2,7 +2,7 @@
 
 class Utilisateur
 {
-    private $id_utilisateur;
+    private $id;
     private $nom;
     private $prenom;
     private $email;
@@ -55,15 +55,17 @@ class Utilisateur
             'email'=>$this->getEmail(),
             'mdp'=>$this->getMdp(),
             'admin'=>$this->getAdmin(),
-            'actif'=>$this->getActif()
+            'actif'=>$this->getActif(),
+            'id'=>$this->getId()
         ));
+        var_dump($this);
     }
 
     public function deleteUtilisateur(){
         $bdd = new Database();
-        $del = $bdd->getBdd()->prepare('DELETE representant FROM id_utilisateur = :id');
+        $del = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
         $del->execute(array(
-            'id'=>$this->getIdUtilisateur()
+            'id'=>$this->getId()
         ));
     }
 
@@ -88,17 +90,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getIdUtilisateur()
+    public function getId()
     {
-        return $this->id_utilisateur;
+        return $this->id;
     }
 
     /**
-     * @param mixed $id_utilisateur
+     * @param mixed $id
      */
-    public function setIdUtilisateur($id_utilisateur)
+    public function setId($id)
     {
-        $this->id_utilisateur = $id_utilisateur;
+        $this->id = $id;
     }
 
     /**
