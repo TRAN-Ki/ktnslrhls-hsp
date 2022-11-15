@@ -22,6 +22,7 @@ if ($res != null){
     }elseif($res['actif'] == 1){
         echo "oui";
         $_SESSION['email'] = $_POST['email'];
+        //TODO: $_SESSION type d'utilisateur (représentant ou étudiant)
         //header("Location: ../../vue/vue-utilisateur.php");
     }
 }

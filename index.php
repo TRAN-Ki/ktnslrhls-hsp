@@ -146,7 +146,8 @@
         Swal.fire({
             title: 'Connexion',
             html: `<input type="email" id="login" class="swal2-input" placeholder="exemple@domaine.org">
-            <input type="password" id="password" class="swal2-input" placeholder="Mot de passe" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,32}" title="Doit contenir de 8 à 32 caractères ainsi qu'une lettre majuscule et minuscule.">`,
+            <input type="password" id="password" class="swal2-input" placeholder="Mot de passe">
+            <a href="vue/mdp-oublie.php">Mot de passe oublié ? Clique ici.</a>`,
             confirmButtonText: 'Se connecter',
             focusConfirm: false,
             preConfirm: () => {
