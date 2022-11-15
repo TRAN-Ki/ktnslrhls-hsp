@@ -147,7 +147,7 @@
             title: 'Connexion',
             html: `<input type="email" id="login" class="swal2-input" placeholder="exemple@domaine.org">
             <input type="password" id="password" class="swal2-input" placeholder="Mot de passe"><br>
-            <a href="vue/mdp-oublie.php">Mot de passe oublié ? Clique ici.</a>`,
+            <a target="_blank" href="vue/mdp-oublie.php">Mot de passe oublié ? Clique ici.</a>`,
             confirmButtonText: 'Se connecter',
             focusConfirm: false,
             preConfirm: () => {
