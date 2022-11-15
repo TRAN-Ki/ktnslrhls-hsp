@@ -63,7 +63,7 @@ try {
 
         $mail = new Mail($prenom,$email);
 
-        $mail->sendMail();
+        $mail->sendMail('Inscription HSP','Bonjour '.$prenom.', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,');
 
         echo "ok";
         header('Location: ../../index.php');

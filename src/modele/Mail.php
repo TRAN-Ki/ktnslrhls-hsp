@@ -30,7 +30,7 @@ class Mail
         return $this->mail;
     }
 
-    function sendMail(){
+    function sendMail($sujet,$text){
         //Load Composer's autoloader
         require '../../composer/vendor/autoload.php';
 
@@ -47,6 +47,7 @@ class Mail
             $mail->Password = 'vbymzxqjwxyoggbe';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->CharSet = "UTF-8";
 
             //Recipients
             $mail->setFrom('hugo.lop2304@gmail.com', 'Support HSP');
@@ -62,14 +63,14 @@ class Mail
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Inscription HSP';
-            $mail->Body = 'Bonjour '.$this->prenom.', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,';
+            $mail->Subject = $sujet;
+            $mail->Body = $text;
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
-            echo 'Message has been sent';
+            //echo 'Message has been sent';
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            //echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
 
     }

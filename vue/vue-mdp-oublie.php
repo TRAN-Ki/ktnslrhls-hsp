@@ -1,14 +1,3 @@
-<?php
-
-require_once '../modele/Mail.php';
-session_start();
-$mail = new Mail('',$_POST['email']);
-$_SESSION['email'] = $_POST['email'];
-$num = "0123456789";
-$_SESSION['rand'] = str_shuffle($num);
-$mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre code de confirmation de modification de mot de passe est : <mark>'.$_SESSION['rand'].'</mark><br><br> Bien cordialement, ');
-
-?>
 <!DOCTYPE html>
 <html lang="FR">
 
@@ -114,11 +103,11 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
 </header>
 <div class="container">
     <div class="">
-        <p>Vérificationn d'identité</p>
+        <p>Réinitialisation du mot de passe <br></p>
         <br>
-        <form action="../../vue/reset-mdp.php" method="post">
-            <label>Entrez le code que vous avez reçu par mail :</label>
-            <input type="text" name="code" placeholder="code" required>
+        <form action="../src/traitement/mdp-oublie.php" method="post">
+            <label>Entrez votre adresse mail</label>
+            <input type="text" name="email" placeholder="adresse@domaine.com" required>
             <button type="submit">Valider</button>
         </form>
 
@@ -137,5 +126,3 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
 </body>
 
 </html>
-
-
