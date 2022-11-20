@@ -12,12 +12,15 @@ $req->execute(array(
 ));
 $res = $req->fetch();
 
+$user = new Utilisateur(array(
+    'email' =>$_SESSION['email'],
+    'id' =>$res['id']
+));
+
+
 if($res){
 
-    $up = $bdd->getBdd()->prepare("UPDATE utilisateur SET mdp = :mdp WHERE email = :email");
-    $up->execute(array(
-        'mdp'=>$_POST['mdp'],
-        'email'=>$_SESSION['email']
-    ));
+
+
 
 }

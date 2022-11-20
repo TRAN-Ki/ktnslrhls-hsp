@@ -24,7 +24,7 @@ if ($_POST['code'] == $_SESSION['rand']){
           rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
     <title>HSP - Template</title>
 
@@ -139,11 +139,11 @@ function validateform(){
     var mdp1 = document.getElementById('id1').value;
     var mdp2 = document.getElementById('id2').value;
     if (mdp1 !== mdp2){
-        alert('Les mots de passes ne correspondent pas');
+        alert('Les mots de passes ne correspondent pas !');
         console.log(mdp2,mdp1);
-
         return false;
     }else{
+        alert('Votre mot de passe a bien été modifier !');
         return true;
     }
 }
@@ -152,6 +152,6 @@ function validateform(){
 </html>
 <?php }else{
 
-    header('Location: vue-mdp-oublie.php');
+    //header('Location: ../src/traitement/mdp-oublie.php');
 
 } ?>

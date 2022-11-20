@@ -2,10 +2,13 @@
 
 require_once '../modele/Mail.php';
 session_start();
-$mail = new Mail('',$_POST['email']);
 $_SESSION['email'] = $_POST['email'];
+$mail = new Mail('',$_SESSION['email']);
+
 $num = "0123456789";
+
 $_SESSION['rand'] = str_shuffle($num);
+
 $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre code de confirmation de modification de mot de passe est : <mark>'.$_SESSION['rand'].'</mark><br><br> Bien cordialement, ');
 
 ?>
@@ -28,7 +31,7 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
           rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
 
     <title>HSP - Template</title>
 
@@ -100,7 +103,7 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
 <header class="p-3 bg-slate-200 border-gray-400 border-b-2">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="../index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+            <a href="../../index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
                 <p style="font-size: 24px; font-weight: bolder; margin-right: 25px">HSP</p>
             </a>
 
@@ -114,11 +117,11 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
 </header>
 <div class="container">
     <div class="">
-        <p>Vérificationn d'identité</p>
+        <p>Vérification d'identité</p>
         <br>
-        <form action="../../vue/reset-mdp.php" method="post">
+        <form action="../../vue/reset-mdp.php" onsubmit="return validateform()" method="post"> <!--  -->
             <label>Entrez le code que vous avez reçu par mail :</label>
-            <input type="text" name="code" placeholder="code" required>
+            <input type="text" name="code" id="code" placeholder="code" required>
             <button type="submit">Valider</button>
         </form>
 
@@ -135,6 +138,22 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
     </footer>
 </div>
 </body>
+<script>
+    function validateform(){
+
+        var code = document.getElementById('code').value;
+        if (code !== <?php echo $_SESSION['rand'] ?>){
+            if (confirm('Le code ne correspond pas. Voulez-vous recevoir un autre code ? (Annuler pour revenir') === true){
+
+            }
+
+        }else{
+            alert('Le code correspond !');
+            return true;
+        }
+    }
+
+</script>
 
 </html>
 
