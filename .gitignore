@@ -3,4 +3,7 @@
 /.idea/modules.xml
 /.idea/php.xml
 /.idea/vcs.xml
+.idea/workspace.xml
+.gitignore
+.idea/shelf/Uncommitted_changes_before_Update_at_19_09_2022_09_30_[Changes]/shelved.patch
 /vendor/
