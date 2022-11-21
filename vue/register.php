@@ -26,7 +26,7 @@ session_destroy();
     <input type="email" name="email" required>
     <br><br>
     <label>Mot de passe</label>
-    <input type="password" name="mdp" required>
+    <input type="Password" name="mdp" required>
     <br><br>
     <label>Choix du role</label>
     <input id="repr" type="radio" value="Représentant" name="choix" required>Représentant

@@ -4,13 +4,12 @@ require_once '../bdd/Database.php';
 require_once '../modele/Utilisateur.php';
 $bdd = new Database();
 
-$log = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email AND mdp = :mdp");
-$log->execute(array(
-    'email'=>$_POST['email'],
-    'mdp'=>$_POST['mdp']
+$log = new Utilisateur(array(
+    'email' =>$_POST['email'],
+    'mdp' =>$_POST['mdp'],
 ));
-$res = $log->fetch();
-//TODO: mettre la méthode du dessus, dans Utilisateur.php
+$res = $log->testLogin($bdd);
+
 if ($res != null){
     session_start();
     if ($res['admin'] == 1 && $res['actif'] == 0){

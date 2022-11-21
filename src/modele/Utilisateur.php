@@ -95,6 +95,26 @@ class Utilisateur
         return $result;
     }
 
+    public function testLogin($bdd){
+        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email AND mdp = :mdp");
+        $test->execute(array(
+            'email'=>$this->getEmail(),
+            'mdp'=>$this->getMdp()
+        ));
+        $res = $test->fetch();
+        return $res;
+    }
+    public function testRegister($bdd){
+        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE nom = :nom , prenom = :prenom , email = :email , mdp = :mdp");
+        $test->execute(array(
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'mdp' => $this->getMdp()
+        ));
+        $res = $test->fetch();
+        return $res;
+    }
 
     /**
      * @return mixed

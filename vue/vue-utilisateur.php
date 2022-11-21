@@ -68,7 +68,7 @@ if (isset($_SESSION['email'])){
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link px-2" href="#">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link px-2" href="../index.php">Accueil</a></li>
                         <li class="nav-item"><a href="../src/traitement/deconnexion.php" class="nav-link px-2">Se déconnecter</a></li>
                     </ul>
             </div>
@@ -98,7 +98,7 @@ if (isset($_SESSION['email'])){
                 <h6>Email :</h6>
                 <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
                 <h6>Mot de passe :</h6>
-                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
+                <input type="Password" name="mdp" required placeholder="Mot de passe"> <br><br>
                 <input type="submit" value="Modifier">
             </form>
         </div>
@@ -108,7 +108,7 @@ if (isset($_SESSION['email'])){
                 <h6>Email :</h6>
                 <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
                 <h6>Mot de passe :</h6>
-                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
+                <input type="Password" name="mdp" required placeholder="Mot de passe"> <br><br>
                 <input type="submit" value="Modifier">
             </form>
         </div>

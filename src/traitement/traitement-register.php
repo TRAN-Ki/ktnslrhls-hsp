@@ -18,13 +18,10 @@ session_start();
 
 try {
 
-    $register = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email AND mdp = :mdp");
-    $register->execute(array(
-        'email'=>$user->getEmail(),
-        'mdp'=>$user->getMdp()
-    ));
 
-    if (!$result = $register->fetch()) {
+    $res = $user->testRegister($bdd);
+
+    if ($res) {
 
         $user->setNom($_POST['nom']);
         $user->setPrenom($_POST['prenom']);
