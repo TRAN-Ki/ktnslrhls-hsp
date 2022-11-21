@@ -133,13 +133,13 @@ else if ($_SESSION['isAdmin'] == 1){
 
                 <div class="text-end">
                     <a href="hopital.php">
-                        <button class="btn btn-secondary btn-sm">Gestion Hôpitaux</button>
+                        <button class="btn btn-secondary btn-sm">Gestion "Hôpitaux"</button>
                     </a>
                     <a href="amphitheatre.php">
-                        <button class="btn btn-secondary btn-sm">Gestion Amphithéâtres</button>
+                        <button class="btn btn-secondary btn-sm">Gestion "Amphithéâtres"</button>
                     </a>
                     <a href="type.php">
-                        <button class="btn btn-secondary btn-sm">Gestion Types</button>
+                        <button class="btn btn-secondary btn-sm">Gestion "Types"</button>
                     </a>
                 </div>
             </div>
