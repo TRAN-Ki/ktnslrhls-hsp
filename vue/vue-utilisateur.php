@@ -3,9 +3,11 @@
 require_once '../src/modele/Utilisateur.php';
 require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
+require_once '../src/modele/Type.php';
 
 session_start();
 $_SESSION['isRepr'] = 1;
+$_SESSION['isEtud'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -103,20 +105,14 @@ if (isset($_SESSION['email'])){
             </form>
         </div>
         <div>
-            <form id="form" action="" method="post">
-                <h4>Modifier son profil :</h4>
-                <h6>Email :</h6>
-                <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
-                <h6>Mot de passe :</h6>
-                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
-                <input type="submit" value="Modifier">
-            </form>
+            <hr>
+            <div>
+                <h1 class="mt-8">Espace Etudiant</h1>
+            </div>
         </div>
         <div>
             <h4>Voir les offres :</h4>
             <?php
-
-
             $liste = new Offre(array());
             $bdd = new Database();
             $res = $liste->selectOffre($bdd);
@@ -126,23 +122,18 @@ if (isset($_SESSION['email'])){
                     $('#table').DataTable()
                 });
             </script>
-            <table id="table" class="display" style="width:100%"></table>
+            <table id="table" class="display" style="width:100%">
+                <!-- TODO: mettre les hr, etc. voir autre datatable dans les crud admin -->
+            </table>
             <form action="" method="post">
 
             </form>
         </div>
-        <!--Un hôpital peut également créer des offres d’emplois et les mettre à disposition des étudiants inscrit sur la plateforme.
-        Une offre est décrite par le titre de l’offre une description de l’offre et le type de contrat.
-        Chaque étudiant peut venir postuler à cette offre et les hôpitaux peuvent consulter les différents étudiant ayant postulé à cette offre.
-        A la suite de cela, une entreprise peut proposer des rendez-vous à certain étudiant.
-        Sur ce rendez-vous, il y sera décrit la date, l’heure et on y retrouvera l’offre proposé par l’entreprise.
-        Un étudiant doit confirmer le rendez-vous proposé par l’entreprise.
-        La gestion des types d’offre et des salles sont faites par les administrateurs.
-        Les administrateurs ne sont pas des représentant des hôpitaux ou des étudiants.
-        A la validation (ou non) d’un rendez-vous ou la confirmation (ou non) de la création d’un évènement, un email devra être envoyé à la personne concernée.
-        A la proposition d’un rendez-vous, un étudiant recevra un email lui invitant à confirmer sa disponibilité.-->
         <hr>
-        <!-- TODO: if "représentant" = afficher ce bloc" -->
+        <?php
+            if (isset($_SESSION['isRepr'])){
+                if ($_SESSION['isRepr'] == 1){
+                    ?>
         <div>
             <h1 class="mt-8">Espace Représentant</h1>
         </div>
@@ -155,17 +146,28 @@ if (isset($_SESSION['email'])){
                 <h6>Description :</h6>
                 <input type="text" name="description" placeholder="Description de l'offre" required> <br><br>
                 <!-- TODO: ajouter dans bdd colonne ref_type + lier ici -->
-                <select name="" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                <h6>Type :</h6>
+                <select class="js2" name="ref_type" id="ref_type">
+                    <?php
+                    $liste = new Type(array());
+                    $bdd = new Database();
+                    $res = $liste->selectType($bdd);
+                    foreach ($res as $value){
+                        ?>
+                        <option value="<?php echo $value['id_type'] ?>">Type : <?php echo $value['libelle'];?></option>
+                        <?php
+                    }
+                    ?>
                 </select>
+                <br><br>
                 <input type="submit" value="Créer">
             </form>
         </div>
+        <?php
+                }}
+        ?>
     </div>
-
-
+    <hr>
 </body>
 </html>
 <?php
