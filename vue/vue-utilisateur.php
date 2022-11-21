@@ -5,7 +5,7 @@ require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
 
 session_start();
-$_SESSION['isRepr'] == 1;
+$_SESSION['isRepr'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -98,7 +98,7 @@ if (isset($_SESSION['email'])){
                 <h6>Email :</h6>
                 <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
                 <h6>Mot de passe :</h6>
-                <input type="Password" name="mdp" required placeholder="Mot de passe"> <br><br>
+                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
                 <input type="submit" value="Modifier">
             </form>
         </div>
@@ -108,7 +108,7 @@ if (isset($_SESSION['email'])){
                 <h6>Email :</h6>
                 <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
                 <h6>Mot de passe :</h6>
-                <input type="Password" name="mdp" required placeholder="Mot de passe"> <br><br>
+                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
                 <input type="submit" value="Modifier">
             </form>
         </div>
