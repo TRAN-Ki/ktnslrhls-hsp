@@ -10,19 +10,19 @@ $log->execute(array(
     'mdp'=>$_POST['mdp']
 ));
 $res = $log->fetch();
+//TODO: mettre la méthode du dessus, dans Utilisateur.php
 if ($res != null){
     session_start();
-    if ($res['admin'] && $res['actif'] == 0){
+    if ($res['admin'] == 1 && $res['actif'] == 0){
         $_SESSION['isAdmin'] = $res['admin'];
         echo "admin";
     }
     if ($res['admin'] == 0 && $res['actif'] == 0) {
         echo "non";
-        //header("Location: ../../vue/attenteValidation.php");
     }elseif($res['actif'] == 1){
         echo "oui";
         $_SESSION['email'] = $_POST['email'];
-        //TODO: $_SESSION type d'utilisateur (représentant ou étudiant)
-        //header("Location: ../../vue/vue-utilisateur.php");
+        $_SESSION['id'] = $res['id_utilisateur'];
     }
+//TODO: $_SESSION['isRepr'], faire méthode et récupérer étudiant (0) ou représentant (0)
 }

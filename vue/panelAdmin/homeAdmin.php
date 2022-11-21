@@ -128,7 +128,7 @@ else if ($_SESSION['isAdmin'] == 1){
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link px-2">FAQ Admin</a></li>
-                    <li><?php session_start(); session_destroy(); ?><a href="../../index.php" class="nav-link px-2">Déconnexion</a></li>
+                    <li><a href="../../src/traitement/deconnexion.php" class="nav-link px-2">Déconnexion</a></li>
                 </ul>
 
                 <div class="text-end">
@@ -151,8 +151,6 @@ else if ($_SESSION['isAdmin'] == 1){
                 Bienvenue sur le site HSP Étudiant
             </div>
             <div class="break"></div>
-            <img class="rounded-lg accueil-img" src="../../assets/images/bg.jpg" alt="">
-            <div class="break"></div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
                 Voulez-vous gérer des utilisateurs ?
                 <a href="utilisateur.php"><button class="btn btn-secondary btn-sm">Gestion "Utilisateur"</button></a>
@@ -161,6 +159,9 @@ else if ($_SESSION['isAdmin'] == 1){
                 Autres fonctionnalités "Admin" ➜
                 <a href="../register.php"><button class="btn btn-secondary btn-sm">Panel Admin</button></a>
             </div>
+            <div class="break"></div>
+            <img class="rounded-lg accueil-img" src="../../assets/images/adminMain.jpg" alt="">
+            <div class="break"></div>
         </div>
     </div>
     <div class="container">
@@ -176,68 +177,13 @@ else if ($_SESSION['isAdmin'] == 1){
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.all.min.js"></script>
-
-    <script>
-        $('.connexion').click(async function () {
-            Swal.fire({
-                title: 'Connexion',
-                html: `<input type="email" id="login" class="swal2-input" placeholder="exemple@domaine.org">
-            <input type="password" id="password" class="swal2-input" placeholder="Mot de passe" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,32}" title="Doit contenir de 8 à 32 caractères ainsi qu'une lettre majuscule et minuscule.">`,
-                confirmButtonText: 'Se connecter',
-                focusConfirm: false,
-                preConfirm: () => {
-                    const login = Swal.getPopup().querySelector('#login').value
-                    const password = Swal.getPopup().querySelector('#password').value
-                    if (!login || !password) {
-                        Swal.showValidationMessage(`Entrer un mail et un mot de passe valide.`)
-                    }
-                    return {login: login, password: password}
-                }
-            }).then((result) => {
-                var login = result.value.login;
-                var mdp = result.value.password;
-                console.log(login);
-                console.log(mdp);
-                $.ajax({
-                    type: "POST",
-                    url: "../../src/traitement/traitement-login.php",
-                    data: {email: login, mdp: mdp},
-                    success: function (response){
-                        if (response === "actif") {
-                            console.log("compte actif")
-                            window.location.href = "../vue-utilisateur.php";
-                        }
-                        if (response === "non") {
-                            console.log("compte non actif")
-                            window.location.href = "../attenteValidation.php";
-                        }
-                        if (response === "admin") {
-                            console.log("compte administrateur")
-                            window.location.href = "menuAdmin.php";
-                        }
-                        else {
-                            Swal.fire(
-                                'Erreur',
-                                'Veuillez contacter un administrateur',
-                                'error'
-                            )
-                        }
-                    }
-                });
-            })
-
-        });
-
-
-
-    </script>
     </body>
     </html>
 
 <?php
 }
 else{
-    echo "Erreur, retour à l'accueil dans quelques secondes..";
+    echo "Erreur, retour à l'accueil automatique dans quelques secondes..";
     sleep(3);
     header("Location: ../../index.php");
 }

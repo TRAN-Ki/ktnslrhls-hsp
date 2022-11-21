@@ -80,7 +80,6 @@ class Offre
         $sel = $bdd->getBdd()->prepare("SELECT * FROM offre");
         $sel->execute();
         $result = $sel->fetchAll();
-        echo "Affichage de la table offre";
         return $result;
 
     }

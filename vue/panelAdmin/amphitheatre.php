@@ -41,7 +41,7 @@ session_start();
 <body>
 <div class="container">
     <div class="content">
-        <h1><strong><i>Gérer les amphitheatre</i></strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="homeAdmin.php"><button class="btn btn-secondary" type="button">Retour</button></a></h1>
+        <h1><strong><i>Gérer les amphitheatres</i></strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="homeAdmin.php"><button class="btn btn-secondary" type="button">Retour</button></a></h1>
         <hr>
         <hr>
         <h2><strong>Amphitheatre :</strong></h2>
