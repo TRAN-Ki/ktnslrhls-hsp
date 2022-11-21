@@ -32,7 +32,7 @@ class Mail
 
     function sendMail($sujet,$text){
         //Load Composer's autoloader
-        require '../../composer/vendor/autoload.php';
+        require '../../vendor/autoload.php';
 
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
@@ -43,14 +43,14 @@ class Mail
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-            $mail->Username = 'hugo.lop2304@gmail.com';                     //SMTP username
-            $mail->Password = '';                               //SMTP password
+            $mail->Username = 'hsp.pro.contact@gmail.com';                     //SMTP username
+            $mail->Password = 'nkeietetqabvcltk';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
             $mail->CharSet = "UTF-8";
 
             //Recipients
-            $mail->setFrom('hugo.lop2304@gmail.com', 'Support HSP');
+            $mail->setFrom('hsp.pro.contact@gmail.com', 'Support HSP');
             $mail->addAddress($this->getMail(), '');     //Add a recipient
             //$mail->addAddress('ellen@example.com');               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');

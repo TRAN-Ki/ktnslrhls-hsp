@@ -8,8 +8,9 @@ $mail = new Mail('',$_SESSION['email']);
 $num = "0123456789";
 
 $_SESSION['rand'] = str_shuffle($num);
+$codeValid = $_SESSION['rand'];
 
-$mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre code de confirmation de modification de mot de passe est : <mark>'.$_SESSION['rand'].'</mark><br><br> Bien cordialement, ');
+$mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre code de confirmation de modification de mot de passe est : <mark>'.$codeValid.'</mark><br><br> Bien cordialement, ');
 
 ?>
 <!DOCTYPE html>
@@ -142,14 +143,16 @@ $mail->sendMail('Réinitialisation de mot de passe', 'Bonjour, <br><br> Votre co
     function validateform(){
 
         var code = document.getElementById('code').value;
-        if (code !== <?php echo $_SESSION['rand'] ?>){
-            if (confirm('Le code ne correspond pas. Voulez-vous recevoir un autre code ? (Annuler pour revenir') === true){
+        var code1 = '<?php echo $codeValid; ?>';
 
-            }
-
-        }else{
+        if (code === code1){
             alert('Le code correspond !');
-            return true;
+            <?php sleep(0.5); ?>
+            return true
+        }else{
+            alert('Le code ne correspond pas !');
+            <?php sleep(0.5); ?>
+            return false;
         }
     }
 

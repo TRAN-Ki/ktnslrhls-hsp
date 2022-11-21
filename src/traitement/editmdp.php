@@ -1,26 +1,37 @@
 <?php
 
 require_once '../../src/bdd/Database.php';
-// TODO : importer les méthodes dans Utilisateur.php
+require_once '../modele/Utilisateur.php';
+
 session_start();
 
 $bdd = new Database();
-
-$req = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email");
-$req->execute(array(
-    'email'=>$_SESSION['email']
-));
-$res = $req->fetch();
-
 $user = new Utilisateur(array(
-    'email' =>$_SESSION['email'],
-    'id' =>$res['id']
+    'email' =>$_SESSION['email']
 ));
 
+$result = $user->selectUserMdpOublie($bdd,$_SESSION['email']);
 
-if($res){
+var_dump($result);
 
+if($result){
 
+    $user->setId($result['id_utilisateur']);
+    $user->setNom($result['nom']);
+    $user->setPrenom($result['prenom']);
+    $user->setActif($result['actif']);
+    $user->setAdmin($result['admin']);
+    $user->setMdp($_POST['mdp']);
+    $user->updateUtilisateur();
 
+    ?>
+<script>
+
+    close();
+
+</script>
+    <?php
 
 }
+
+    ?>

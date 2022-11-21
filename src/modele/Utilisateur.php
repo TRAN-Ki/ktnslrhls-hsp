@@ -26,6 +26,15 @@ class Utilisateur
         }
     }
 
+    public function selectUserMdpOublie($bdd,$mail){
+        $req = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $req->execute(array(
+            'email'=>$mail
+        ));
+        $res = $req->fetch();
+        return $res;
+    }
+
     public function selectUtilisateur($bdd){
         $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur");
         $sel->execute();

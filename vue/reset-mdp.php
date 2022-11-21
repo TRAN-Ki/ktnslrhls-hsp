@@ -152,6 +152,6 @@ function validateform(){
 </html>
 <?php }else{
 
-    //header('Location: ../src/traitement/mdp-oublie.php');
+    header('Location: ../src/traitement/mdp-oublie.php');
 
 } ?>
