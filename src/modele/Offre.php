@@ -8,6 +8,8 @@ class Offre
     private $id;
     private $libelle;
     private $description;
+    private $ref_type;
+    private $ref_representant;
 
 
     public function __construct(array $donnees){
@@ -25,6 +27,38 @@ class Offre
                 $this->$method($value);
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefType()
+    {
+        return $this->ref_type;
+    }
+
+    /**
+     * @param mixed $ref_type
+     */
+    public function setRefType($ref_type): void
+    {
+        $this->ref_type = $ref_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefRepresentant()
+    {
+        return $this->ref_representant;
+    }
+
+    /**
+     * @param mixed $ref_representant
+     */
+    public function setRefRepresentant($ref_representant): void
+    {
+        $this->ref_representant = $ref_representant;
     }
 
     /**
@@ -85,11 +119,12 @@ class Offre
     }
 
     public function addOffre($bdd){
-
-        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description) VALUES (:libelle,:description)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description, ref_type, ref_representant) VALUES (:libelle,:description,ref_type,:ref_representant)");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
-            'description'=>$this->getDescription()
+            'description'=>$this->getDescription(),
+            'ref_type'=>$this->getRefType(),
+            'ref_representant'=>$this->getRefRepresentant()
         ));
         echo "Offre ajouté";
 
@@ -97,13 +132,15 @@ class Offre
 
     public function editOffre($bdd){
 
-        $edit = $bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description WHERE id_offre = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description, ref_type = :ref_type, ref_representant = :ref_representant WHERE id_offre = :id");
         $edit->execute(array(
             'libelle'=>$this->getLibelle(),
             'description'=>$this->getDescription(),
+            'ref_type'=>$this->getRefType(),
+            'ref_representant'=>$this->getRefRepresentant(),
             'id'=>$this->getId()
         ));
-        echo "Offre édité par le libelle : ".$this->getLibelle()." et la description par : ".$this->getDescription();
+        echo "Offre édité par le libelle";
 
     }
 
