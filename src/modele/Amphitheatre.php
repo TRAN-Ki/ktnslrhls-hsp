@@ -77,7 +77,6 @@ class Amphitheatre
         $sel = $bdd->getBdd()->prepare("SELECT * FROM amphitheatre");
         $sel->execute();
         $result = $sel->fetchAll();
-        echo "Affichage de la table amphiteatre";
         return $result;
 
     }

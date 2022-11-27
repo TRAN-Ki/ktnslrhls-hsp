@@ -132,6 +132,9 @@ else if ($_SESSION['isAdmin'] == 1){
                 </ul>
 
                 <div class="text-end">
+                    <a href="conference.php">
+                        <button class="btn btn-secondary btn-sm">Gestion "Conférences"</button>
+                    </a>
                     <a href="hopital.php">
                         <button class="btn btn-secondary btn-sm">Gestion "Hôpitaux"</button>
                     </a>

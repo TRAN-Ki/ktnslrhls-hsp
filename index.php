@@ -179,7 +179,7 @@
                     }
                     if (response === "admin") {
                         console.log("compte administrateur")
-                        window.location.href = "vue/vue-utilisateur.php";
+                        window.location.href = "vue/panelAdmin/homeAdmin.php";
                     }
                     else {
                         console.log("error")

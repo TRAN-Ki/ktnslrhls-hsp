@@ -17,7 +17,6 @@ $user = new Utilisateur(array(
 session_start();
 
 try {
-    //TODO: à mettre en méthode
 
     $res = $user->testRegister($bdd);
 

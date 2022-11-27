@@ -4,6 +4,8 @@ require_once '../src/modele/Utilisateur.php';
 require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
 require_once '../src/modele/Type.php';
+require_once '../src/modele/Conference.php';
+
 
 session_start();
 $_SESSION['isRepr'] = 1;
@@ -110,6 +112,64 @@ if (isset($_SESSION['email'])){
                 <h1 class="mt-8">Espace Etudiant</h1>
             </div>
         </div>
+        <div>
+            <h4>Voir les conférences :</h4>
+            <?php
+            $conf = new Conference(array());
+            $bdd = new Database();
+            $res = $conf->selectConference($bdd);
+            ?>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#table').DataTable()
+                });
+            </script>
+            <table id="table" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de la conférence</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Durée</th>
+                    <th>Valider</th>
+                    <th>Reference amphithéatre</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($res as $value){ ?>
+                    <tr>
+                        <td><?php echo $value['id_conference'];?></td>
+                        <td><?php echo $value['nom'];?></td>
+                        <td><?php echo $value['description'];?></td>
+                        <td><?php echo $value['date_conf'];?></td>
+                        <td><?php echo $value['heure'];?></td>
+                        <td><?php echo $value['duree'];?></td>
+                        <td><?php echo $value['valider'];?></td>
+                        <td><?php echo $value['ref_amphitheatre'];?></td>
+                        <td><a href="inscription-conf.php"><button>S'inscrire</button></a>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de la conférence</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Durée</th>
+                    <th>Valider</th>
+                    <th>Reference amphithéatre</th>
+                </tr>
+                </tfoot>
+            </table>
+            <form action="" method="post">
+
+            </form>
+        </div>
+        <br>
         <div>
             <h4>Voir les offres :</h4>
             <?php
