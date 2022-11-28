@@ -70,7 +70,7 @@ if (isset($_SESSION['email'])){
     <header class="mb-4r">
         <nav class="navbar navbar-expand-lg fixed-top border-bottom border-3" style="background-color: #F8F8FF">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">HSP</a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link px-2" href="../index.php">Accueil</a></li>
                         <li class="nav-item"><a href="../src/traitement/deconnexion.php" class="nav-link px-2">Se déconnecter</a></li>
@@ -148,7 +148,7 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['duree'];?></td>
                         <td><?php echo $value['valider'];?></td>
                         <td><?php echo $value['ref_amphitheatre'];?></td>
-                        <td><a href="inscription-conf.php"><button>S'inscrire</button></a>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a></td>
+                        <td><a href="inscription-conf.php"><button>S'inscrire</button></a>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -183,7 +183,35 @@ if (isset($_SESSION['email'])){
                 });
             </script>
             <table id="table" class="display" style="width:100%">
-                <!-- TODO: mettre les hr, etc. voir autre datatable dans les crud admin -->
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de l'offre</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Représentant</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($res as $value){ ?>
+                    <tr>
+                        <td><?php echo $value['id_offre'];?></td>
+                        <td><?php echo $value['libelle'];?></td>
+                        <td><?php echo $value['description'];?></td>
+                        <td><?php echo $value['ref_type'];?></td>
+                        <td><?php echo $value['ref_representant'];?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom de l'offre</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Représentant</th>
+                </tr>
+                </tfoot>
             </table>
             <form action="" method="post">
 
@@ -204,7 +232,7 @@ if (isset($_SESSION['email'])){
                 <h6>Libelle :</h6>
                 <input type="text" name="libelle" placeholder="Titre de l'offre" required> <br><br>
                 <h6>Description :</h6>
-                <input type="text" name="description" placeholder="Description de l'offre" required> <br><br>
+                <textarea id="description" name="description" placeholder="Description de l'offre" required rows="5" cols="33"></textarea> <br><br>
                 <!-- TODO: ajouter dans bdd colonne ref_type + lier ici -->
                 <h6>Type :</h6>
                 <select class="js2" name="ref_type" id="ref_type">
