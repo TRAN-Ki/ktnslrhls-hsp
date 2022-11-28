@@ -159,12 +159,13 @@ class Conference
 
 
     public function selectConference($bdd){
-
-        $sel = $bdd->getBdd()->prepare("SELECT * FROM conference");
-        $sel->execute();
+        $date = date('Y-m-d');
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM conference WHERE valider = 1 AND date_conf > :dateactuelle");
+        $sel->execute(array(
+            'dateactuelle'=>$date
+        ));
         $result = $sel->fetchAll();
         return $result;
-
     }
 
     public function addConference($bdd){

@@ -5,18 +5,30 @@ require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
 require_once '../src/modele/Type.php';
 require_once '../src/modele/Conference.php';
-
+require_once '../src/modele/Representant.php';
+require_once '../src/modele/Etudiant.php';
 
 session_start();
-$_SESSION['isRepr'] = 1;
-$_SESSION['isEtud'] = 1;
+
+$etud = new Etudiant(array());
+$repr = new Representant(array());
+$bdd = new Database();
+
+$resEtud = $etud->selectEtudiant($bdd);
+$resRepr = $repr->selectRepresentant($bdd);
+
+if ($resEtud[0]['ref_utilisateur'] == $_SESSION['id']){
+    $_SESSION['isEtud'] = 1;
+}if ($resRepr[0]['ref_utilisateur'] == $_SESSION['id']){
+    $_SESSION['isRepr'] = 1;
+}
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
     }
 }
 if (isset($_SESSION['email'])){
-    $bdd = new Database();
+
     $user = new Utilisateur(array(
         'email'=>$_SESSION['email']
     ));
@@ -106,12 +118,7 @@ if (isset($_SESSION['email'])){
                 <input type="submit" value="Modifier">
             </form>
         </div>
-        <div>
-            <hr>
-            <div>
-                <h1 class="mt-8">Espace Etudiant</h1>
-            </div>
-        </div>
+        <br>
         <div>
             <h4>Voir les conférences :</h4>
             <?php
@@ -148,7 +155,7 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['duree'];?></td>
                         <td><?php echo $value['valider'];?></td>
                         <td><?php echo $value['ref_amphitheatre'];?></td>
-                        <td><a href="inscription-conf.php"><button>S'inscrire</button></a>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
+                        <td><?php if ($_SESSION['isEtud'] == 1){ ?><a href="inscription-conf.php"><button>S'inscrire</button></a><?php }elseif ($_SESSION['isRepr'] || $_SESSION['isEtud'] == 1){ ?>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a><?php } ?></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -165,9 +172,17 @@ if (isset($_SESSION['email'])){
                 </tr>
                 </tfoot>
             </table>
-            <form action="" method="post">
-
-            </form>
+        </div>
+        <br>
+        <?php
+        if (isset($_SESSION['isEtud'])){
+            if ($_SESSION['isEtud'] == 1){
+        ?>
+        <div>
+            <hr>
+            <div>
+                <h1 class="mt-8">Espace Etudiant</h1>
+            </div>
         </div>
         <br>
         <div>
@@ -216,6 +231,7 @@ if (isset($_SESSION['email'])){
         </div>
         <hr>
         <?php
+            } }
             if (isset($_SESSION['isRepr'])){
                 if ($_SESSION['isRepr'] == 1){
                     ?>
