@@ -8,8 +8,6 @@ require_once '../src/modele/Conference.php';
 
 
 session_start();
-$_SESSION['isRepr'] = 1;
-$_SESSION['isEtud'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");

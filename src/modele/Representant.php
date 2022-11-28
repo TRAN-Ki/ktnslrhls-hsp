@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Utilisateur.php';
 class Representant extends Utilisateur
 {
     private $ref_utilisateur;
@@ -53,6 +53,14 @@ class Representant extends Utilisateur
         ));
     }
 
+    public function isRepresentant($bdd){
+        $is = $bdd->getBdd()->prepare('SELECT * FROM representant WHERE ref_utilisateur = :id');
+        $is->execute(array(
+            'id' => $this->getRefUtilisateur()
+        ));
+        $res1 = $is->fetch();
+        return $res1;
+    }
     /**
      * @return mixed
      */
