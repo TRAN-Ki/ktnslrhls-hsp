@@ -11,7 +11,7 @@ $user = new Utilisateur(array(
     'nom' => $_POST['nom'],
     'prenom' => $_POST['prenom'],
     'email' => $_POST['email'],
-    'mdp' => $_POST['mdp']
+    'mdp' => $_POST['mdp'],
 ));
 
 session_start();
@@ -20,7 +20,7 @@ try {
 
     $res = $user->testRegister($bdd);
 
-    if ($res) {
+    if (!$res) {
 
         $user->setNom($_POST['nom']);
         $user->setPrenom($_POST['prenom']);

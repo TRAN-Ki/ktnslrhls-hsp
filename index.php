@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="FR">
+<?php
+session_start();
+if(isset($_SESSION['isAdmin']) || isset($_SESSION['id'])){
+    header('Location: vue/vue-utilisateur.php');
+}
+
+?>
 
 <head>
 

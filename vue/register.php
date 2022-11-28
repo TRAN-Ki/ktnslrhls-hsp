@@ -39,6 +39,21 @@ session_destroy();
         <option value="Infirmier">Infirmier</option>
         <option value="Autre">Autre..</option>
     </select>
+    <select class="js2" name="ref_hopital" id="ref_hopital">
+        <?php
+        require_once '../src/modele/Hopital.php';
+        $liste = new Hopital(array());
+        $bdd = new Database();
+        $res = $liste->selectHopital($bdd);
+        foreach ($res as $value){
+            ?>
+            <option value="<?php echo $value['id_hopital'] ?>">Type : <?php echo $value['nom'];?></option>
+            <?php
+        }
+        ?>
+    </select>
+    <br><br>
+    <br><br>
     <select name="domaine" class="etudiant">
         <option value="Chirurgien">Infirmier</option>
         <option value="Medecin">Dentaire</option>
@@ -53,20 +68,23 @@ session_destroy();
 
 </body>
 <script>
-    //TODO : à fix
     $(document).ready(function() {
         $(".etudiant").hide();
         $(".representant").hide();
+        const select = document.getElementById('ref_hopital');
+        select.setAttribute('disabled', '');
     });
 
     $("#etud").click(function(){
         $(".etudiant").show();
         $(".representant").hide();
+        select.setAttribute('disabled', '');
     });
 
     $("#repr").click(function(){
         $(".representant").show();
         $(".etudiant").hide();
+        select.removeAttribute('disabled');
     });
 </script>
 </html>
