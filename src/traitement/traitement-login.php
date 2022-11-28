@@ -29,11 +29,11 @@ if ($res != null){
         $res1 = $log1->isRepresentant($bdd);
         if (isset($res1['ref_utilisateur'])) {
             $_SESSION['isRepr'] = 1;
-            $SESSION['isEtud'] = 0;
+            $_SESSION['isEtud'] = 0;
         }
         else{
             $_SESSION['isRepr'] = 0;
-            $SESSION['isEtud'] = 1;
+            $_SESSION['isEtud'] = 1;
         }
         echo "oui";
     }
