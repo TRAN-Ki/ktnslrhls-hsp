@@ -119,15 +119,13 @@ class Offre
     }
 
     public function addOffre($bdd){
-        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description, ref_type, ref_representant) VALUES (:libelle,:description,ref_type,:ref_representant)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO offre (libelle, description, ref_type, ref_representant) VALUES (:libelle, :description, :ref_type, :ref_representant)");
         $add->execute(array(
             'libelle'=>$this->getLibelle(),
             'description'=>$this->getDescription(),
             'ref_type'=>$this->getRefType(),
             'ref_representant'=>$this->getRefRepresentant()
         ));
-        echo "Offre ajouté";
-
     }
 
     public function editOffre($bdd){
