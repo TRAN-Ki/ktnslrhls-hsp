@@ -8,6 +8,8 @@ require_once '../src/modele/Conference.php';
 
 
 session_start();
+$_SESSION['isRepr'] = 1;
+$_SESSION['isEtud'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -211,9 +213,6 @@ if (isset($_SESSION['email'])){
                 </tr>
                 </tfoot>
             </table>
-            <form action="" method="post">
-
-            </form>
         </div>
         <hr>
         <?php
@@ -224,7 +223,7 @@ if (isset($_SESSION['email'])){
             <h1 class="mt-8">Espace Représentant</h1>
         </div>
         <div>
-            <form action="" method="post">
+            <form action="../src/traitement/add_offre.php" method="post">
                 <h4>Créer une offre :</h4>
                 <div class="label"></div>
                 <h6>Libelle :</h6>

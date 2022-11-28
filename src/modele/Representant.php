@@ -2,7 +2,7 @@
 require_once 'Utilisateur.php';
 class Representant extends Utilisateur
 {
-    private $ref_utilisateur;
+        private $ref_utilisateur;
     private $role;
     private $ref_hopital;
 
