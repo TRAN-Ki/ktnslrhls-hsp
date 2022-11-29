@@ -5,23 +5,11 @@ require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
 require_once '../src/modele/Type.php';
 require_once '../src/modele/Conference.php';
-require_once '../src/modele/Representant.php';
-require_once '../src/modele/Etudiant.php';
 
 session_start();
 
-$etud = new Etudiant(array());
-$repr = new Representant(array());
 $bdd = new Database();
 
-$resEtud = $etud->selectEtudiant($bdd);
-$resRepr = $repr->selectRepresentant($bdd);
-
-if ($resEtud[0]['ref_utilisateur'] == $_SESSION['id']){
-    $_SESSION['isEtud'] = 1;
-}if ($resRepr[0]['ref_utilisateur'] == $_SESSION['id']){
-    $_SESSION['isRepr'] = 1;
-}
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
