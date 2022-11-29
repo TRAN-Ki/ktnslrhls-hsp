@@ -122,7 +122,7 @@ if (isset($_SESSION['email'])){
             <?php
             $conf = new Conference(array());
             $bdd = new Database();
-            $res = $conf->selectConference($bdd);
+            $res = $conf->selectConferenceUser($bdd);
             ?>
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -138,8 +138,6 @@ if (isset($_SESSION['email'])){
                     <th>Date</th>
                     <th>Heure</th>
                     <th>Durée</th>
-                    <th>Valider</th>
-                    <th>Reference amphithéatre</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -151,9 +149,7 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['date_conf'];?></td>
                         <td><?php echo $value['heure'];?></td>
                         <td><?php echo $value['duree'];?></td>
-                        <td><?php echo $value['valider'];?></td>
-                        <td><?php echo $value['ref_amphitheatre'];?></td>
-                        <td><?php if ($_SESSION['isEtud'] == 1){ ?><a href="inscription-conf.php"><button>S'inscrire</button></a><?php }elseif ($_SESSION['isRepr'] || $_SESSION['isEtud'] == 1){ ?>&nbsp;&nbsp;<a href="conference-utilisateur.php"><button>Gérer</button></a><?php } ?></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
+                        <td><?php if ($_SESSION['isEtud'] == 1){ ?><a href="inscription-conf.php"><button>S'inscrire</button></a><?php } ?></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -165,11 +161,11 @@ if (isset($_SESSION['email'])){
                     <th>Date</th>
                     <th>Heure</th>
                     <th>Durée</th>
-                    <th>Valider</th>
-                    <th>Reference amphithéatre</th>
                 </tr>
                 </tfoot>
             </table>
+            <br>
+            <?php if ($_SESSION['isRepr'] == 1 || $_SESSION['isEtud'] == 1){ ?>&nbsp;&nbsp;<a href="ajout_conference.php"><button>Ajouter</button></a><?php } ?>
         </div>
         <br>
         <?php
