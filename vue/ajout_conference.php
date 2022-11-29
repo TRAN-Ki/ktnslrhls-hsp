@@ -43,13 +43,19 @@ session_start();
 <body>
 <div class="container">
     <div class="content">
-        <h1><strong><i>Gérer les conférences</i></strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a href="vue-utilisateur.php"><button class="btn btn-secondary" type="button">Retour</button></a></h1>
-        <hr>
-        <hr>
-        <h2><strong>Conférences :</strong></h2>
-        <h3>Ajout d'une conférence : </h3>
 
-        <form action="../src/traitement/add_conference.php" method="post">
+        <h1><strong>Conférences</strong></h1>
+        <hr>
+        <hr>
+        <h3>Ajout d'une conférence : </h3><br>
+        <?php
+
+        $bdd = new Database();
+        $conf = new Conference(array());
+        $conf->setValider(0);
+
+        ?>
+        <form action="../src/traitement/add_conference_user.php" method="post">
             <h6>Nom : </h6>
             <input type="text" name="nom" placeholder="Nom de la conférence"> <br><br>
             <h6>Description : </h6>
@@ -60,29 +66,13 @@ session_start();
             <input type="number" name="heure" placeholder="Heure de début de la conférence"> <br><br>
             <h6>Durée : </h6>
             <input type="number" name="duree" placeholder="En minutes"> <br><br>
-            <h6>Valider : </h6>
-            <input type="number" name="valider" placeholder="(0 ou 1)"> <br><br>
-            <h6>Reférence de l'amphitheatre :</h6>
-            <?php
-
-            $bdd = new Database();
-            $amphi = new Amphitheatre(array());
-
-            $result = $amphi->selectAmphitheatre($bdd);
-
-            ?>
-            <select name="ref">
-                <option value="<?php echo $result[0]['id_amphitheatre'] ?>"><?php echo $result[0]['id_amphitheatre'].' - '.$result[0]['libelle']; ?></option>
-            </select> <br><br>
             <input type="submit" value="Ajouter">
         </form>
         <br><br>
         <h3>Liste des Conférences :</h3>
         <?php
 
-        $liste = new Conference(array());
-        $bdd = new Database();
-        $res = $liste->selectConference($bdd);
+        $res = $conf->selectConferenceUser($bdd);
         ?>
         <script type="text/javascript">
             $(document).ready( function () {
@@ -98,8 +88,6 @@ session_start();
                 <th>Date</th>
                 <th>Heure</th>
                 <th>Durée</th>
-                <th>Valider</th>
-                <th>Reference amphithéatre</th>
             </tr>
             </thead>
             <tbody>
@@ -111,8 +99,6 @@ session_start();
                     <td><?php echo $value['date_conf'];?></td>
                     <td><?php echo $value['heure'];?></td>
                     <td><?php echo $value['duree'];?></td>
-                    <td><?php echo $value['valider'];?></td>
-                    <td><?php echo $value['ref_amphitheatre'];?></td>
                 </tr>
             <?php } ?>
             </tbody>
@@ -124,67 +110,13 @@ session_start();
                 <th>Date</th>
                 <th>Heure</th>
                 <th>Durée</th>
-                <th>Valider</th>
-                <th>Reference amphithéatre</th>
             </tr>
             </tfoot>
         </table>
-        <br> <br>
-        <form action="../src/traitement/delete_conference.php" method="post">
-            <br>
-            <h3>Supprimer des conférences : </h3>
-            <p>Grâce à l'identifiant de la conférence, supprimez le.</p>
-            <select class="js2" name="id" id="id">
-                <?php
-                foreach ($res as $value){
-                    ?>
-                    <option value="<?php echo $value['id_conference'] ?>">Conférence n°<?php echo $value['id_conference'];?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <br><br>
-            <input type="submit">
-        </form>
+
         <br><br>
     </div>
     <br>
-    <div>
-        <br>
-        <h3>Modification d'une conférence : </h3>
-        <form action="../src/traitement/edit_conference.php" method="post">
-            <strong><p>Grâce à l'identifiant de la conférence, selectionner l'amphitheatre à modifier</p></strong>
-            <select class="js2" name="id" id="id">
-                <?php
-                foreach ($res as $value){
-                    ?>
-                    <option value="<?php echo $value['id_conference']  ?>">Conférence n°<?php echo $value['id_conference'];?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <br><br>
-            <strong><p>Changer les valeurs à modifier : </p></strong>
-
-            <h6>Nom : </h6>
-            <input type="text" name="nom" placeholder="Nom de la conférence"> <br><br>
-            <h6>Description : </h6>
-            <input type="text" name="desc" placeholder="Description de la conférence"> <br><br>
-            <h6>Date : </h6>
-            <input type="date" name="date" placeholder="Date de la conférence"> <br><br>
-            <h6>Heure : </h6>
-            <input type="number" name="heure" placeholder="Heure de début de la conférence"> <br><br>
-            <h6>Durée : </h6>
-            <input type="number" name="duree" placeholder="En minutes"> <br><br>
-            <h6>Valider : </h6>
-            <input type="number" name="valider" placeholder="(0 ou 1)"> <br><br>
-            <h6>Reférence de l'amphitheatre :</h6>
-            <select name="ref">
-                <option value="<?php echo $result[0]['id_amphitheatre'] ?>"><?php echo $result[0]['id_amphitheatre'].' - '.$result[0]['libelle']; ?></option>
-            </select> <br><br>
-            <input type="submit" value="Modifier">
-        </form>
-    </div>
 </div>
 <br><br>
 </body>
