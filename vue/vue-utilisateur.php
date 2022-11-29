@@ -5,6 +5,8 @@ require_once '../src/bdd/Database.php';
 require_once '../src/modele/Offre.php';
 require_once '../src/modele/Type.php';
 require_once '../src/modele/Conference.php';
+require_once '../src/modele/Inscrit.php';
+
 
 session_start();
 
@@ -109,14 +111,17 @@ if (isset($_SESSION['email'])){
             <h4>Voir les conférences :</h4>
             <?php
             $conf = new Conference(array());
+            $ins = new Inscrit(array());
             $bdd = new Database();
             $res = $conf->selectConferenceUser($bdd);
+            $result = $ins->selectInscritRef($bdd);
             ?>
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#table').DataTable();
                 });
             </script>
+
             <table id="table" class="display" style="width:100%">
                 <thead>
                 <tr>
@@ -137,7 +142,11 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['date_conf'];?></td>
                         <td><?php echo $value['heure'];?></td>
                         <td><?php echo $value['duree'];?></td>
-                        <td><?php if ($_SESSION['isEtud'] == 1){ ?><a href="inscription-conf.php"><button>S'inscrire</button></a><?php } ?></td> <!-- TODO: supprimer l'affichage du bouton gérer pour les utilisateurs -->
+                        <td><?php if ($_SESSION['isEtud'] == 1){ ?>
+                            <form action="../src/traitement/inscription-conf.php" method="post">                                   <!-- TODO: return toujours 'false' -->
+                                <button type="submit" name="validForm" value="<?php echo $value['id_conference']; ?>"><?php if (!$result){ echo "Se désinscrire"; }if ($result){ echo "S'inscrire"; } ?></button>
+                            </form><?php } ?>
+                        </td>
                     </tr>
                 <?php } ?>
                 </tbody>
@@ -199,8 +208,8 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['ref_type'];?></td>
                         <td><?php echo $value['ref_representant'];?></td>
                         <td>
-                            <form method="post" action="">
-                                <input name="id" value="<?php echo $value['id_offre']?>" type="text" disabled style="display: none">
+                            <form method="post" action="../src/traitement/voir_offre.php">
+                                <input name="id" value="<?php echo $value['id_offre']?>" type="text" style="display: none">
                                 <input type="submit" value="Voir">
                             </form>
                         </td>
@@ -214,6 +223,7 @@ if (isset($_SESSION['email'])){
                     <th>Description</th>
                     <th>Type</th>
                     <th>Représentant</th>
+                    <th>Voir l'offre</th>
                 </tr>
                 </tfoot>
             </table>
