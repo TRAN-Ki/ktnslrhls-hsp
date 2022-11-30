@@ -1,6 +1,8 @@
 <?php if (isset($_SESSION['inscription'])) {
 session_destroy();
 }
+require_once '../src/modele/Hopital.php';
+require_once '../src/bdd/Database.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +34,9 @@ session_destroy();
     <input id="repr" type="radio" value="Représentant" name="choix" required>Représentant
     <input id="etud" type="radio" value="Etudiant" name="choix" required>Etudiant
     <br><br>
-    <select name="role" class="representant">
-        <option value="Chirurgien">Chirurgien</option>
-        <option value="Medecin">Medecin</option>
-        <option value="Dentiste">Dentiste</option>
-        <option value="Infirmier">Infirmier</option>
-        <option value="Autre">Autre..</option>
-    </select>
-    <select class="js2" name="ref_hopital" id="ref_hopital">
+    <select name="ref_hopital" class="refHopital">
         <?php
-        require_once '../src/modele/Hopital.php';
+
         $liste = new Hopital(array());
         $bdd = new Database();
         $res = $liste->selectHopital($bdd);
@@ -53,6 +48,14 @@ session_destroy();
         ?>
     </select>
     <br><br>
+    <select name="role" class="representant">
+        <option value="Chirurgien">Chirurgien</option>
+        <option value="Medecin">Medecin</option>
+        <option value="Dentiste">Dentiste</option>
+        <option value="Infirmier">Infirmier</option>
+        <option value="Autre">Autre..</option>
+    </select>
+
     <br><br>
     <select name="domaine" class="etudiant">
         <option value="Chirurgien">Infirmier</option>
@@ -69,22 +72,21 @@ session_destroy();
 </body>
 <script>
     $(document).ready(function() {
+        $(".refHopital").hide();
         $(".etudiant").hide();
         $(".representant").hide();
-        const select = document.getElementById('ref_hopital');
-        select.setAttribute('disabled', '');
     });
 
     $("#etud").click(function(){
+        $(".refHopital").hide();
         $(".etudiant").show();
         $(".representant").hide();
-        select.setAttribute('disabled', '');
     });
 
     $("#repr").click(function(){
+        $(".refHopital").show();
         $(".representant").show();
         $(".etudiant").hide();
-        select.removeAttribute('disabled');
     });
 </script>
 </html>
