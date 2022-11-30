@@ -111,10 +111,8 @@ if (isset($_SESSION['email'])){
             <h4>Voir les conférences :</h4>
             <?php
             $conf = new Conference(array());
-            $ins = new Inscrit(array());
             $bdd = new Database();
             $res = $conf->selectConferenceUser($bdd);
-            $result = $ins->selectInscritRef($bdd);
             ?>
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -143,8 +141,20 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['heure'];?></td>
                         <td><?php echo $value['duree'];?></td>
                         <td><?php if ($_SESSION['isEtud'] == 1){ ?>
-                            <form action="../src/traitement/inscription-conf.php" method="post">                                   <!-- TODO: return toujours 'false' -->
-                                <button type="submit" name="validForm" value="<?php echo $value['id_conference']; ?>"><?php if (!$result){ echo "Se désinscrire"; }if ($result){ echo "S'inscrire"; } ?></button>
+                            <form action="../src/traitement/inscription-conf.php" method="post">
+                                <button type="submit" name="validForm" value="<?php echo $value['id_conference']; ?>"><?php
+                                    $ins = new Inscrit(array(
+                                        'refetudiant'=>$_SESSION['id'],
+                                        'refconference'=>$value['id_conference']
+                                    ));
+                                    $result = $ins->selectInscritRef($bdd);
+                                    if ($result){
+                                        echo "Se désinscrire";
+                                    }
+                                    if (!$result){
+                                        echo "S'inscrire";
+                                    } ?>
+                                </button>
                             </form><?php } ?>
                         </td>
                     </tr>

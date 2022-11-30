@@ -60,9 +60,7 @@ class Inscrit
             'ref'=>$this->getRefconference(),
             'refe'=>$this->getRefetudiant()
         ));
-        $result = $sel->fetch();
-        var_dump($result);
-        return $result;
+        return $sel->fetch();
     }
 
     public function addInscrit($bdd){
@@ -73,15 +71,12 @@ class Inscrit
         ));
     }
 
-    public function updateEtudiant($bdd){
-        $mod = $bdd->getBdd()->prepare("UPDATE etudiant SET domaine = :domaine WHERE ref_utilisateur = :refutilisateur");
-        $mod->execute(array(
-        ));
-    }
-
-    public function deleteInscrit($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE FROM inscrit WHERE  = :id');
+    public function deleteInscrit(){
+        $bdd = new Database();
+        $del = $bdd->getBdd()->prepare('DELETE FROM inscrit WHERE ref_etudiant = :refe AND ref_conference = :refc');
         $del->execute(array(
+            'refe'=>$this->getRefetudiant(),
+            'refc'=>$this->getRefconference()
         ));
     }
 

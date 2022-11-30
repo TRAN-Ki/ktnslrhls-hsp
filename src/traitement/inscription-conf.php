@@ -14,6 +14,9 @@ if (!$res){
     $inscrit->addInscrit($bdd);
     echo "OK";
 }
+else{
+    $inscrit->deleteInscrit();
+}
 
 echo "PAS OK";
 header('Location: ../../vue/vue-utilisateur.php');
