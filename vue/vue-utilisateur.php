@@ -11,7 +11,7 @@ require_once '../src/modele/Inscrit.php';
 session_start();
 
 $bdd = new Database();
-
+$_SESSION['isEtud'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -46,14 +46,6 @@ if (isset($_SESSION['email'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <title>Espace Utilisateur</title>
     <style>
-        .main-page {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            color: #0a53bd;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
         body {
             background-color: #fcfcfc;
             background-image:  linear-gradient(135deg, #f8f8ff 25%, transparent 25%), linear-gradient(225deg, #f8f8ff 25%, transparent 25%), linear-gradient(45deg, #f8f8ff 25%, transparent 25%), linear-gradient(315deg, #f8f8ff 25%, #fcfcfc 25%);
@@ -218,7 +210,7 @@ if (isset($_SESSION['email'])){
                         <td><?php echo $value['ref_type'];?></td>
                         <td><?php echo $value['ref_representant'];?></td>
                         <td>
-                            <form method="post" action="../src/traitement/voir_offre.php">
+                            <form method="post" action="voir_offre.php">
                                 <input name="id" value="<?php echo $value['id_offre']?>" type="text" style="display: none">
                                 <input type="submit" value="Voir">
                             </form>

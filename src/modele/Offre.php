@@ -109,8 +109,16 @@ class Offre
         return $this->description;
     }
 
-    public function selectOffre($bdd){
+    public function selectOffreById($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM offre WHERE id_offre = :id");
+        $sel->execute(array(
+            'id'=>$this->getId()
+        ));
+        $result = $sel->fetch();
+        return $result;
+    }
 
+    public function selectOffre($bdd){
         $sel = $bdd->getBdd()->prepare("SELECT * FROM offre");
         $sel->execute();
         $result = $sel->fetchAll();

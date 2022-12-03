@@ -21,11 +21,19 @@ class Type
             }
         }
     }
+
+    public function selectTypeById($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM type WHERE id_type = :id");
+        $sel->execute(array(
+            'id'=>$this->getId()
+        ));
+        return $sel->fetch();
+    }
+
     public function selectType($bdd){
         $sel = $bdd->getBdd()->prepare("SELECT * FROM type");
         $sel->execute();
-        $result = $sel->fetchAll();
-        return $result;
+        return $sel->fetchAll();
     }
 
     public function addType($bdd){
