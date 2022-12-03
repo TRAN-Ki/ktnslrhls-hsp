@@ -56,11 +56,11 @@ require_once '../../src/modele/Utilisateur.php';
             <h6>Actif :</h6>
             <input type="number" name="actif" placeholder="0 ou 1" required> <br><br>
             <h6>Admin :</h6>
-            <input type="radio" name="choix" required>
+            <input type="radio" value="adm" name="choix" required>
             <h6>Représentant :</h6>
-            <input type="radio" name="choix" required>
+            <input type="radio" value="repr" name="choix" required>
             <h6>Etudiant :</h6>
-            <input type="radio" name="choix" required><br><br>
+            <input type="radio" value="etu" name="choix" required><br><br>
             <input type="submit" value="Ajouter">
         </form>
         <br><br>
