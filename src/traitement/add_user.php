@@ -8,7 +8,7 @@ $user = new Utilisateur(array(
     'prenom' =>$_POST['prenom'],
     'email' =>$_POST['email'],
     'mdp' =>$_POST['mdp'],
-    'admin' =>$_POST['admin'],
+    'admin' =>$_POST['choix'],
     'actif' =>$_POST['actif']
 ));
 

@@ -11,7 +11,7 @@ require_once '../src/modele/Inscrit.php';
 session_start();
 
 $bdd = new Database();
-$_SESSION['isEtud'] = 1;
+//$_SESSION['isEtud'] = 1;
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -229,7 +229,8 @@ if (isset($_SESSION['email'])){
                 </tr>
                 </tfoot>
             </table>
-        </div>
+        </div><br>
+                <a href="vue-rdv.php"><button>Voir RDV</button></a>
         <hr>
         <?php
             } }
@@ -264,6 +265,8 @@ if (isset($_SESSION['email'])){
                 <br><br>
                 <input type="submit" value="Créer">
             </form>
+            <br>
+            <a href="vue-rdv.php"><button>Voir RDV</button></a>
         </div>
         <?php
                 }}

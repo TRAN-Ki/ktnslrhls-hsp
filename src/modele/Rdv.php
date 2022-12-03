@@ -1,7 +1,5 @@
 <?php
 
-require_once '../bdd/Database.php';
-
 class Rdv
 {
 
@@ -142,19 +140,19 @@ class Rdv
         return $this->refoffre;
     }
 
-    public function selectRdv(){
+    public function selectRdv($bdd){
 
-        $sel = $this->bdd->getBdd()->prepare("SELECT * FROM rdv");
-        $sel->execute();
-        $result = $sel->fetchAll();
-        echo "Affichage de la table amphiteatre";
-        return $result;
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM rdv WHERE ref_representant = :ref");
+        $sel->execute(array(
+            'ref'=>$this->getRefrepresentant()
+        ));
+        return $sel->fetchAll();
 
     }
 
-    public function addRdv(){
+    public function addRdv($bdd){
 
-        $add = $this->bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES (:daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES (:daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre)");
         $add->execute(array(
             'daterdv'=>$this->getDate(),
             'heure'=>$this->getHeure(),
@@ -163,7 +161,6 @@ class Rdv
             'refrepresentant'=>$this->getRefrepresentant(),
             'refoffre'=>$this->getRefoffre()
         ));
-        echo "RDV ajouté";
 
     }
 
@@ -179,8 +176,6 @@ class Rdv
             'refoffre'=>$this->getRefoffre(),
             'id'=>$this->getId()
         ));
-        echo "RDV édité par la date : ".$this->getDate().", l'heure : ".$this->getHeure().", l'etat : ".$this->getEtat().", la reference à l'etudiant : ".$this->getRefetudiant().", la reference au representant : ".$this->getRefrepresentant()." et la reference à l'offre : ".$this->getRefoffre();
-
     }
 
     public function deleteRdv(){
@@ -189,7 +184,6 @@ class Rdv
         $del->execute(array(
             'id'=>$this->getId()
         ));
-        echo "RDV supprimé";
 
     }
 }
