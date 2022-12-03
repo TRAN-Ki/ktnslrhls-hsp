@@ -55,17 +55,17 @@ session_start();
         $conf->setValider(0);
 
         ?>
-        <form action="../src/traitement/add_conference_user.php" method="post">
+        <form action="../src/traitement/add_conference_user.php" onsubmit="" method="post">
             <h6>Nom : </h6>
-            <input type="text" name="nom" placeholder="Nom de la conférence"> <br><br>
+            <input type="text" name="nom" placeholder="Nom de la conférence" required> <br><br>
             <h6>Description : </h6>
-            <input type="text" name="desc" placeholder="Description de la conférence"> <br><br>
+            <input type="text" name="desc" placeholder="Description de la conférence" required> <br><br>
             <h6>Date : </h6>
-            <input type="date" name="date" placeholder="Date de la conférence"> <br><br>
-            <h6>Heure : </h6>
-            <input type="number" name="heure" placeholder="Heure de début de la conférence"> <br><br>
+            <input type="date" name="date" placeholder="Date de la conférence" required> <br><br>
+            <h6>Heure de début : </h6>
+            <input type="number" name="heure" placeholder="Entre 8h et 11h" required> <br><br>
             <h6>Durée : </h6>
-            <input type="number" name="duree" placeholder="En minutes"> <br><br>
+            <input type="number" name="duree" placeholder="En minutes (Max 220)" required> <br><br>
             <input type="submit" value="Ajouter">
         </form>
         <br><br>
@@ -120,4 +120,4 @@ session_start();
 </div>
 <br><br>
 </body>
-
+</html>
