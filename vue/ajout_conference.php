@@ -41,10 +41,22 @@ session_start();
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg fixed-top border-bottom border-3" style="background-color: #F8F8FF">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">HSP</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link px-2" href="../index.php">Accueil</a></li>
+            <li class="nav-item"><a href="../src/traitement/deconnexion.php" class="nav-link px-2">Se déconnecter</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<br>
 <div class="container">
     <div class="content">
 
-        <h1><strong>Conférences</strong></h1>
+        <h1>Conférences</h1>
         <hr>
         <hr>
         <h3>Ajout d'une conférence : </h3><br>

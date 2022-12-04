@@ -78,7 +78,7 @@
             </ul>
 
             <div class="text-end">
-                <a href="#">
+                <a href="../index.php">
                     <button class="btn btn-primary btn-sm">Retour à l'accueil</button>
                 </a>
             </div>
