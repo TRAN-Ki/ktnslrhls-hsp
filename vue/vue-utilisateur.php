@@ -23,7 +23,7 @@ if (isset($_SESSION['email'])){
         'email'=>$_SESSION['email']
     ));
     $res = $user->selectUtilisateurByEmail($bdd);
-//var_dump($res);
+
 }
 ?>
 <!doctype html>

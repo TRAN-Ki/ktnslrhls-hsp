@@ -269,6 +269,4 @@ if (isset($_SESSION['email'])){
     </div>
     </body>
     </html>
-<?php
-var_dump($_SESSION);
 

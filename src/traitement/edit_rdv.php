@@ -1,7 +1,6 @@
 <?php
 require_once '../bdd/Database.php';
 require_once '../modele/Rdv.php';
-//TODO : EDIT NE FONCTIONNE PAS
 $bdd = new Database();
 $rdv = new Rdv(array(
     'id'=>$_POST['id'],
