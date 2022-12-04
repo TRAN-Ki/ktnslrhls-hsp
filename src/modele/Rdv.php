@@ -150,6 +150,16 @@ class Rdv
 
     }
 
+    public function selectRdvEtu($bdd){
+
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM rdv WHERE ref_etudiant = :ref");
+        $sel->execute(array(
+            'ref'=>$this->getRefetudiant()
+        ));
+        return $sel->fetchAll();
+
+    }
+
     public function addRdv($bdd){
 
         $add = $bdd->getBdd()->prepare("INSERT INTO rdv (date_rdv, heure, etat, ref_etudiant, ref_representant, ref_offre) VALUES (:daterdv, :heure, :etat, :refetudiant, :refrepresentant, :refoffre)");
@@ -174,6 +184,15 @@ class Rdv
             'refetudiant'=>$this->getRefetudiant(),
             'refrepresentant'=>$this->getRefrepresentant(),
             'refoffre'=>$this->getRefoffre(),
+            'id'=>$this->getId()
+        ));
+    }
+
+    public function updateRdvValider(){
+        $bdd = new Database();
+        $edit = $bdd->getBdd()->prepare("UPDATE rdv SET etat = :etat WHERE id_rdv = :id");
+        $edit->execute(array(
+            'etat'=>$this->getEtat(),
             'id'=>$this->getId()
         ));
     }

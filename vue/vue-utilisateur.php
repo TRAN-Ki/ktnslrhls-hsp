@@ -231,7 +231,6 @@ if (isset($_SESSION['email'])){
             </table>
         </div><br>
                 <a href="vue-rdv.php"><button>Voir RDV</button></a>
-        <hr>
         <?php
             } }
             if (isset($_SESSION['isRepr'])){
@@ -272,7 +271,7 @@ if (isset($_SESSION['email'])){
                 }}
         ?>
     </div>
-    <hr>
+    <br>
 </body>
 </html>
 <?php

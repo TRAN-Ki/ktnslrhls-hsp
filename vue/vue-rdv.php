@@ -82,43 +82,40 @@ if (isset($_SESSION['email'])){
         </div>
         <?php
         $rdv = new Rdv(array(
-            'refrepresentant'=>$_SESSION['id']
+            'refetudiant'=>$_SESSION['id']
         ));
         $bdd = new Database();
-        $res = $rdv->selectRdv($bdd);
+        $res = $rdv->selectRdvEtu($bdd);
         ?><br>
-                <h3>Affichage des rendez-vous</h3>
+                <h3>Affichage de mes rendez-vous</h3>
         <table id="table" class="display" style="width:100%">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Date</th>
                 <th>Heure</th>
-                <th>Réference Etudiant</th>
-                <th>Réference Représentant</th>
-                <th>Réference Offre</th>
+                <th>Validation du RDV</th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($res as $value){ ?>
+            <?php foreach ($res as $value){
+                if ($value['etat'] != 1){
+                    $_SESSION['idrdv'] = $value['id_rdv'];
+                ?>
                 <tr>
                     <td><?php echo $value['id_rdv'];?></td>
                     <td><?php echo $value['date_rdv'];?></td>
                     <td><?php echo $value['heure'];?></td>
-                    <td><?php echo $value['ref_etudiant'];?></td>
-                    <td><?php echo $value['ref_representant'];?></td>
-                    <td><?php echo $value['ref_offre'];?></td>
+                    <td><a href="../src/traitement/validation_rdv.php"><button>Valider</button></a></td>
                 </tr>
-            <?php } ?>
+            <?php } } ?>
             </tbody>
             <tfoot>
             <tr>
                 <th>ID</th>
                 <th>Date</th>
                 <th>Heure</th>
-                <th>Réference Etudiant</th>
-                <th>Réference Représentant</th>
-                <th>Réference Offre</th>
+                <th>Validation du RDV</th>
             </tr>
             </tfoot>
         </table>
@@ -161,8 +158,6 @@ if (isset($_SESSION['email'])){
             </select> <br><br>
             <input type="submit" value="Ajouter">
         </form>
-
-
         <?php
         $rdv = new Rdv(array(
                 'refrepresentant'=>$_SESSION['id']
