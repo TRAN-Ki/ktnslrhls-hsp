@@ -166,7 +166,7 @@ class Rdv
 
     public function editRdv(){
         $bdd = new Database();
-        $edit = $bdd->getBdd()->prepare("UPDATE rdv SET date_rdv = :daterdv, heure = :heure, etat = :etat, ref_etudiant = :refetudiant, ref_representant = :refrepresentant, ref_offre = :refoffre WHERE id_offre = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE rdv SET date_rdv = :daterdv, heure = :heure, etat = :etat, ref_etudiant = :refetudiant, ref_representant = :refrepresentant, ref_offre = :refoffre WHERE id_rdv = :id");
         $edit->execute(array(
             'daterdv'=>$this->getDate(),
             'heure'=>$this->getHeure(),
