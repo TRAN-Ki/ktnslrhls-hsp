@@ -81,6 +81,19 @@ class Utilisateur
         ));
     }
 
+    public function updateUtilisateurAndPassword($bdd){
+        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, admin = :admin, actif = :actif, mdp = :mdp WHERE id_utilisateur = :id");
+        $mod->execute(array(
+            'nom'=>$this->getNom(),
+            'prenom'=>$this->getPrenom(),
+            'email'=>$this->getEmail(),
+            'mdp'=>$this->getMdp(),
+            'admin'=>$this->getAdmin(),
+            'actif'=>$this->getActif(),
+            'id'=>$this->getId()
+        ));
+    }
+
     public function deleteUtilisateur($bdd){
         $del = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
         $del->execute(array(

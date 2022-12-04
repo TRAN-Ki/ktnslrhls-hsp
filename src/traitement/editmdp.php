@@ -27,7 +27,7 @@ if($result){
         'actif'=>$result['actif']
     ));
 
-    $user1->updateUtilisateur($bdd);
+    $user1->updateUtilisateurAndPassword($bdd);
 
     ?>
 <script>

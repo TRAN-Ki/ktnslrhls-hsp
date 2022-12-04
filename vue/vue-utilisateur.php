@@ -164,7 +164,10 @@ if (isset($_SESSION['email'])){
                 </tfoot>
             </table>
             <br>
-            <?php if ($_SESSION['isRepr'] == 1 || $_SESSION['isEtud'] == 1){ ?>&nbsp;&nbsp;<a href="ajout_conference.php"><button>Ajouter</button></a><?php } ?>
+            <?php
+            if (isset($_SESSION['isRepr']) || isset($_SESSION['isEtud'])){
+            if ($_SESSION['isRepr'] == 1 || $_SESSION['isEtud'] == 1){ ?>&nbsp;&nbsp;<a href="ajout_conference.php"><button>Ajouter</button></a>
+            <?php }} ?>
         </div>
         <br>
         <?php
