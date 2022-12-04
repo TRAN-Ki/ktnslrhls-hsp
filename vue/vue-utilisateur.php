@@ -250,7 +250,6 @@ if (isset($_SESSION['email'])){
                 <input type="text" name="libelle" placeholder="Titre de l'offre" required> <br><br>
                 <h6>Description :</h6>
                 <textarea id="description" name="description" placeholder="Description de l'offre" required rows="5" cols="33"></textarea> <br><br>
-                <!-- TODO: ajouter dans bdd colonne ref_type + lier ici -->
                 <h6>Type :</h6>
                 <select class="js2" name="ref_type" id="ref_type">
                     <?php
@@ -277,6 +276,5 @@ if (isset($_SESSION['email'])){
     <br>
 </body>
 </html>
-<?php
-var_dump($_SESSION);
+
 

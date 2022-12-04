@@ -42,7 +42,7 @@ require_once '../../src/modele/Utilisateur.php';
         <hr>
         <hr>
         <h2><strong>Utilisateur :</strong></h2>
-        <h3>Ajout d'un utilisateur : </h3>
+        <h3>Ajout d'un Administrateur : </h3>
 
         <form action="../../src/traitement/add_user.php" method="post">
             <h6>Nom : </h6>
@@ -77,7 +77,6 @@ require_once '../../src/modele/Utilisateur.php';
                 <th>Nom de l'utilisateur</th>
                 <th>Prenom de l'utilisateur</th>
                 <th>Email de l'utilisateur</th>
-                <th>Mdp de l'utilisateur</th>
                 <th>Admin</th>
                 <th>Actif</th>
             </tr>
@@ -89,7 +88,6 @@ require_once '../../src/modele/Utilisateur.php';
                     <td><?php echo $value['nom'];?></td>
                     <td><?php echo $value['prenom'];?></td>
                     <td><?php echo $value['email'];?></td>
-                    <td><?php echo $value['mdp'];?></td>
                     <td><?php echo $value['admin'];?></td>
                     <td><?php echo $value['actif'];?></td>
                 </tr>
@@ -101,7 +99,6 @@ require_once '../../src/modele/Utilisateur.php';
                 <th>Nom de l'utilisateur</th>
                 <th>Prenom de l'utilisateur</th>
                 <th>Email de l'utilisateur</th>
-                <th>Mdp de l'utilisateur</th>
                 <th>Admin</th>
                 <th>Actif</th>
             </tr>
@@ -148,12 +145,8 @@ require_once '../../src/modele/Utilisateur.php';
             <input type="text" name="nom" placeholder="Nom de l'utilisateur"> <br><br>
             <h6>Prénom :</h6>
             <input type="text" name="prenom" placeholder="prénom de l'utilisateur"> <br><br>
-            <h6>email :</h6>
+            <h6>Email :</h6>
             <input type="text" name="email" placeholder="email de l'utilisateur"> <br><br>
-            <h6>Mot de Passe :</h6>
-            <input type="text" name="mdp" placeholder="mot de passe de l'utilisateur"> <br><br>
-            <h6>Admin :</h6>
-            <input type="text" name="admin" placeholder="0 ou 1"> <br><br>
             <h6>Actif :</h6>
             <input type="text" name="actif" placeholder="0 ou 1"> <br><br>
 

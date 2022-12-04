@@ -160,7 +160,7 @@ else if ($_SESSION['isAdmin'] == 1){
             </div>
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
                 Autres fonctionnalités "Admin" ➜
-                <a href="../register.php"><button class="btn btn-secondary btn-sm">Panel Admin</button></a>
+                <a href="../vue-utilisateur.php"><button class="btn btn-secondary btn-sm">Panel Admin</button></a>
             </div>
             <div class="break"></div>
             <img class="rounded-lg accueil-img" src="../../assets/images/adminMain.jpg" alt="">

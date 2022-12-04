@@ -69,13 +69,11 @@ class Utilisateur
     }
 
     public function updateUtilisateur($bdd){
-        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, mdp = :mdp, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
+        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
         $mod->execute(array(
             'nom'=>$this->getNom(),
             'prenom'=>$this->getPrenom(),
             'email'=>$this->getEmail(),
-            'mdp'=>$this->getMdp(),
-            'admin'=>$this->getAdmin(),
             'actif'=>$this->getActif(),
             'id'=>$this->getId()
         ));
