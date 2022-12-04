@@ -13,4 +13,5 @@ $conf = new Conference(array(
 ));
 
 $conf->addConference($bdd);
+
 header('Location: ../../vue/vue-utilisateur.php');

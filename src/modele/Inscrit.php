@@ -33,7 +33,7 @@ class Inscrit
     /**
      * @param mixed $refetudiant
      */
-    public function setRefetudiant($refetudiant): void
+    public function setRefetudiant($refetudiant)
     {
         $this->refetudiant = $refetudiant;
     }
@@ -49,7 +49,7 @@ class Inscrit
     /**
      * @param mixed $refconference
      */
-    public function setRefconference($refconference): void
+    public function setRefconference($refconference)
     {
         $this->refconference = $refconference;
     }

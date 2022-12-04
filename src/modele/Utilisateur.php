@@ -105,7 +105,7 @@ class Utilisateur
         return $res;
     }
     public function testRegister($bdd){
-        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE nom = :nom , prenom = :prenom , email = :email , mdp = :mdp");
+        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE (nom = :nom, prenom = :prenom, email = :email, mdp = :mdp)");
         $test->execute(array(
             'nom' => $this->getNom(),
             'prenom' => $this->getPrenom(),

@@ -40,7 +40,7 @@ class Offre
     /**
      * @param mixed $ref_type
      */
-    public function setRefType($ref_type): void
+    public function setRefType($ref_type)
     {
         $this->ref_type = $ref_type;
     }
@@ -56,7 +56,7 @@ class Offre
     /**
      * @param mixed $ref_representant
      */
-    public function setRefRepresentant($ref_representant): void
+    public function setRefRepresentant($ref_representant)
     {
         $this->ref_representant = $ref_representant;
     }

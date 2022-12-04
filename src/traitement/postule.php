@@ -8,9 +8,12 @@ $postule = new Postule(array(
     'RefEtudiant'=>$_SESSION['id'],
     'RefOffre'=>$_SESSION['current_offre']
 ));
-$postule->insertPostule($bdd);
-//if (true){
-//    $_SESSION['e'] = "errorInsert";
-//}
-//else $_SESSION['e'] = "sucessInsert";
-//header('Location: ../../vue/voir_offre.php');
+$result = $postule->selectPostuleByRef($bdd);
+if ($result){
+    $_SESSION['e'] = "errorInsert";
+}
+else {
+    $_SESSION['e'] = "sucessInsert";
+    $postule->insertPostule($bdd);
+}
+header('Location: ../../vue/voir_offre.php');
