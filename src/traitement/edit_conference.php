@@ -11,7 +11,8 @@ $conf = new Conference([
     'heure'=>$_POST['heure'],
     'duree'=>$_POST['duree'],
     'valider'=>$_POST['valider'],
-    'refamphitheatre'=>$_POST['ref']
+    'refamphitheatre'=>$_POST['ref'],
+    'refutilisateur'=>$_POST['refuti']
 ]);
 
 $conf->editConference();

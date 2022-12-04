@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../bdd/Database.php';
 require_once '../modele/Conference.php';
 
@@ -9,7 +10,8 @@ $conf = new Conference(array(
     'dateconf'=>$_POST['date'],
     'heure'=>$_POST['heure'],
     'duree'=>$_POST['duree'],
-    'valider'=>0
+    'valider'=>0,
+    'refutilisateur'=>$_SESSION['id']
 ));
 
 $conf->addConference($bdd);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 28 nov. 2022 à 10:56
+-- Généré le : mar. 29 nov. 2022 à 18:52
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `conference` (
   `heure` int(11) NOT NULL,
   `duree` int(11) NOT NULL,
   `valider` tinyint(1) NOT NULL,
-  `ref_amphitheatre` int(11) NOT NULL,
+  `ref_amphitheatre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_conference`),
   KEY `ref_amphitheatre` (`ref_amphitheatre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -138,7 +138,14 @@ CREATE TABLE IF NOT EXISTS `offre` (
   PRIMARY KEY (`id_offre`),
   KEY `ref_type` (`ref_type`),
   KEY `offre_ibfk_3` (`ref_representant`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `offre`
+--
+
+INSERT INTO `offre` (`id_offre`, `libelle`, `description`, `ref_type`, `ref_representant`) VALUES
+(16, 'Alternance Infirimier', 'Contrat sur 2 annÃ©es', 2, 5);
 
 -- --------------------------------------------------------
 
