@@ -63,9 +63,24 @@ session_start();
             <h6>Date : </h6>
             <input type="date" name="date" placeholder="Date de la conférence" required> <br><br>
             <h6>Heure de début : </h6>
-            <input type="number" name="heure" placeholder="Entre 8h et 11h" required> <br><br>
+            <select name="heure" required>
+                <option value="8">8h</option>
+                <option value="8.5">8h30</option>
+                <option value="9">9h</option>
+                <option value="9.5">9h30</option>
+                <option value="10">10h</option>
+                <ption value="10.5">10h30</ption>
+                <option value="11">11h</option>
+            </select><br><br>
             <h6>Durée : </h6>
-            <input type="number" name="duree" placeholder="En minutes (Max 220)" required> <br><br>
+            <select name="duree" required>
+                <option value="30">30min</option>
+                <option value="60">60min</option>
+                <option value="90">90min</option>
+                <option value="120">120min</option>
+                <option value="150">150min</option>
+                <option value="180">180min</option>
+            </select><br><br>
             <input type="submit" value="Ajouter">
         </form>
         <br><br>

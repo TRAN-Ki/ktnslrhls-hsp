@@ -11,6 +11,7 @@ class Conference
     private $duree;
     private $valider;
     private $refamphitheatre;
+    private $refutilisateur;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -157,6 +158,21 @@ class Conference
         $this->refamphitheatre = $refamphitheatre;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRefutilisateur()
+    {
+        return $this->refutilisateur;
+    }
+
+    /**
+     * @param mixed $refutilisateur
+     */
+    public function setRefutilisateur($refutilisateur): void
+    {
+        $this->refutilisateur = $refutilisateur;
+    }
 
     public function selectConferenceUser($bdd){
         $date = date('Y-m-d');
@@ -177,7 +193,7 @@ class Conference
 
     public function addConference($bdd){
 
-        $add = $bdd->getBdd()->prepare("INSERT INTO conference (nom, description, date_conf, heure, duree, valider, ref_amphitheatre) VALUES (:nom, :description, :date, :heure, :duree, :valider, :ref)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO conference (nom, description, date_conf, heure, duree, valider, ref_amphitheatre, ref_utilisateur) VALUES (:nom, :description, :date, :heure, :duree, :valider, :ref, :refuti)");
         $add->execute(array(
             'nom'=>$this->getNom(),
             'description'=>$this->getDescription(),
@@ -185,13 +201,14 @@ class Conference
             'heure'=>$this->getHeure(),
             'duree'=>$this->getDuree(),
             'valider'=>$this->getValider(),
-            'ref'=>$this->getRefAmphitheatre()
+            'ref'=>$this->getRefAmphitheatre(),
+            'refuti'=>$this->getRefutilisateur()
         ));
     }
 
     public function editConference(){
         $bdd = new Database();
-        $edit = $bdd->getBdd()->prepare("UPDATE conference SET nom = :nom, description = :description, date_conf = :date, heure = :heure, duree = :duree, valider = :valider, ref_amphitheatre = :ref WHERE id_conference = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE conference SET nom = :nom, description = :description, date_conf = :date, heure = :heure, duree = :duree, valider = :valider, ref_amphitheatre = :ref, ref_utilisateur = :refuti WHERE id_conference = :id");
         $edit->execute(array(
             'nom'=>$this->getNom(),
             'description'=>$this->getDescription(),
@@ -200,6 +217,7 @@ class Conference
             'duree'=>$this->getDuree(),
             'valider'=>$this->getValider(),
             'ref'=>$this->getRefAmphitheatre(),
+            'refuti'=>$this->getRefutilisateur(),
             'id'=>$this->getId()
         ));
     }

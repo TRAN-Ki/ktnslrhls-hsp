@@ -10,9 +10,9 @@ $conf = new Conference(array(
     'heure'=>$_POST['heure'],
     'duree'=>$_POST['duree'],
     'valider'=>$_POST['valider'],
-    'refamphitheatre'=>$_POST['ref']
+    'refamphitheatre'=>$_POST['ref'],
+    'refutilisateur'=>$_POST['refuti']
 ));
 
 $conf->addConference($bdd);
-var_dump($conf);
 header('Location: ../../vue/panelAdmin/conference.php');

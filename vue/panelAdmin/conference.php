@@ -2,10 +2,11 @@
 require_once '../../src/bdd/Database.php';
 require_once '../../src/modele/Amphitheatre.php';
 require_once '../../src/modele/Conference.php';
+require_once '../../src/modele/Utilisateur.php';
 
 
 session_start();
-
+$bdd = new Database();
 ?>
 
 
@@ -57,22 +58,47 @@ session_start();
             <h6>Date : </h6>
             <input type="date" name="date" placeholder="Date de la conférence"> <br><br>
             <h6>Heure : </h6>
-            <input type="number" name="heure" placeholder="Heure de début de la conférence"> <br><br>
+            <select name="heure" required>
+                <option value="8">8h</option>
+                <option value="8.5">8h30</option>
+                <option value="9">9h</option>
+                <option value="9.5">9h30</option>
+                <option value="10">10h</option>
+                <ption value="10.5">10h30</ption>
+                <option value="11">11h</option>
+            </select><br><br>
             <h6>Durée : </h6>
-            <input type="number" name="duree" placeholder="En minutes"> <br><br>
+            <select name="duree" required>
+                <option value="30">30min</option>
+                <option value="60">60min</option>
+                <option value="90">90min</option>
+                <option value="120">120min</option>
+                <option value="150">150min</option>
+                <option value="180">180min</option>
+            </select><br><br>
             <h6>Valider : </h6>
             <input type="number" name="valider" placeholder="(0 ou 1)"> <br><br>
             <h6>Reférence de l'amphitheatre :</h6>
             <?php
-
-            $bdd = new Database();
             $amphi = new Amphitheatre(array());
 
             $result = $amphi->selectAmphitheatre($bdd);
 
+            $user = new Utilisateur(array());
+
+            $resuser = $user->selectUtilisateur($bdd);
+
             ?>
             <select name="ref">
-                <option value="<?php echo $result[0]['id_amphitheatre'] ?>"><?php echo $result[0]['id_amphitheatre'].' - '.$result[0]['libelle']; ?></option>
+                <?php foreach ($result as $resamp){ ?>
+                <option value="<?php echo $resamp['id_amphitheatre'] ?>"><?php echo $resamp['id_amphitheatre'].' - '.$resamp['libelle']; ?></option>
+                <?php } ?>
+            </select> <br><br>
+            <h6>Reférence de l'utilisateur :</h6>
+            <select name="refuti">
+                <?php foreach ($resuser as $resusers){ ?>
+                <option value="<?php echo $resusers['id_utilisateur'] ?>"><?php echo $resusers['id_utilisateur']; ?></option>
+                <?php } ?>
             </select> <br><br>
             <input type="submit" value="Ajouter">
         </form>
@@ -99,7 +125,8 @@ session_start();
                 <th>Heure</th>
                 <th>Durée</th>
                 <th>Valider</th>
-                <th>Reference amphithéatre</th>
+                <th>Reference Amphithéatre</th>
+                <th>Reference Utilisateur</th>
             </tr>
             </thead>
             <tbody>
@@ -113,6 +140,7 @@ session_start();
                     <td><?php echo $value['duree'];?></td>
                     <td><?php echo $value['valider'];?></td>
                     <td><?php echo $value['ref_amphitheatre'];?></td>
+                    <td><?php echo $value['ref_utilisateur'];?></td>
                 </tr>
             <?php } ?>
             </tbody>
@@ -125,7 +153,8 @@ session_start();
                 <th>Heure</th>
                 <th>Durée</th>
                 <th>Valider</th>
-                <th>Reference amphithéatre</th>
+                <th>Reference Amphithéatre</th>
+                <th>Reference Utilisateur</th>
             </tr>
             </tfoot>
         </table>
@@ -173,14 +202,37 @@ session_start();
             <h6>Date : </h6>
             <input type="date" name="date" placeholder="Date de la conférence"> <br><br>
             <h6>Heure : </h6>
-            <input type="number" name="heure" placeholder="Heure de début de la conférence"> <br><br>
+            <select name="heure" required>
+                <option value="8">8h</option>
+                <option value="8.5">8h30</option>
+                <option value="9">9h</option>
+                <option value="9.5">9h30</option>
+                <option value="10">10h</option>
+                <ption value="10.5">10h30</ption>
+                <option value="11">11h</option>
+            </select><br><br>
             <h6>Durée : </h6>
-            <input type="number" name="duree" placeholder="En minutes"> <br><br>
+            <select name="duree" required>
+                <option value="30">30min</option>
+                <option value="60">60min</option>
+                <option value="90">90min</option>
+                <option value="120">120min</option>
+                <option value="150">150min</option>
+                <option value="180">180min</option>
+            </select><br><br>
             <h6>Valider : </h6>
             <input type="number" name="valider" placeholder="(0 ou 1)"> <br><br>
             <h6>Reférence de l'amphitheatre :</h6>
             <select name="ref">
-                <option value="<?php echo $result[0]['id_amphitheatre'] ?>"><?php echo $result[0]['id_amphitheatre'].' - '.$result[0]['libelle']; ?></option>
+                <?php foreach ($result as $resamp){ ?>
+                    <option value="<?php echo $resamp['id_amphitheatre'] ?>"><?php echo $resamp['id_amphitheatre'].' - '.$resamp['libelle']; ?></option>
+                <?php } ?>
+            </select> <br><br>
+            <h6>Reférence de l'utilisateur :</h6>
+            <select name="refuti">
+                <?php foreach ($resuser as $resusers){ ?>
+                    <option value="<?php echo $resusers['id_utilisateur'] ?>"><?php echo $resusers['id_utilisateur']; ?></option>
+                <?php } ?>
             </select> <br><br>
             <input type="submit" value="Modifier">
         </form>
