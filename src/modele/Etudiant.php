@@ -2,7 +2,7 @@
 
 class Etudiant
 {
-    private $ref_utilisateur;
+    private $refutilisateur;
     private $domaine;
 
     public function __construct(array $donnees){
@@ -30,9 +30,10 @@ class Etudiant
     }
 
     public function addEtudiant($bdd){
-        $add = $bdd->getBdd()->prepare("INSERT INTO etudiant (domaine) VALUES (:domaine)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO etudiant (ref_utilisateur, domaine) VALUES (:ref, :domaine)");
         $add->execute(array(
-            'domaine'=>$this->getDomaine(),
+            'ref'=>$this->getRefUtilisateur(),
+            'domaine'=>$this->getDomaine()
         ));
     }
 
@@ -51,22 +52,20 @@ class Etudiant
         ));
     }
 
-
-
     /**
      * @return mixed
      */
-    public function getRefUtilisateur()
+    public function getRefutilisateur()
     {
-        return $this->ref_utilisateur;
+        return $this->refutilisateur;
     }
 
     /**
-     * @param mixed $ref_utilisateur
+     * @param mixed $refutilisateur
      */
-    public function setRefUtilisateur($ref_utilisateur)
+    public function setRefutilisateur($refutilisateur): void
     {
-        $this->ref_utilisateur = $ref_utilisateur;
+        $this->refutilisateur = $refutilisateur;
     }
 
     /**

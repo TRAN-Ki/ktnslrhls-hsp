@@ -10,55 +10,58 @@ $bdd = new Database();
 $user = new Utilisateur(array(
     'nom' => $_POST['nom'],
     'prenom' => $_POST['prenom'],
-    'email' => $_POST['email'],
+    'email' => $_POST['email']
 ));
 
 session_start();
 
 try {
-    var_dump($_SESSION);
-
     $res = $user->testRegister($bdd);
 
     if (!$res) {
         $hash = password_hash($_POST['mdp'],PASSWORD_DEFAULT);
-        $user->setMdp($_SESSION['hash']);
+        $user->setMdp($hash);
         $user->setAdmin(0);
         $user->setActif(0);
-        //$user->addUtilisateur($bdd);
+        $user->addUtilisateur($bdd);
 
-        $result = $user->selectUtilisateurByEmail($bdd);
-        if ($_POST['choix'] == "Représentant") {
+        $user1 = new Utilisateur(array(
+            'email' => $_POST['email']
+        ));
 
-            $rep = new Representant(array(
-                'refutilisateur'=> $result['id_utilisateur'],
-                'role' => $_POST['role'],
-                'refhopital' => $_POST['ref_hopital']
-            ));
+        $result = $user1->testLogin($bdd);
+        if ($result){
+            if ($_POST['choix'] == "Représentant") {
 
-            //$rep->addRepresentant($bdd);
+                $rep = new Representant(array(
+                    'refutilisateur'=> $result['id_utilisateur'],
+                    'role' => $_POST['role'],
+                    'refhopital' => $_POST['ref_hopital']
+
+                ));
+                $rep->addRepresentant($bdd);
 
         } elseif ($_POST['choix'] == "Etudiant") {
 
-            $etu = new Etudiant(array(
-                'refutilisateur' => $result['id_utilisateur'],
-                'domaine' => $_POST['domaine']
-            ));
+                $etu = new Etudiant(array(
+                    'refutilisateur' => $result['id_utilisateur'],
+                    'domaine' => $_POST['domaine']
+                ));
+                $etu->addEtudiant($bdd);
 
-            //$etu->addEtudiant($bdd);
+            }
+
+            $email = $user->getEmail();
+            $prenom = $user->getPrenom();
+
+            $mail = new Mail($prenom, $email);
+
+            $mail->sendMail('Inscription HSP', 'Bonjour ' . $prenom . ', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,');
+
+            echo "ok";
 
         }
-
-        $email = $user->getEmail();
-        $prenom = $user->getPrenom();
-
-        $mail = new Mail($prenom, $email);
-
-        //$mail->sendMail('Inscription HSP', 'Bonjour ' . $prenom . ', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,');
-
-        echo "ok";
-
-        //header('Location: ../../index.php');
+        header('Location: ../../index.php');
     }else{
         //header('Location: ../../index.php');
     }

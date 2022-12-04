@@ -31,8 +31,9 @@ class Representant extends Utilisateur
     }
 
     public function addRepresentant($bdd){
-        $add = $bdd->getBdd()->prepare("INSERT INTO representant (role, ref_hopital) VALUES (:role, :refhopital)");
+        $add = $bdd->getBdd()->prepare("INSERT INTO representant (ref_utilisateur, role, ref_hopital) VALUES (:refuser, :role, :refhopital)");
         $add->execute(array(
+            'refuser'=>$this->getRefUtilisateur(),
             'role'=>$this->getRole(),
             'refhopital'=>$this->getRefHopital()
         ));
