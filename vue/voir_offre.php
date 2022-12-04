@@ -5,7 +5,6 @@ require_once '../src/modele/Type.php';
 require_once '../src/modele/Postule.php';
 session_start();
 $bdd = new Database();
-var_dump($_SESSION);
 if (isset($_POST['id'])){
     $offre = new Offre(array(
         'id'=>$_POST['id']
@@ -65,6 +64,18 @@ if (isset($_SESSION['e'])){
         <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Erreur !</strong> Tu n'as pas pu postuler à l'offre. Contact un administrateur si l'erreur se reproduit.
+        </div>
+        <?php
+        unset($_SESSION['e']);
+    }
+}
+
+if (isset($_SESSION['e'])){
+    if ($_SESSION['e'] == "sucessInsert"){
+        ?>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Succès !</strong> Votre postulation a été prise en compte ! Garder un oeil sur votre boîte mail !
         </div>
         <?php
         unset($_SESSION['e']);

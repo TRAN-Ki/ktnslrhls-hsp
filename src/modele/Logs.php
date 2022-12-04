@@ -121,7 +121,7 @@ class Logs
 
     public function addLogs($bdd){
 
-        $add = $bdd->getBdd()->prepare("INSERT INTO log (nom, date_log, heure, ref_utilisateur) VALUES :nom, :datelog, :heure, :ref");
+        $add = $bdd->getBdd()->prepare("INSERT INTO log (nom, date_log, heure, ref_utilisateur) VALUES (:nom, :datelog, :heure, :ref)");
         $add->execute(array(
             'nom'=>$this->getNom(),
             'datelog'=>$this->getDate(),
@@ -134,7 +134,7 @@ class Logs
 
     public function editLogs($bdd){
 
-        $edit = $bdd->getBdd()->prepare("UPDATE hopital SET nom = :nom, date_log = :datelog, heure = :heure, ref_utilisateur = :ref WHERE id_log = :id");
+        $edit = $bdd->getBdd()->prepare("UPDATE log SET nom = :nom, date_log = :datelog, heure = :heure, ref_utilisateur = :ref WHERE id_log = :id");
         $edit->execute(array(
             'nom'=>$this->getNom(),
             'datelog'=>$this->getDate(),

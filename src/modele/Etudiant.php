@@ -45,7 +45,7 @@ class Etudiant
     }
 
     public function deleteEtudiant($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE etudiant FROM ref_utilisateur = :id');
+        $del = $bdd->getBdd()->prepare('DELETE FROM etudiant WHERE ref_utilisateur = :id');
         $del->execute(array(
             'id'=>$this->getRefUtilisateur()
         ));

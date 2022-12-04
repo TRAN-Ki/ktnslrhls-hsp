@@ -40,7 +40,7 @@ class Conference
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -56,7 +56,7 @@ class Conference
     /**
      * @param mixed $nom
      */
-    public function setNom($nom): void
+    public function setNom($nom)
     {
         $this->nom = $nom;
     }
@@ -72,7 +72,7 @@ class Conference
     /**
      * @param mixed $description
      */
-    public function setDescription($description): void
+    public function setDescription($description)
     {
         $this->description = $description;
     }
@@ -88,7 +88,7 @@ class Conference
     /**
      * @param mixed $dateconf
      */
-    public function setDateConf($dateconf): void
+    public function setDateConf($dateconf)
     {
         $this->dateconf = $dateconf;
     }
@@ -104,7 +104,7 @@ class Conference
     /**
      * @param mixed $heure
      */
-    public function setHeure($heure): void
+    public function setHeure($heure)
     {
         $this->heure = $heure;
     }
@@ -120,7 +120,7 @@ class Conference
     /**
      * @param mixed $duree
      */
-    public function setDuree($duree): void
+    public function setDuree($duree)
     {
         $this->duree = $duree;
     }
@@ -136,7 +136,7 @@ class Conference
     /**
      * @param mixed $valider
      */
-    public function setValider($valider): void
+    public function setValider($valider)
     {
         $this->valider = $valider;
     }
@@ -152,7 +152,7 @@ class Conference
     /**
      * @param mixed $refamphitheatre
      */
-    public function setRefAmphitheatre($refamphitheatre): void
+    public function setRefAmphitheatre($refamphitheatre)
     {
         $this->refamphitheatre = $refamphitheatre;
     }

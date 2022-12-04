@@ -47,9 +47,9 @@ class Representant extends Utilisateur
     }
 
     public function deleteRepresentant($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE representant FROM ref_utilisateur = :id');
+        $del = $bdd->getBdd()->prepare('DELETE FROM representant WHERE ref_utilisateur = :id');
         $del->execute(array(
-            'id'=>$this->getIdUtilisateur()
+            'id'=>$this->getRefUtilisateur()
         ));
     }
 

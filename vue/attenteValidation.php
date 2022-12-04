@@ -19,17 +19,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>HSP - Template</title>
+    <title>HSP - Attente de validation</title>
 
     <style>
-        .main-page {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            color: #0a53bd;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
 
         .box-1 {
             border: 2px solid;
@@ -65,6 +57,10 @@
             background-size: 80px 80px;
             background-repeat: repeat;
         }
+
+        a.back {
+            color: #0a53bd !important;
+        }
     </style>
 
 </head>
@@ -90,8 +86,9 @@
     </div>
 </header>
 <div class="container mx-auto px-32">
-    <div class="main-page">
-        <h2>Retour à l'accueil dans quelques secondes...</h2>
+    <div>
+        <br>
+        <p><a class="back" href="../index.php">Retour à l'accueil</a></p>
         <p>Votre compte n'est pas encore validé / n'est pas actuellement actif.</p><br>
         <p>Un compte est généralement activé au bout de 3-4 jours.</p><br>
         <p>En cas de problème(s) avec l'activation de votre compte, veuillez contacter un administrateur.</p><br>
@@ -110,6 +107,3 @@
 </body>
 
 </html>
-
-<?php
-header("Location: ../index.php");
