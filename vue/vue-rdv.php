@@ -15,7 +15,6 @@ $rdv = new Rdv(array());
 $etu = new Etudiant(array());
 $repr = new Representant(array());
 $offre = new Offre(array());
-var_dump($etu);
 if (!isset($_SESSION['isAdmin'])){
     if(!isset($_SESSION['email'])){
         header("Location: ../index.php");
@@ -171,7 +170,7 @@ if (isset($_SESSION['email'])){
         $bdd = new Database();
         $res = $rdv->selectRdv($bdd);
         ?>  <br>
-            <h3>Affichage des rendez-vous</h3>
+            <h3>Affichage de mes rendez-vous</h3>
         <table id="table" class="display" style="width:100%">
             <thead>
             <tr>
