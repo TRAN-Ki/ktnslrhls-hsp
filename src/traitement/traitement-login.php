@@ -14,6 +14,7 @@ if ($res != null){
     session_start();
     if ($res['admin'] == 1 && $res['actif'] == 0){
         $_SESSION['isAdmin'] = $res['admin'];
+        $_SESSION['idAdmin'] = $res['id_utilisateur'];
         echo "admin";
     }
     if ($res['admin'] == 0 && $res['actif'] == 0) {
