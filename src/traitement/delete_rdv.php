@@ -7,6 +7,6 @@ $rdv = new Rdv(array(
     'id'=>$_POST['id']
 ));
 
-$rdv->deleteRdv();
+$rdv->deleteRdv($bdd);
 
 header('Location: ../../vue/vue-rdv.php');

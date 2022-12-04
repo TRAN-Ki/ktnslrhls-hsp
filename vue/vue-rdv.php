@@ -100,13 +100,17 @@ if (isset($_SESSION['email'])){
             <tbody>
             <?php foreach ($res as $value){
                 if ($value['etat'] != 1){
-                    $_SESSION['idrdv'] = $value['id_rdv'];
                 ?>
                 <tr>
                     <td><?php echo $value['id_rdv'];?></td>
                     <td><?php echo $value['date_rdv'];?></td>
                     <td><?php echo $value['heure'];?></td>
-                    <td><a href="../src/traitement/validation_rdv.php"><button>Valider</button></a></td>
+                    <td>
+                        <form method="post" action="../src/traitement/validation_rdv.php">
+                            <input name="id" value="<?php echo $value['id_rdv']?>" type="text" style="display: none">
+                            <input type="submit" value="Valider">
+                        </form>
+                    </td>
                 </tr>
             <?php } } ?>
             </tbody>

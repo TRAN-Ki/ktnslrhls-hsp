@@ -12,6 +12,6 @@ $rdv = new Rdv(array(
     'refoffre'=>$_POST['refoff']
 ));
 
-$rdv->editRdv();
+$rdv->editRdv($bdd);
 
 header('Location: ../../vue/vue-rdv.php');

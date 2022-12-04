@@ -174,8 +174,7 @@ class Rdv
 
     }
 
-    public function editRdv(){
-        $bdd = new Database();
+    public function editRdv($bdd){
         $edit = $bdd->getBdd()->prepare("UPDATE rdv SET date_rdv = :daterdv, heure = :heure, etat = :etat, ref_etudiant = :refetudiant, ref_representant = :refrepresentant, ref_offre = :refoffre WHERE id_rdv = :id");
         $edit->execute(array(
             'daterdv'=>$this->getDate(),
@@ -188,8 +187,7 @@ class Rdv
         ));
     }
 
-    public function updateRdvValider(){
-        $bdd = new Database();
+    public function updateRdvValider($bdd){
         $edit = $bdd->getBdd()->prepare("UPDATE rdv SET etat = :etat WHERE id_rdv = :id");
         $edit->execute(array(
             'etat'=>$this->getEtat(),
@@ -197,8 +195,7 @@ class Rdv
         ));
     }
 
-    public function deleteRdv(){
-        $bdd = new Database();
+    public function deleteRdv($bdd){
         $del = $bdd->getBdd()->prepare("DELETE FROM rdv WHERE id_rdv = :id");
         $del->execute(array(
             'id'=>$this->getId()
