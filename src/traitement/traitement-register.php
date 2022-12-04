@@ -11,61 +11,56 @@ $user = new Utilisateur(array(
     'nom' => $_POST['nom'],
     'prenom' => $_POST['prenom'],
     'email' => $_POST['email'],
-    'mdp' => $_POST['mdp'],
 ));
 
 session_start();
 
 try {
+    var_dump($_SESSION);
 
     $res = $user->testRegister($bdd);
 
     if (!$res) {
-
-        $user->setNom($_POST['nom']);
-        $user->setPrenom($_POST['prenom']);
-        $user->setEmail($_POST['email']);
-        $user->setMdp($_POST['mdp']);
+        $hash = password_hash($_POST['mdp'],PASSWORD_DEFAULT);
+        $user->setMdp($_SESSION['hash']);
         $user->setAdmin(0);
         $user->setActif(0);
-        $user->addUtilisateur($bdd);
-        var_dump($user);
+        //$user->addUtilisateur($bdd);
 
-        // choiceBox // à revoir pour la sécurité
+        $result = $user->selectUtilisateurByEmail($bdd);
         if ($_POST['choix'] == "Représentant") {
 
             $rep = new Representant(array(
+                'refutilisateur'=> $result['id_utilisateur'],
                 'role' => $_POST['role'],
-                'ref_hopital' => $_POST['hopital']
+                'refhopital' => $_POST['ref_hopital']
             ));
 
-            $rep->setRole($_POST['role']);
-            $rep->setRefHopital($_POST['hopital']);
-            $rep->addRepresentant($bdd);
+            //$rep->addRepresentant($bdd);
 
         } elseif ($_POST['choix'] == "Etudiant") {
 
             $etu = new Etudiant(array(
+                'refutilisateur' => $result['id_utilisateur'],
                 'domaine' => $_POST['domaine']
             ));
 
-            $etu->setDomaine($_POST['domaine']);
-            $etu->addEtudiant($bdd);
+            //$etu->addEtudiant($bdd);
 
         }
 
         $email = $user->getEmail();
         $prenom = $user->getPrenom();
 
-        $mail = new Mail($prenom,$email);
+        $mail = new Mail($prenom, $email);
 
-        $mail->sendMail('Inscription HSP','Bonjour '.$prenom.', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,');
+        //$mail->sendMail('Inscription HSP', 'Bonjour ' . $prenom . ', <br><br> Votre inscription a bien été pris en compte par notre administration. <br> Vous serez recontacté dans les plus brefs délais. <br><br> Bien cordialement,');
 
         echo "ok";
-        header('Location: ../../index.php');
+
+        //header('Location: ../../index.php');
     }else{
-        //TODO: ajouter en html + js -> l'user a deja un compte
-        header('Location: ../../index.php');
+        //header('Location: ../../index.php');
     }
 
 }catch(PDOException $e){

@@ -9,8 +9,9 @@ $log = new Utilisateur(array(
     'mdp' =>$_POST['mdp'],
 ));
 $res = $log->testLogin($bdd);
+$verif = password_verify($_POST['mdp'], $res['mdp']);
 
-if ($res != null){
+if ($verif){
     session_start();
     if ($res['admin'] == 1 && $res['actif'] == 0){
         $_SESSION['isAdmin'] = $res['admin'];

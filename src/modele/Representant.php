@@ -2,9 +2,10 @@
 require_once 'Utilisateur.php';
 class Representant extends Utilisateur
 {
-        private $ref_utilisateur;
+
+    private $refutilisateur;
     private $role;
-    private $ref_hopital;
+    private $refhopital;
 
     public function __construct(array $donnees){
         $this->hydrate($donnees);
@@ -66,15 +67,15 @@ class Representant extends Utilisateur
      */
     public function getRefUtilisateur()
     {
-        return $this->ref_utilisateur;
+        return $this->refutilisateur;
     }
 
     /**
-     * @param mixed $ref_utilisateur
+     * @param mixed $refutilisateur
      */
-    public function setRefUtilisateur($ref_utilisateur)
+    public function setRefUtilisateur($refutilisateur)
     {
-        $this->ref_utilisateur = $ref_utilisateur;
+        $this->refutilisateur = $refutilisateur;
     }
 
     /**
@@ -98,15 +99,15 @@ class Representant extends Utilisateur
      */
     public function getRefHopital()
     {
-        return $this->ref_hopital;
+        return $this->refhopital;
     }
 
     /**
-     * @param mixed $ref_hopital
+     * @param mixed $refhopital
      */
-    public function setRefHopital($ref_hopital)
+    public function setRefHopital($refhopital)
     {
-        $this->ref_hopital = $ref_hopital;
+        $this->refhopital = $refhopital;
     }
 
 
