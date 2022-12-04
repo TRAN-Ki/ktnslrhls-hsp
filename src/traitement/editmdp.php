@@ -12,17 +12,22 @@ $user = new Utilisateur(array(
 
 $result = $user->selectUserMdpOublie($bdd);
 
-var_dump($result);
 
 if($result){
 
-    $user->setId($result['id_utilisateur']);
-    $user->setNom($result['nom']);
-    $user->setPrenom($result['prenom']);
-    $user->setActif($result['actif']);
-    $user->setAdmin($result['admin']);
-    $user->setMdp($_POST['mdp']);
-    $user->updateUtilisateur($bdd);
+    $hash = password_hash($_POST['mdp'],PASSWORD_DEFAULT);
+
+    $user1 = new Utilisateur(array(
+        'id'=>$result['id_utilisateur'],
+        'nom'=>$result['nom'],
+        'prenom'=>$result['prenom'],
+        'email' =>$result['email'],
+        'mdp'=>$hash,
+        'admin'=>$result['admin'],
+        'actif'=>$result['actif']
+    ));
+
+    $user1->updateUtilisateur($bdd);
 
     ?>
 <script>
@@ -31,7 +36,5 @@ if($result){
 
 </script>
     <?php
-
 }
-
     ?>
