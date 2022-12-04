@@ -41,7 +41,7 @@ try {
                 ));
                 $rep->addRepresentant($bdd);
 
-        } elseif ($_POST['choix'] == "Etudiant") {
+            } elseif ($_POST['choix'] == "Etudiant") {
 
                 $etu = new Etudiant(array(
                     'refutilisateur' => $result['id_utilisateur'],
@@ -63,7 +63,7 @@ try {
         }
         header('Location: ../../index.php');
     }else{
-        //header('Location: ../../index.php');
+        header('Location: ../../index.php');
     }
 
 }catch(PDOException $e){
