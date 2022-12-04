@@ -8,5 +8,5 @@ $user = new Utilisateur(array(
     'id'=>$_POST['id']
 ));
 
-$user->deleteUtilisateur();
+$user->deleteUtilisateur($bdd);
 header('Location: ../../vue/panelAdmin/utilisateur.php');

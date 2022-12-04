@@ -14,5 +14,5 @@ $user = new Utilisateur(array(
 
 ));
 
-$user->updateUtilisateur();
+$user->updateUtilisateur($bdd);
 header('Location: ../../vue/panelAdmin/utilisateur.php');

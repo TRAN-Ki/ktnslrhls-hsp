@@ -10,7 +10,7 @@ $user = new Utilisateur(array(
     'email' =>$_SESSION['email']
 ));
 
-$result = $user->selectUserMdpOublie($bdd,$_SESSION['email']);
+$result = $user->selectUserMdpOublie($bdd);
 
 var_dump($result);
 
@@ -22,7 +22,7 @@ if($result){
     $user->setActif($result['actif']);
     $user->setAdmin($result['admin']);
     $user->setMdp($_POST['mdp']);
-    $user->updateUtilisateur();
+    $user->updateUtilisateur($bdd);
 
     ?>
 <script>

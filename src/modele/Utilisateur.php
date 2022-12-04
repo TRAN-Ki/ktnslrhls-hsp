@@ -26,17 +26,30 @@ class Utilisateur
         }
     }
 
-    public function selectUserMdpOublie($bdd,$mail){
+    public function validUser($bdd){
+        $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET actif = 1 WHERE id_utilisateur = :id");
+        $mod->execute(array(
+            'id'=>$this->getId()
+        ));
+    }
+
+    public function selectUserMdpOublie($bdd){
         $req = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $req->execute(array(
-            'email'=>$mail
+            'email'=>$this->getEmail()
         ));
-        $res = $req->fetch();
-        return $res;
+        return $req->fetch();
     }
 
     public function selectUtilisateur($bdd){
         $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur");
+        $sel->execute();
+        $result = $sel->fetchAll();
+        return $result;
+    }
+
+    public function selectUtilisateurToValid($bdd){
+        $sel = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE actif = 0 AND admin = 0");
         $sel->execute();
         $result = $sel->fetchAll();
         return $result;
@@ -55,8 +68,7 @@ class Utilisateur
         ));
     }
 
-    public function updateUtilisateur(){
-        $bdd = new Database();
+    public function updateUtilisateur($bdd){
         $mod = $bdd->getBdd()->prepare("UPDATE utilisateur SET nom = :nom , prenom = :prenom, email = :email, mdp = :mdp, admin = :admin, actif = :actif WHERE id_utilisateur = :id");
         $mod->execute(array(
             'nom'=>$this->getNom(),
@@ -67,11 +79,9 @@ class Utilisateur
             'actif'=>$this->getActif(),
             'id'=>$this->getId()
         ));
-        var_dump($this);
     }
 
-    public function deleteUtilisateur(){
-        $bdd = new Database();
+    public function deleteUtilisateur($bdd){
         $del = $bdd->getBdd()->prepare('DELETE FROM utilisateur WHERE id_utilisateur = :id');
         $del->execute(array(
             'id'=>$this->getId()
