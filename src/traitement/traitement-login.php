@@ -6,7 +6,6 @@ $bdd = new Database();
 
 $log = new Utilisateur(array(
     'email' =>$_POST['email'],
-    'mdp' =>$_POST['mdp'],
 ));
 $res = $log->testLogin($bdd);
 $verif = password_verify($_POST['mdp'], $res['mdp']);
@@ -39,5 +38,4 @@ if ($verif){
         }
         echo "oui";
     }
-//TODO: $_SESSION['isRepr'], faire méthode et récupérer étudiant (0) ou représentant (0)
 }

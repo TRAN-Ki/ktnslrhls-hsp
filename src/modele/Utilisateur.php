@@ -96,10 +96,9 @@ class Utilisateur
     }
 
     public function testLogin($bdd){
-        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email AND mdp = :mdp");
+        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email");
         $test->execute(array(
-            'email'=>$this->getEmail(),
-            'mdp'=>$this->getMdp()
+            'email'=>$this->getEmail()
         ));
         $res = $test->fetch();
         return $res;
