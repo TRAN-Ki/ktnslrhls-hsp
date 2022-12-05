@@ -101,8 +101,7 @@ if ($_POST['code'] == $_SESSION['rand']){
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2">FAQ</a></li>
-                <li><a href="#" class="nav-link px-2">A propos</a></li>
+
             </ul>
 
         </div>
@@ -126,9 +125,7 @@ if ($_POST['code'] == $_SESSION['rand']){
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Accueil</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">À propos</a></li>
+
         </ul>
         <p class="text-center text-muted">&copy;2002-2022 HSP</p>
     </footer>

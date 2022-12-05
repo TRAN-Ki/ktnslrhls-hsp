@@ -121,8 +121,7 @@ if(isset($_SESSION['isAdmin']) || isset($_SESSION['id'])){
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2">FAQ</a></li>
-                <li><a href="#" class="nav-link px-2">À propos</a></li>
+
             </ul>
 
             <div class="text-end">
@@ -181,9 +180,7 @@ if(isset($_SESSION['isAdmin']) || isset($_SESSION['id'])){
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Accueil</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQ</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">À propos</a></li>
+            <li class="nav-item"><a href="https://www.aphp.fr" class="nav-link px-2 text-muted">À propos</a></li>
             <div class="break"></div>
             <li class="nav-item"><a class="nav-link px-2 text-muted connexion">Connexion</a></li>
             <li class="nav-item"><a href="vue/register.php" class="nav-link px-2 text-muted">Inscription</a></li>
