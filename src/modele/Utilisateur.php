@@ -117,12 +117,11 @@ class Utilisateur
     }
 
     public function testLogin($bdd){
-        $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE email = :email");
+        $test = $bdd->getBdd()->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $test->execute(array(
             'email'=>$this->getEmail()
         ));
-        $res = $test->fetch();
-        return $res;
+        return $test->fetch();
     }
     public function testRegister($bdd){
         $test = $bdd->getBdd()->prepare("SELECT * FROM Utilisateur WHERE (nom = :nom, prenom = :prenom, email = :email, mdp = :mdp)");
