@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Env.php';
 class Database
 {
 
@@ -11,10 +11,11 @@ class Database
 
     public function __construct()
     {
-        $this->host = "localhost";
-        $this->dbname = "hsp-skh";
-        $this->user = "root";
-        $this->pwd = "";
+        $env = new Env();
+        $this->host = $env->getHost();
+        $this->dbname = $env->getDbname();
+        $this->user = $env->getUser();
+        $this->pwd = $env->getPwd();
     }
 
 
