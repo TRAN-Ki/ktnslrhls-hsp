@@ -2,7 +2,6 @@
 require_once '../modele/Representant.php';
 require_once '../bdd/Database.php';
 require_once '../modele/Utilisateur.php';
-var_dump($_SERVER['DOCUMENT_ROOT']);
 $bdd = new Database();
 
 $log = new Utilisateur(array(
@@ -20,7 +19,7 @@ if ($verif){
         $_SESSION['e'] = 'sucess';
         echo "admin";
     }
-    if ($res['admin'] == 0 && $res['actif'] == 0) {
+    elseif ($res['admin'] == 0 && $res['actif'] == 0) {
         echo "non";
     }elseif($res['actif'] == 1){
 

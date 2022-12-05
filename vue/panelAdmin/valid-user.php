@@ -2,6 +2,12 @@
 require_once '../../src/bdd/Database.php';
 require_once '../../src/modele/Utilisateur.php';
 session_start();
+if(!isset($_SESSION['isAdmin'])){
+    header("Location: ../../index.php");
+}
+else if($_SESSION['isAdmin'] == 0){
+    header("Location: ../../index.php");
+}
 $bdd = new Database();
 ?>
 <!DOCTYPE html>

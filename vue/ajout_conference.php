@@ -5,7 +5,9 @@ require_once '../src/modele/Conference.php';
 
 
 session_start();
-
+if(!isset($_SESSION['id'])){
+    header("Location: ../../index.php");
+}
 ?>
 
 
