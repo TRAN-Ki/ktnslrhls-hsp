@@ -2,6 +2,7 @@
 require_once '../modele/Representant.php';
 require_once '../bdd/Database.php';
 require_once '../modele/Utilisateur.php';
+var_dump($_SERVER['DOCUMENT_ROOT']);
 $bdd = new Database();
 
 $log = new Utilisateur(array(
@@ -41,4 +42,10 @@ if ($verif){
         }
         echo "oui";
     }
+    else {
+        echo "erreur après verif";
+    }
+}
+else {
+    echo "erreur avant verif";
 }
