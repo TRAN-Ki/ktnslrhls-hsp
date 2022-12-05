@@ -15,6 +15,7 @@ if ($verif){
     if ($res['admin'] == 1 && $res['actif'] == 0){
         $_SESSION['isAdmin'] = $res['admin'];
         $_SESSION['idAdmin'] = $res['id_utilisateur'];
+        $_SESSION['emailAdmin'] = $_POST['email'];
         echo "admin";
     }
     if ($res['admin'] == 0 && $res['actif'] == 0) {
@@ -23,6 +24,7 @@ if ($verif){
 
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['id'] = $res['id_utilisateur'];
+        $_SESSION['e'] = 'sucess';
 
         $log1 = new Representant(array(
             'refUtilisateur' =>$_SESSION['id'],

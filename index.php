@@ -87,6 +87,27 @@ if(isset($_SESSION['isAdmin']) || isset($_SESSION['id'])){
             background-size: 80px 80px;
             background-repeat: repeat;
         }
+
+        .alert {
+            padding: 20px;
+            background-color: #92f784;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
     </style>
 
 </head>
@@ -115,6 +136,32 @@ if(isset($_SESSION['isAdmin']) || isset($_SESSION['id'])){
 </header>
 <div class="container mx-auto px-32">
     <div class="main-page">
+        <?php
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "error"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Erreur !</strong> Votre action n'a pas pu être effectué. Contact un administrateur si l'erreur se reproduit.
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "sucess"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Succès !</strong> Votre action a été prise en compte !
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+        ?>
+        <div class="break"></div>
         <div class="box-1 my-8 bg-slate-300 border-gray-400">
             Bienvenue sur le site HSP Étudiant
         </div>

@@ -15,5 +15,5 @@ $conf = new Conference(array(
 ));
 
 $conf->addConference($bdd);
-
+$_SESSION['e'] = "sucessConf";
 header('Location: ../../vue/vue-utilisateur.php');

@@ -37,21 +37,6 @@ class Etudiant
         ));
     }
 
-    public function updateEtudiant($bdd){
-        $mod = $bdd->getBdd()->prepare("UPDATE etudiant SET domaine = :domaine WHERE ref_utilisateur = :refutilisateur");
-        $mod->execute(array(
-            'domaine'=>$this->getDomaine(),
-            'refutilisateur'=>$this->getRefUtilisateur()
-        ));
-    }
-
-    public function deleteEtudiant($bdd){
-        $del = $bdd->getBdd()->prepare('DELETE FROM etudiant WHERE ref_utilisateur = :id');
-        $del->execute(array(
-            'id'=>$this->getRefUtilisateur()
-        ));
-    }
-
     /**
      * @return mixed
      */

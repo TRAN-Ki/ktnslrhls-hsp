@@ -56,6 +56,27 @@ if (isset($_SESSION['email'])){
         .mb-4r{
             margin-bottom: 4rem !important;
         }
+
+        .alert {
+            padding: 20px;
+            background-color: #68ce6c;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +92,43 @@ if (isset($_SESSION['email'])){
         </nav>
     </header>
     <div class="container">
+        <?php
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "error"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Erreur !</strong> Votre action n'a pas pu être effectué. Contact un administrateur si l'erreur se reproduit.
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "sucess"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Succès !</strong> Votre action a été prise en compte !
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "sucessConf"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Succès !</strong> Votre conférence a été enregistrée ! Elle sera d'abord validée par un administrateur.
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+        ?>
         <?php
         if (isset($_SESSION['isAdmin'])){
             if ($_SESSION['isAdmin'] == 1){ ?>
@@ -88,13 +146,13 @@ if (isset($_SESSION['email'])){
         </div>
         <!-- Modification utilsateur -->
         <div>
-            <form id="form" action="../src/traitement/traitement-register.php" method="post">
+            <form id="form" action="../src/traitement/editmdp_fromuser.php" method="post">
                 <h4>Modifier son profil :</h4>
                 <div class="label"></div>
                 <h6>Email :</h6>
                 <input type="email" name="email" placeholder="example@domain.org" required> <br><br>
-                <h6>Mot de passe :</h6>
-                <input type="password" name="mdp" required placeholder="Mot de passe"> <br><br>
+                <h6>Entrez votre nouveau mot de passe :</h6>
+                <input type="text" name="mdp" placeholder="Mot de passe" required> <br><br>
                 <input type="submit" value="Modifier">
             </form>
         </div>

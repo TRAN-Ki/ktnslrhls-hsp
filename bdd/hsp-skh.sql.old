@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 29 nov. 2022 à 18:52
+-- Généré le : dim. 04 déc. 2022 à 18:56
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -33,7 +33,14 @@ CREATE TABLE IF NOT EXISTS `amphitheatre` (
   `libelle` varchar(500) COLLATE utf8_bin NOT NULL,
   `nb_places` int(11) NOT NULL,
   PRIMARY KEY (`id_amphitheatre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `amphitheatre`
+--
+
+INSERT INTO `amphitheatre` (`id_amphitheatre`, `libelle`, `nb_places`) VALUES
+(1, 'test', 250);
 
 -- --------------------------------------------------------
 
@@ -51,9 +58,20 @@ CREATE TABLE IF NOT EXISTS `conference` (
   `duree` int(11) NOT NULL,
   `valider` tinyint(1) NOT NULL,
   `ref_amphitheatre` int(11) DEFAULT NULL,
+  `ref_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_conference`),
-  KEY `ref_amphitheatre` (`ref_amphitheatre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  KEY `ref_amphitheatre` (`ref_amphitheatre`),
+  KEY `ref_utilisateur` (`ref_utilisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `conference`
+--
+
+INSERT INTO `conference` (`id_conference`, `nom`, `description`, `date_conf`, `heure`, `duree`, `valider`, `ref_amphitheatre`, `ref_utilisateur`) VALUES
+(1, 'Test', 'test', '2022-12-24', 9, 30, 0, 1, 5),
+(2, 'test', 'tesr', '2022-12-30', 8, 180, 0, 1, 1),
+(3, 'Test', 'test', '2022-12-17', 8, 30, 1, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -66,7 +84,14 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `ref_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
   `domaine` varchar(100) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ref_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`ref_utilisateur`, `domaine`) VALUES
+(6, 'Informatique');
 
 -- --------------------------------------------------------
 
@@ -150,34 +175,6 @@ INSERT INTO `offre` (`id_offre`, `libelle`, `description`, `ref_type`, `ref_repr
 -- --------------------------------------------------------
 
 --
--- Structure de la table `organise`
---
-
-DROP TABLE IF EXISTS `organise`;
-CREATE TABLE IF NOT EXISTS `organise` (
-  `ref_etudiant` int(11) NOT NULL,
-  `ref_conference` int(11) NOT NULL,
-  KEY `ref_conference` (`ref_conference`),
-  KEY `ref_etudiant` (`ref_etudiant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `planifier`
---
-
-DROP TABLE IF EXISTS `planifier`;
-CREATE TABLE IF NOT EXISTS `planifier` (
-  `ref_representant` int(11) NOT NULL,
-  `ref_conference` int(11) NOT NULL,
-  KEY `ref_conference` (`ref_conference`),
-  KEY `ref_representant` (`ref_representant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `postule`
 --
 
@@ -208,7 +205,14 @@ CREATE TABLE IF NOT EXISTS `rdv` (
   KEY `ref_etudiant` (`ref_etudiant`),
   KEY `ref_offre` (`ref_offre`),
   KEY `ref_representant` (`ref_representant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `rdv`
+--
+
+INSERT INTO `rdv` (`id_rdv`, `date_rdv`, `heure`, `etat`, `ref_etudiant`, `ref_representant`, `ref_offre`) VALUES
+(1, '2022-12-31', '15:57:00', 1, 6, 5, 16);
 
 -- --------------------------------------------------------
 
@@ -271,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `admin` tinyint(1) NOT NULL,
   `actif` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -279,11 +283,18 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `email`, `mdp`, `admin`, `actif`) VALUES
 (1, 'Administrator', 'Default', 'admin@hspskh.org', '4!Hi!0M14H#g6$y2', 1, 0),
-(5, 'TRAN', 'Killian', 'k.tran@lprs.fr', 'mauxdepass', 0, 1);
+(5, 'TRAN', 'Killian', 'k.tran@lprs.fr', 'mauxdepass', 0, 1),
+(6, 'Test', 'test', 'test@test.te', 'test', 0, 1);
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `conference`
+--
+ALTER TABLE `conference`
+  ADD CONSTRAINT `conference_ibfk_1` FOREIGN KEY (`ref_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `etudiant`
@@ -296,7 +307,7 @@ ALTER TABLE `etudiant`
 --
 ALTER TABLE `inscrit`
   ADD CONSTRAINT `inscrit_ibfk_1` FOREIGN KEY (`ref_conference`) REFERENCES `conference` (`id_conference`),
-  ADD CONSTRAINT `inscrit_ibfk_2` FOREIGN KEY (`ref_etudiant`) REFERENCES `etudiant` (`ref_utilisateur`);
+  ADD CONSTRAINT `inscrit_ibfk_2` FOREIGN KEY (`ref_etudiant`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
 -- Contraintes pour la table `log`
@@ -312,31 +323,17 @@ ALTER TABLE `offre`
   ADD CONSTRAINT `offre_ibfk_3` FOREIGN KEY (`ref_representant`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
--- Contraintes pour la table `organise`
---
-ALTER TABLE `organise`
-  ADD CONSTRAINT `organise_ibfk_1` FOREIGN KEY (`ref_conference`) REFERENCES `conference` (`id_conference`),
-  ADD CONSTRAINT `organise_ibfk_2` FOREIGN KEY (`ref_etudiant`) REFERENCES `etudiant` (`ref_utilisateur`);
-
---
--- Contraintes pour la table `planifier`
---
-ALTER TABLE `planifier`
-  ADD CONSTRAINT `planifier_ibfk_1` FOREIGN KEY (`ref_conference`) REFERENCES `conference` (`id_conference`),
-  ADD CONSTRAINT `planifier_ibfk_2` FOREIGN KEY (`ref_representant`) REFERENCES `utilisateur` (`id_utilisateur`);
-
---
 -- Contraintes pour la table `postule`
 --
 ALTER TABLE `postule`
-  ADD CONSTRAINT `postule_ibfk_1` FOREIGN KEY (`ref_etudiant`) REFERENCES `etudiant` (`ref_utilisateur`),
+  ADD CONSTRAINT `postule_ibfk_1` FOREIGN KEY (`ref_etudiant`) REFERENCES `utilisateur` (`id_utilisateur`),
   ADD CONSTRAINT `postule_ibfk_2` FOREIGN KEY (`ref_offre`) REFERENCES `offre` (`id_offre`);
 
 --
 -- Contraintes pour la table `rdv`
 --
 ALTER TABLE `rdv`
-  ADD CONSTRAINT `rdv_ibfk_1` FOREIGN KEY (`ref_etudiant`) REFERENCES `etudiant` (`ref_utilisateur`),
+  ADD CONSTRAINT `rdv_ibfk_1` FOREIGN KEY (`ref_etudiant`) REFERENCES `utilisateur` (`id_utilisateur`),
   ADD CONSTRAINT `rdv_ibfk_2` FOREIGN KEY (`ref_offre`) REFERENCES `offre` (`id_offre`),
   ADD CONSTRAINT `rdv_ibfk_3` FOREIGN KEY (`ref_representant`) REFERENCES `utilisateur` (`id_utilisateur`);
 

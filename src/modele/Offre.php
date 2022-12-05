@@ -136,27 +136,27 @@ class Offre
         ));
     }
 
-    public function editOffre($bdd){
-
-        $edit = $bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description, ref_type = :ref_type, ref_representant = :ref_representant WHERE id_offre = :id");
-        $edit->execute(array(
-            'libelle'=>$this->getLibelle(),
-            'description'=>$this->getDescription(),
-            'ref_type'=>$this->getRefType(),
-            'ref_representant'=>$this->getRefRepresentant(),
-            'id'=>$this->getId()
-        ));
-        echo "Offre édité par le libelle";
-
-    }
-
-    public function deleteOffre($bdd){
-
-        $del = $bdd->getBdd()->prepare("DELETE FROM offre WHERE id_offre = :id");
-        $del->execute(array(
-            'id'=>$this->getId()
-        ));
-        echo "Offre supprimé";
-
-    }
+//    public function editOffre($bdd){
+//
+//        $edit = $bdd->getBdd()->prepare("UPDATE offre SET libelle = :libelle, description = :description, ref_type = :ref_type, ref_representant = :ref_representant WHERE id_offre = :id");
+//        $edit->execute(array(
+//            'libelle'=>$this->getLibelle(),
+//            'description'=>$this->getDescription(),
+//            'ref_type'=>$this->getRefType(),
+//            'ref_representant'=>$this->getRefRepresentant(),
+//            'id'=>$this->getId()
+//        ));
+//        echo "Offre édité par le libelle";
+//
+//    }
+//
+//    public function deleteOffre($bdd){
+//
+//        $del = $bdd->getBdd()->prepare("DELETE FROM offre WHERE id_offre = :id");
+//        $del->execute(array(
+//            'id'=>$this->getId()
+//        ));
+//        echo "Offre supprimé";
+//
+//    }
 }

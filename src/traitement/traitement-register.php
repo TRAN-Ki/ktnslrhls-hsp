@@ -50,6 +50,7 @@ try {
                 $etu->addEtudiant($bdd);
 
             }
+            $_SESSION['e'] = 'sucess';
 
             $email = $user->getEmail();
             $prenom = $user->getPrenom();
