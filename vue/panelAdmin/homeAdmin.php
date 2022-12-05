@@ -113,6 +113,28 @@ else if ($_SESSION['isAdmin'] == 1){
                 background-size: 80px 80px;
                 background-repeat: repeat;
             }
+
+                .alert {
+                    padding: 20px;
+                    background-color: #8ef85d;
+                    color: white;
+                    margin: 2px;
+                }
+
+                .closebtn {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+                .closebtn:hover {
+                    color: black;
+                }
         </style>
 
     </head>
@@ -149,6 +171,21 @@ else if ($_SESSION['isAdmin'] == 1){
         </div>
     </header>
     <div class="container mx-auto px-32">
+        <?php
+
+        if (isset($_SESSION['e'])){
+            if ($_SESSION['e'] == "sucess"){
+                ?>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Succès !</strong> Vous êtes connecté !
+                </div>
+                <?php
+                unset($_SESSION['e']);
+            }
+        }
+
+        ?>
         <div class="main-page">
             <div class="box-1 my-8 bg-slate-300 border-gray-400">
                 Bienvenue sur le site HSP Étudiant

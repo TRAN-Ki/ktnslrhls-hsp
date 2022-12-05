@@ -16,6 +16,7 @@ if ($verif){
         $_SESSION['isAdmin'] = $res['admin'];
         $_SESSION['idAdmin'] = $res['id_utilisateur'];
         $_SESSION['emailAdmin'] = $_POST['email'];
+        $_SESSION['e'] = 'sucess';
         echo "admin";
     }
     if ($res['admin'] == 0 && $res['actif'] == 0) {
